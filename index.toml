@@ -2169,5 +2169,9 @@ hash = "539f362e9e192cf3b2813e0dfdfc51a5e6814129c6e82a9733842529beea6242"
 metafile = true
 
 [[files]]
+file = "options.txt"
+hash = "72d4c21f86fa41825933ba329d291327cd7d969f8254646a2b19f60dab8fb9fb"
+
+[[files]]
 file = "servers.dat"
-hash = "04dd9cd4c35299a53ad0c438403c54a0bf3215575d6cb343d03b29daf063a64e"
+hash = "de9b2e1f4f53a46e509711bc4172312e8ac22898b0deecb14c4e7edcaca3547e"

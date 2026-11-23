@@ -1,0 +1,15 @@
+version:3955
+lang:ru_ru
+fov:0.5
+guiScale:0
+renderDistance:10
+simulationDistance:8
+maxFps:260
+enableVsync:false
+graphicsMode:1
+ao:true
+gamma:0.5
+soundCategory_master:0.7
+narrator:0
+skipMultiplayerWarning:true
+onboardAccessibility:false
