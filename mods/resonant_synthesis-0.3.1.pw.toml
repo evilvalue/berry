@@ -1,0 +1,13 @@
+name = "Resonant Synthesis [Deeper and Darker]"
+filename = "resonant_synthesis-0.3.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/nHQkXxpn/versions/OAQ2mEaM/resonant_synthesis-0.3.1.jar"
+hash-format = "sha512"
+hash = "ae840b8c0ae9e843f91bc8ce49d280da587d8d5917a7c5b6b23050a4cb31939b74d68727c22c7b1d29b4411abbbb19fe9cca37a1d469bd7119ff95d203622114"
+
+[update]
+[update.modrinth]
+mod-id = "nHQkXxpn"
+version = "OAQ2mEaM"

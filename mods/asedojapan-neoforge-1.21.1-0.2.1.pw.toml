@@ -1,0 +1,13 @@
+name = "Ancient Structures: Edo Japan"
+filename = "asedojapan-neoforge-1.21.1-0.2.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/XNphIeO1/versions/p2Z7rVK2/asedojapan-neoforge-1.21.1-0.2.1.jar"
+hash-format = "sha512"
+hash = "4ad7cefb4a83ddcb1a341b55f5d37f86c3ce18375db79806acf298a33d074355971941ebbd6b3546643f4360c59ec1a661393b4a5a25535ba692ba481fbd76af"
+
+[update]
+[update.modrinth]
+mod-id = "XNphIeO1"
+version = "p2Z7rVK2"

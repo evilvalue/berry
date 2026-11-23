@@ -1,0 +1,35 @@
+{
+  "id": "drinks",
+  "enabled": true,
+  "name": {
+    "en_us": "Drinks",
+    "ru_ru": "Напитки"
+  },
+  "description": {
+    "en_us": "Drinkable foods and bottle-based meals.",
+    "ru_ru": "Напитки и еда из бутылок."
+  },
+  "iconItem": "minecraft:honey_bottle",
+  "color": "#7EC8D4",
+  "items": [
+    "minecraft:honey_bottle",
+    "minecraft:milk_bucket"
+  ],
+  "tags": [
+    "#c:foods/drink",
+    "#c:foods/drinks",
+    "#forge:foods/drink"
+  ],
+  "matchRules": [
+    {
+      "id": "drink_animation",
+      "enabled": true,
+      "type": "use_animation",
+      "value": "DRINK",
+      "description": {
+        "en_us": "Items using the drinking animation. Disable or remove this rule to restrict membership.",
+        "ru_ru": "Предметы с анимацией питья. Правило можно выключить или удалить."
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+name = "ToroHealth Damage Indicators Continued"
+filename = "torohealth-continued-neoforge-1.21.1-1.4.0-beta.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/28cjn3lz/versions/aFdV1Yms/torohealth-continued-neoforge-1.21.1-1.4.0-beta.jar"
+hash-format = "sha512"
+hash = "672955474b0523aeeac3e9b98065de74fa5d7cdcfd871111b48f44372279f299b094de353a6e2b302926302455cb4ba8935309eedfbf56e8f27ef53996f428ee"
+
+[update]
+[update.modrinth]
+mod-id = "28cjn3lz"
+version = "aFdV1Yms"

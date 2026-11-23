@@ -1,0 +1,13 @@
+name = "Thaumic Decoration"
+filename = "thaumic_decoration-1.21.1-0.3.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/NJXOkVEu/versions/fIbVSr5d/thaumic_decoration-1.21.1-0.3.0.jar"
+hash-format = "sha512"
+hash = "e078e1d77a6078e280cc4343a68dbb824421e2c025d7e32d8e301170700e54a99feda2bbfa2bd87032086e10e6beaf8f7e61cf82dcd577315d3f4ec222c29cef"
+
+[update]
+[update.modrinth]
+mod-id = "NJXOkVEu"
+version = "fIbVSr5d"

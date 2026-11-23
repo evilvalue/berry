@@ -1,0 +1,13 @@
+name = "Redden's Stone Lanterns"
+filename = "reddensstonelantern-1.0.4-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/plgWdsGJ/versions/uehlsDrT/reddensstonelantern-1.0.4-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "28f0b04e8e448cc43e4a4a5684fe35e30e21e7db698aba24c556a5b2353b81fd749a4948d4bfe6465708997368d9253839a97794e67bf5ab35906395afadf00f"
+
+[update]
+[update.modrinth]
+mod-id = "plgWdsGJ"
+version = "uehlsDrT"

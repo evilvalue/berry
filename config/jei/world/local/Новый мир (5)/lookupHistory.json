@@ -1,0 +1,5 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"touhou_little_maid_spell:suppression_stone"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"create_wrapped:purple_present"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

@@ -1,0 +1,66 @@
+#Hunger and saturation of the food items. Changes need a game restart.
+[Food]
+	#Hunger points restored by eating Sausage. 2 points = 1 drumstick.
+	# Default: 12
+	# Range: 0 ~ 20
+	sausageNutrition = 12
+	#Saturation factor of Sausage. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.9
+	# Range: 0.0 ~ 2.0
+	sausageSaturation = 0.9
+	#Hunger points restored by eating Pretzel. 2 points = 1 drumstick.
+	# Default: 3
+	# Range: 0 ~ 20
+	pretzelNutrition = 3
+	#Saturation factor of Pretzel. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.4
+	# Range: 0.0 ~ 2.0
+	pretzelSaturation = 0.4
+	#Hunger points restored by eating Pork Knuckle or by one bite of a placed Pork Knuckle. 2 points = 1 drumstick.
+	# Default: 4
+	# Range: 0 ~ 20
+	porkKnuckleNutrition = 4
+	#Saturation factor of Pork Knuckle. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.7
+	# Range: 0.0 ~ 2.0
+	porkKnuckleSaturation = 0.7
+	#Hunger points restored by eating Fried Chicken or by one bite of a placed Fried Chicken. 2 points = 1 drumstick.
+	# Default: 3
+	# Range: 0 ~ 20
+	friedChickenNutrition = 3
+	#Saturation factor of Fried Chicken. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.5
+	# Range: 0.0 ~ 2.0
+	friedChickenSaturation = 0.5
+	#Hunger points restored by eating Half Chicken or by one bite of a placed Half Chicken. 2 points = 1 drumstick.
+	# Default: 2
+	# Range: 0 ~ 20
+	halfChickenNutrition = 2
+	#Saturation factor of Half Chicken. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.6
+	# Range: 0.0 ~ 2.0
+	halfChickenSaturation = 0.6
+	#Hunger points restored by eating Mashed Potatoes or by one bite of a placed Mashed Potatoes. 2 points = 1 drumstick.
+	# Default: 2
+	# Range: 0 ~ 20
+	mashedPotatoesNutrition = 2
+	#Saturation factor of Mashed Potatoes. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.5
+	# Range: 0.0 ~ 2.0
+	mashedPotatoesSaturation = 0.5
+	#Hunger points restored by eating Potato Salad or by one bite of a placed Potato Salad. 2 points = 1 drumstick.
+	# Default: 2
+	# Range: 0 ~ 20
+	potatoSaladNutrition = 2
+	#Saturation factor of Potato Salad. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.5
+	# Range: 0.0 ~ 2.0
+	potatoSaladSaturation = 0.5
+	#Hunger points restored by eating Dumplings or by one bite of a placed Dumplings. 2 points = 1 drumstick.
+	# Default: 3
+	# Range: 0 ~ 20
+	dumplingsNutrition = 3
+	#Saturation factor of Dumplings. Saturation gained = hunger points Ã factor Ã 2.
+	# Default: 0.5
+	# Range: 0.0 ~ 2.0
+	dumplingsSaturation = 0.5

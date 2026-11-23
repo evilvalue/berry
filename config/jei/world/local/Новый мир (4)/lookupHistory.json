@@ -1,0 +1,4 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"malum:geas","components":"{\"malum:geas_effect\":{geasEffectType:\"malum:pact_of_the_warlock\",isCreative:1b}}"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

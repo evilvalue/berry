@@ -1,0 +1,13 @@
+name = "MDM (formerly Modern Decorations Mod)"
+filename = "mdm-3.1-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/TmUXSYKk/versions/SS4XByTj/mdm-3.1-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "6f7b88f4c9441ac6c3855c72551bfffbc106f554607ecd5982c96557aecf0dee0b4f005598f4c29b972b19d3286b83928db62f742cb7aee5c84c48a4a10add81"
+
+[update]
+[update.modrinth]
+mod-id = "TmUXSYKk"
+version = "SS4XByTj"

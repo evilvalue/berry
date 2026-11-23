@@ -1,0 +1,13 @@
+name = "Neo Server Pack"
+author = "NEO server"
+version = "3.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "e132c1726bc81f4116be581b3ba502826eff439b09c5102e0c9e1f58a9524531"
+
+[versions]
+minecraft = "1.21.1"
+neoforge = "21.1.267"

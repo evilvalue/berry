@@ -1,0 +1,13 @@
+name = "Dawn of Time: Extra Additions"
+filename = "dawn-of-time-extra-additions-neoforge-1.21.1-1.0.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/luhROSfX/versions/xabMqAym/dawn-of-time-extra-additions-neoforge-1.21.1-1.0.2.jar"
+hash-format = "sha512"
+hash = "2933af0e557add0ef9af24b67219540b68e194f2fffe3b3e31a4306674a251ed5f3956d6368688fed24077886004313fb39c5ca783123adfc192b6bc66cc172f"
+
+[update]
+[update.modrinth]
+mod-id = "luhROSfX"
+version = "xabMqAym"

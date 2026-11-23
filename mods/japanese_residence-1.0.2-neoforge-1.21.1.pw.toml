@@ -1,0 +1,13 @@
+name = "Japanese Residence"
+filename = "japanese_residence-1.0.2-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/chC5kQVj/versions/zD17uOVs/japanese_residence-1.0.2-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "d6d0c91a5be16ae11ed698f9a84d505eeb6a3ffc8d9fc0101a8282632b713ff6c87e6149d87ba9d6431d4d5fb114d5b8eb41de5ae4773fe6534f22c318820112"
+
+[update]
+[update.modrinth]
+mod-id = "chC5kQVj"
+version = "zD17uOVs"

@@ -1,0 +1,8 @@
+#Whether to allow harm spells to damage blocks. This can be set to false to prevent griefing on servers.
+allowHarmSpellGriefing = true
+#Whether to allow heal spells to heal blocks. This can be set to false to prevent griefing on servers.
+allowHealSpellGriefing = true
+#Minimum cooldown in ticks between spell casts.
+# Default: 2
+# Range: > 0
+minimumSpellCooldown = 2

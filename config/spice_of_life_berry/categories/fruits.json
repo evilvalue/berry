@@ -1,0 +1,30 @@
+{
+  "id": "fruits",
+  "enabled": true,
+  "name": {
+    "en_us": "Fruits",
+    "ru_ru": "Фрукты"
+  },
+  "description": {
+    "en_us": "Fruit and fruit-based food.",
+    "ru_ru": "Фрукты и еда на основе фруктов."
+  },
+  "iconItem": "minecraft:apple",
+  "color": "#A6CF62",
+  "items": [
+    "minecraft:apple",
+    "minecraft:golden_apple",
+    "minecraft:enchanted_golden_apple",
+    "minecraft:melon_slice",
+    "minecraft:sweet_berries",
+    "minecraft:glow_berries",
+    "minecraft:chorus_fruit"
+  ],
+  "tags": [
+    "#c:foods/fruits",
+    "#c:fruits",
+    "#forge:fruits",
+    "#c:foods/fruit"
+  ],
+  "matchRules": []
+}

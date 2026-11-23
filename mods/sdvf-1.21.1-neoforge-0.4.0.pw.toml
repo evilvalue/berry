@@ -1,0 +1,13 @@
+name = "Stardew Valley Food"
+filename = "sdvf-1.21.1-neoforge-0.4.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/8N1pJGur/versions/L9DB6l7m/sdvf-1.21.1-neoforge-0.4.0.jar"
+hash-format = "sha512"
+hash = "d72c1c021da6fd60b87985df6c6ae4a86105dfb2eff9dd67eff19a38b0e72ed6db602a6a97f43bd498b544a329b9a2367cb1f1558a9614060a1a221662908502"
+
+[update]
+[update.modrinth]
+mod-id = "8N1pJGur"
+version = "L9DB6l7m"

@@ -1,0 +1,6 @@
+.git/**
+.github/**
+.nojekyll
+.gitattributes
+.packwizignore
+README.md

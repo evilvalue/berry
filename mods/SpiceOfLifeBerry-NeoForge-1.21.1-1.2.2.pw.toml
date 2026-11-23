@@ -1,0 +1,13 @@
+name = "Spice of life Berry edition"
+filename = "SpiceOfLifeBerry-NeoForge-1.21.1-1.2.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/KWQ4ySiH/versions/yFDGpkzt/SpiceOfLifeBerry-NeoForge-1.21.1-1.2.2.jar"
+hash-format = "sha512"
+hash = "66337cd7f69f41adbb1ff9675ecbab1bfeddff63453fa666ff6e15860b7204edf6730869fcbf8803d148a93f734ab7673efe6382bd17a35112f86a2efd148a64"
+
+[update]
+[update.modrinth]
+mod-id = "KWQ4ySiH"
+version = "yFDGpkzt"

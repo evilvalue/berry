@@ -1,0 +1,13 @@
+#The aura view (seen with revealing goggles or a thaumometer) and the signs of flux.
+[aura_view]
+	#What the aura view draws: OFF, CHUNK (the chunk you stand in), MARKED (the chunks you have marked with its key) or ALL (every chunk in range). Switched in game with its key.
+	#Allowed Values: OFF, CHUNK, MARKED, ALL
+	mode = "MARKED"
+	#How strongly the columns of light over each chunk are drawn. 0 hides them.
+	# Default: 1.0
+	# Range: 0.0 ~ 1.0
+	columnOpacity = 1.0
+	#Purple wisps in the air of a chunk heavy with flux, and crackles at the rift line.
+	fluxSigns = true
+	#Fog tinted purple in a chunk past half its room in flux.
+	fluxFog = true

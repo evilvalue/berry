@@ -1,0 +1,1027 @@
+[seasonal_events]
+	# Default: 10
+	# Range: 1 ~ 100
+	emeraldEchoDelayTicks = 10
+	# Default: 0.75
+	# Range: 0.0 ~ 20.0
+	emeraldEchoMaxDamage = 0.75
+	# Default: 16.0
+	# Range: 3.0 ~ 32.0
+	emeraldEchoRange = 16.0
+	# Default: 0.04
+	# Range: 0.001 ~ 0.2
+	creeperAcceleration = 0.04
+	# Default: 2
+	# Range: 1 ~ 40
+	creeperTrailIntervalTicks = 2
+	# Default: 0.35
+	# Range: 0.0 ~ 2.0
+	creeperJumpVolume = 0.35
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	creeperJumpCost = 0.5
+	# Default: 1.0
+	# Range: 0.0 ~ 3.0
+	slingshotMeleeKnockback = 1.0
+	# Default: 0.85
+	# Range: 0.0 ~ 1.0
+	slingshotResistance = 0.85
+	# Default: 2.4
+	# Range: 0.6 ~ 8.0
+	slingshotSlimeSpacing = 2.4
+	# Default: 0.75
+	# Range: 0.0 ~ 20.0
+	slingshotHungerCost = 0.75
+	# Default: 0.16
+	# Range: 0.03 ~ 0.5
+	spiderWalkSpeed = 0.16
+	spiderCameraRotation = true
+	# Default: 20
+	# Range: 1 ~ 200
+	dreamEntryFastTicks = 20
+	# Default: 50
+	# Range: 1 ~ 200
+	dreamEntrySlowTicks = 50
+	# Default: 20
+	# Range: 1 ~ 200
+	dreamExitTicks = 20
+	# Default: 100
+	# Range: 1 ~ 12000
+	dreamMinStayTicks = 100
+	# Default: 200
+	# Range: 1 ~ 12000
+	dreamMaxStayTicks = 200
+	# Default: 2.0
+	# Range: 0.0 ~ 20.0
+	dreamHeal = 2.0
+	# Default: 1.0
+	# Range: 0.0 ~ 3.0
+	dreamParticleDensity = 1.0
+	# Default: 0.55
+	# Range: 0.0 ~ 2.0
+	dreamExitVolume = 0.55
+	# Default: 0.7
+	# Range: 0.0 ~ 1.0
+	bagCandyChance = 0.7
+	# Default: 0.35
+	# Range: 0.0 ~ 2.0
+	candyHungerCostScale = 0.35
+	# Default: 0.04
+	# Range: 0.0 ~ 1.0
+	parryDamageHunger = 0.04
+	# Default: 0.03
+	# Range: 0.0 ~ 5.0
+	parryRaiseCost = 0.03
+	# Default: 12.0
+	# Range: 3.0 ~ 32.0
+	swarmRange = 12.0
+	# Default: 8
+	# Range: 1 ~ 60
+	swarmGazeTicks = 8
+	# Default: 80
+	# Range: 20 ~ 200
+	swarmHoldTicks = 80
+	# Default: 2.0
+	# Range: 0.1 ~ 10.0
+	swarmBiteDamage = 2.0
+	# Default: 1.0
+	# Range: 0.0 ~ 20.0
+	swarmAttackCost = 1.0
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	swarmCollectCost = 0.5
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	swarmTransportCost = 0.5
+	# Default: 0.12
+	# Range: 0.0 ~ 20.0
+	swarmFormCostPerSecond = 0.12
+	# Default: 0.22
+	# Range: 0.05 ~ 0.5
+	swarmFormSpeed = 0.22
+	# Default: 0.46
+	# Range: 0.0 ~ 0.8
+	swarmFormJump = 0.46
+	# Default: 40.0
+	# Range: 4.0 ~ 96.0
+	swarmCollectRadius = 40.0
+	# Default: 24.0
+	# Range: 4.0 ~ 48.0
+	swarmTransportRange = 24.0
+	# Default: 120
+	# Range: 0 ~ 72000
+	swarmCooldownTicks = 120
+	# Default: 16.0
+	# Range: 4.0 ~ 32.0
+	riftRange = 16.0
+	# Default: 3.0
+	# Range: 1.0 ~ 8.0
+	riftRadius = 3.0
+	# Default: 4
+	# Range: 1 ~ 8
+	riftMaxTargets = 4
+	# Default: 200
+	# Range: 20 ~ 600
+	riftDurationTicks = 200
+	# Default: 1800
+	# Range: 0 ~ 72000
+	riftCooldownTicks = 1800
+	# Default: 6.0
+	# Range: 0.0 ~ 20.0
+	riftCost = 6.0
+	# Default: 4.0
+	# Range: 0.0 ~ 40.0
+	riftPlayerDamage = 4.0
+	# Default: 20.0
+	# Range: 0.0 ~ 100.0
+	riftMobDamageCap = 20.0
+	# Default: 3.0
+	# Range: 0.0 ~ 6.0
+	riftReach = 3.0
+	# Default: 16.0
+	# Range: 2.0 ~ 32.0
+	enderSwapRange = 16.0
+	# Default: 0.25
+	# Range: 0.0 ~ 10.0
+	enderSwapCost = 0.25
+	# Default: 0.15
+	# Range: 0.0 ~ 10.0
+	webGrenadeCost = 0.15
+	# Default: 2.75
+	# Range: 1.0 ~ 6.0
+	webGrenadeRadius = 2.75
+	# Default: 100
+	# Range: 20 ~ 400
+	webGrenadeDurationTicks = 100
+	webGrenadePvpEnabled = true
+	# Default: 2.0
+	# Range: 0.0 ~ 20.0
+	headBiteDamage = 2.0
+	# Default: 10
+	# Range: 1 ~ 100
+	headBiteIntervalTicks = 10
+	# Default: 16.0
+	# Range: 1.0 ~ 24.0
+	headBiteRange = 16.0
+	# Default: 40.0
+	# Range: 5.0 ~ 85.0
+	headBiteAimAngle = 40.0
+	# Default: 20
+	# Range: 1 ~ 200
+	headLeapCooldownTicks = 20
+	# Default: 40
+	# Range: 10 ~ 400
+	headMobRetaliationTicks = 40
+	# Default: 0.65
+	# Range: 0.1 ~ 2.0
+	headLeapSpeed = 0.65
+	# Default: 0.7
+	# Range: 0.0 ~ 3.0
+	headLeapHeight = 0.7
+	# Default: 0.03
+	# Range: 0.0 ~ 2.0
+	headBiteCost = 0.03
+	# Default: 600
+	# Range: 0 ~ 72000
+	headCooldownTicks = 600
+	# Default: 300
+	# Range: 20 ~ 12000
+	headDurationTicks = 300
+	# Default: 32.0
+	# Range: 4.0 ~ 128.0
+	headMaxRange = 32.0
+	# Default: 0.25
+	# Range: 0.0 ~ 0.75
+	headBodyReduction = 0.25
+	# Default: 5.0
+	# Range: 0.0 ~ 40.0
+	headExplosionDamage = 5.0
+	# Default: 4.0
+	# Range: 1.0 ~ 12.0
+	headExplosionRadius = 4.0
+	# Default: 0.22
+	# Range: 0.04 ~ 0.6
+	headMoveSpeed = 0.22
+	# Default: 0.48
+	# Range: 0.1 ~ 1.5
+	headJumpSpeed = 0.48
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	headActivationCost = 0.5
+	headPvpEnabled = true
+	# Default: 32
+	# Range: 1 ~ 128
+	swarmCollectMaxItems = 32
+	danceAfterCandyEnabled = true
+	# Default: 18
+	# Range: 0 ~ 100
+	creeperWaterSplashes = 18
+	# Default: 5
+	# Range: 0 ~ 40
+	creeperWaterSmoke = 5
+	# Default: 6
+	# Range: 1 ~ 60
+	creeperWaterSoundInterval = 6
+	# Default: 0.45
+	# Range: 0.0 ~ 2.0
+	creeperWaterVolume = 0.45
+	# Default: 0.16
+	# Range: 0.03 ~ 1.0
+	slingshotFollowSeconds = 0.16
+	# Default: 0.23
+	# Range: 0.08 ~ 0.6
+	slingshotBandWidth = 0.23
+	# Default: 1.25
+	# Range: 0.3 ~ 3.0
+	headCameraHeight = 1.25
+	# Default: 3.5
+	# Range: 1.0 ~ 8.0
+	headCameraDistance = 3.5
+	# Default: 0.35
+	# Range: 0.0 ~ 20.0
+	copperActivationCost = 0.35
+	# Default: 2
+	# Range: 1 ~ 12
+	copperAxeLayers = 2
+	# Default: 0.05
+	# Range: 0.0 ~ 5.0
+	emeraldEchoCost = 0.05
+	# Default: 0.15
+	# Range: 0.0 ~ 5.0
+	emeraldTreeCost = 0.15
+	# Default: 0.01
+	# Range: 0.0 ~ 1.0
+	emeraldTreeLogCost = 0.01
+	# Default: 0.1
+	# Range: 0.0 ~ 5.0
+	emeraldHoeCost = 0.1
+	# Default: 0.005
+	# Range: 0.0 ~ 1.0
+	emeraldHoeBlockCost = 0.005
+	# Default: 0.015
+	# Range: 0.0 ~ 1.0
+	emeraldMiningCost = 0.015
+	# Default: 0.1
+	# Range: 0.0 ~ 5.0
+	parrySuccessCost = 0.1
+	# Default: 12
+	# Range: 2 ~ 100
+	headReturnTicks = 12
+	# Default: 0.2
+	# Range: 0.0 ~ 10.0
+	headExplosionCost = 0.2
+	# Default: 0.2
+	# Range: 0.0 ~ 1.0
+	bagNightChance = 0.2
+	# Default: 1200
+	# Range: 20 ~ 72000
+	bagRollIntervalTicks = 1200
+	# Default: 12.0
+	# Range: 3.0 ~ 48.0
+	bagSpawnRadius = 12.0
+	# Default: 80
+	# Range: 1 ~ 12000
+	bagMinSleepTicks = 80
+	# Default: 901
+	# Range: 101 ~ 1231
+	seasonStartMonthDay = 901
+	# Default: 1130
+	# Range: 101 ~ 1231
+	seasonEndMonthDay = 1130
+	# Default: 0.72
+	# Range: 0.0 ~ 2.0
+	danceMusicVolume = 0.72
+	# Default: 24.0
+	# Range: 1.0 ~ 96.0
+	danceHearingRange = 24.0
+	parryMeleeEnabled = true
+	# Default: 4
+	# Range: 0 ~ 20
+	parryCaptureTicks = 4
+	# Default: 12
+	# Range: 2 ~ 40
+	parryWebDurationTicks = 12
+	seasonalEventsEnabled = true
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	dreamActivationCost = 0.5
+	# Default: 80
+	# Range: 0 ~ 12000
+	dreamCooldownTicks = 80
+	halloweenEnabled = true
+	# Default: 24000
+	# Range: 20 ~ 720000
+	candyDurationTicks = 24000
+	# Default: 100
+	# Range: 0 ~ 72000
+	webGrenadeCooldownTicks = 100
+	# Default: 600
+	# Range: 0 ~ 72000
+	copperCooldownTicks = 600
+	# Default: 30
+	# Range: 0 ~ 72000
+	plantRechargeTicks = 30
+	# Default: 40
+	# Range: 0 ~ 72000
+	emeraldCooldownTicks = 40
+	# Default: 120
+	# Range: 0 ~ 72000
+	enderSwapCooldownTicks = 120
+	# Default: 160
+	# Range: 0 ~ 72000
+	ghostCooldownTicks = 160
+	# Default: 20
+	# Range: 0 ~ 72000
+	parryCooldownTicks = 20
+	# Default: 120
+	# Range: 0 ~ 72000
+	creeperCooldownTicks = 120
+	# Default: 120
+	# Range: 20 ~ 1200
+	ghastDurationTicks = 120
+	# Default: 1
+	# Range: 0 ~ 10
+	ghastFreeRescues = 1
+	# Default: 2
+	# Range: 0 ~ 10
+	ghastTotemRescues = 2
+	# Default: 4.0
+	# Range: 1.0 ~ 40.0
+	ghastMinimumHealth = 4.0
+	# Default: 0.25
+	# Range: 0.0 ~ 1.0
+	ghastHealthFraction = 0.25
+	# Default: 12000
+	# Range: 0 ~ 72000
+	ghastCooldownTicks = 12000
+	# Default: 400
+	# Range: 0 ~ 72000
+	slingshotCooldownTicks = 400
+	candyKeepAfterDeath = false
+	# Default: 4
+	# Range: 1 ~ 12
+	copperLayers = 4
+	# Default: 0.65
+	# Range: 0.0 ~ 0.95
+	copperReduction = 0.65
+	# Default: 8.0
+	# Range: 0.0 ~ 100.0
+	plantMaxProtection = 8.0
+	# Default: 0.4
+	# Range: 0.0 ~ 0.85
+	plantDamageReduction = 0.4
+	# Default: 120
+	# Range: 20 ~ 1200
+	cocoonDurationTicks = 120
+	# Default: 500
+	# Range: 20 ~ 72000
+	cocoonCooldownTicks = 500
+	# Default: 16
+	# Range: 1 ~ 64
+	cocoonMaxTargets = 16
+	# Default: 16.0
+	# Range: 1.0 ~ 48.0
+	cocoonRange = 16.0
+	# Default: 4.0
+	# Range: 0.5 ~ 12.0
+	cocoonRadius = 4.0
+	# Default: 1.0
+	# Range: 0.0 ~ 20.0
+	cocoonSelfHealPerSecond = 1.0
+	# Default: 0.6
+	# Range: 0.0 ~ 10.0
+	cocoonHungerCost = 0.6
+	# Default: 0.1
+	# Range: 0.0 ~ 10.0
+	plantHungerPerHealth = 0.1
+	# Default: 0.8
+	# Range: 0.0 ~ 2.0
+	emeraldMiningPerCopy = 0.8
+	# Default: 0.12
+	# Range: 0.0 ~ 1.0
+	emeraldEchoShare = 0.12
+	# Default: 10
+	# Range: 1 ~ 40
+	parryShieldWindowTicks = 10
+	# Default: 60.0
+	# Range: 1.0 ~ 90.0
+	parryShieldAngleDegrees = 60.0
+	# Default: 0.25
+	# Range: 0.0 ~ 0.95
+	parryProtection = 0.25
+	parryHoldEnabled = false
+	# Default: 1.15
+	# Range: 0.0 ~ 3.0
+	creeperSprintBoost = 1.15
+	# Default: 8.0
+	# Range: 2.0 ~ 16.0
+	slingshotMaxPull = 8.0
+	# Default: 3.6
+	# Range: 0.5 ~ 3.8
+	slingshotLaunchSpeed = 3.6
+	dreamCancelOnMove = true
+	# Default: 1.15
+	# Range: 0.5 ~ 2.0
+	creeperJumpStrength = 1.15
+	# Default: 4.0
+	# Range: 0.0 ~ 40.0
+	creeperBlastDamage = 4.0
+	# Default: 3.0
+	# Range: 0.5 ~ 8.0
+	creeperBlastRadius = 3.0
+	# Default: 0.05
+	# Range: 0.0 ~ 1.0
+	copperLightningChance = 0.05
+	# Default: 100
+	# Range: 0 ~ 12000
+	copperLightningCooldownTicks = 100
+	# Default: 5.0
+	# Range: 0.0 ~ 40.0
+	copperLightningDamage = 5.0
+	# Default: 0.25
+	# Range: 0.0 ~ 20.0
+	copperLightningCost = 0.25
+	spider_sweet = true
+	copper_slab_chocolate = true
+	earth_brownie = true
+	emerald_candy = true
+	ender_eye_candy = true
+	ghost_sweet = true
+	jelly_spider_eye = true
+	creeper_candy = true
+	marshmallow_ghast = true
+	munchroom = true
+	pump_sweet = true
+	slime_jelly = true
+
+[general]
+	enabled = true
+
+[food_detection]
+	foodDetectionTags = ["c:foods", "c:food", "forge:foods", "forge:food", "c:foods/soup", "c:foods/drink"]
+	forcedFoodItems = []
+	manualFoodItemsCanBeEaten = true
+	foodNutritionOverrides = []
+
+[fractional_hunger]
+	enableFractionalHunger = true
+	plantableFoodUsesFractionalNutrition = true
+	# Default: 20.0
+	# Range: 0.0 ~ 20.0
+	plantableFoodFullStackHungerValue = 20.0
+	# Default: 64
+	# Range: 1 ~ 64
+	plantableFoodStackSizeBasis = 64
+	# Default: 0.0
+	# Range: 0.0 ~ 20.0
+	plantableFoodMinimumHungerRestore = 0.0
+	plantableFoodOverrides = ["minecraft:potato", "minecraft:carrot", "minecraft:sweet_berries", "minecraft:glow_berries"]
+
+[food_detection_nbt]
+	nbtSensitiveFoodEnabled = true
+	nbtSensitiveFoodRules = ["minecraft:suspicious_stew=ignore_nbt"]
+
+[hunger]
+	#Allowed Values: time_based, exhaustion_based, time_and_exhaustion
+	hungerDrainMode = "exhaustion_based"
+	#Disables vanilla saturation in every hunger-drain mode. The legacy key name is retained for config compatibility.
+	removeVanillaSaturationOutsideExhaustionMode = true
+	# Default: 20.0
+	# Range: 0.0 ~ 200.0
+	passiveFoodLossPerDay = 20.0
+	enableHungerMovementSlowdown = true
+	# Default: 1.0
+	# Range: 0.0 ~ 10.0
+	passiveExhaustionMultiplier = 1.0
+	# Default: 1.0
+	# Range: 0.0 ~ 10.0
+	actionExhaustionMultiplier = 1.0
+	# Default: 6.0
+	# Range: 0.0 ~ 40.0
+	naturalRegenExhaustionPerHeal = 6.0
+	cravingsAffectActionExhaustion = true
+	# Default: 5
+	# Range: 0 ~ 1000
+	beginnerGraceDays = 5
+	# Default: 0.5
+	# Range: 0.0 ~ 10.0
+	beginnerPassiveHungerMultiplier = 0.5
+
+[damage_hunger]
+	enabled = true
+	# Default: 0.1
+	# Range: 0.0 ~ 20.0
+	exhaustionPerDamage = 0.1
+	# Default: 4.0
+	# Range: 0.0 ~ 80.0
+	maxExhaustionPerHit = 4.0
+	# Default: 0.1
+	# Range: 0.0 ~ 100.0
+	minDamage = 0.1
+	damageTypeMultipliers = ["minecraft:fall=1.0", "minecraft:in_fire=1.0", "minecraft:magic=1.0", "minecraft:out_of_world=0.0"]
+
+[elytra]
+	# Default: 2.0
+	# Range: 0.0 ~ 20.0
+	elytraMultiplier = 2.0
+	# Default: 2.5
+	# Range: 0.0 ~ 20.0
+	elytraFireworkMultiplier = 2.5
+	cravingsAffectElytra = false
+
+[transport]
+	enableBoatRowingSlowdown = true
+	# Default: 0.7
+	# Range: 0.1 ~ 1.0
+	boatMinSpeedAtZeroHunger = 0.7
+	enableSwimmingSlowdown = true
+	# Default: 0.55
+	# Range: 0.1 ~ 1.0
+	swimmingMinSpeedAtZeroHunger = 0.55
+	boatSlowdownAffectsAcceleration = true
+	boatSlowdownAffectsMaxSpeed = true
+	boatSlowdownOnIce = false
+
+[regeneration]
+	vanillaNaturalRegeneration = true
+	# Default: 0.05
+	# Range: 0.0 ~ 1.0
+	minRegenMultiplierAtZeroHunger = 0.05
+	# Default: 1.0
+	# Range: 0.0 ~ 5.0
+	maxRegenMultiplierAtFullHunger = 1.0
+	disableNaturalRegenAtZeroHunger = true
+
+	[regeneration.post_eating_regeneration]
+		enabled = true
+		# Default: 0.1
+		# Range: 0.0 ~ 10.0
+		bonusNutrition1To2 = 0.1
+		# Default: 0.2
+		# Range: 0.0 ~ 10.0
+		bonusNutrition3To4 = 0.2
+		# Default: 0.3
+		# Range: 0.0 ~ 10.0
+		bonusNutrition5To6 = 0.3
+		# Default: 0.4
+		# Range: 0.0 ~ 10.0
+		bonusNutrition7To10 = 0.4
+		# Default: 0.5
+		# Range: 0.0 ~ 10.0
+		bonusNutrition11Plus = 0.5
+		# Default: 20
+		# Range: 0 ~ 3600
+		durationNutrition1To2Seconds = 20
+		# Default: 30
+		# Range: 0 ~ 3600
+		durationNutrition3To4Seconds = 30
+		# Default: 40
+		# Range: 0 ~ 3600
+		durationNutrition5To6Seconds = 40
+		# Default: 50
+		# Range: 0 ~ 3600
+		durationNutrition7To10Seconds = 50
+		# Default: 60
+		# Range: 0 ~ 3600
+		durationNutrition11PlusSeconds = 60
+		# Default: 1.0
+		# Range: 0.0 ~ 10.0
+		maxTotalBonus = 1.0
+		# Default: 2.0
+		# Range: 0.05 ~ 20.0
+		healingSpeedMultiplier = 2.0
+		# Default: 1.5
+		# Range: 0.0 ~ 20.0
+		healingAmountMultiplier = 1.5
+		instantHealing = false
+		recentDamagePenaltyEnabled = true
+		# Default: 4.0
+		# Range: 0.0 ~ 60.0
+		recentDamageWindowSeconds = 4.0
+		# Default: 0.75
+		# Range: 0.0 ~ 1.0
+		recentDamageHealingMultiplier = 0.75
+		# Default: 120
+		# Range: 1 ~ 1200
+		baseHealIntervalTicksNutrition1To2 = 120
+		# Default: 80
+		# Range: 1 ~ 1200
+		baseHealIntervalTicksNutrition3To4 = 80
+		# Default: 60
+		# Range: 1 ~ 1200
+		baseHealIntervalTicksNutrition5To6 = 60
+		# Default: 50
+		# Range: 1 ~ 1200
+		baseHealIntervalTicksNutrition7To10 = 50
+		# Default: 40
+		# Range: 1 ~ 1200
+		baseHealIntervalTicksNutrition11Plus = 40
+		# Default: 1.0
+		# Range: 0.0 ~ 20.0
+		healHeartsNutrition1To2 = 1.0
+		# Default: 1.5
+		# Range: 0.0 ~ 20.0
+		healHeartsNutrition3To4 = 1.5
+		# Default: 2.0
+		# Range: 0.0 ~ 20.0
+		healHeartsNutrition5To6 = 2.0
+		# Default: 3.0
+		# Range: 0.0 ~ 20.0
+		healHeartsNutrition7To10 = 3.0
+		# Default: 4.0
+		# Range: 0.0 ~ 20.0
+		healHeartsNutrition11Plus = 4.0
+
+[sleep]
+	# Default: 35.0
+	# Range: 0.0 ~ 100.0
+	baseSleepHungerLossPercent = 35.0
+	# Default: 15.0
+	# Range: 0.0 ~ 100.0
+	cravingSleepHungerLossPercent = 15.0
+	# Default: 25.0
+	# Range: 0.0 ~ 100.0
+	categorySleepHungerLossPercent = 25.0
+	# Default: 14
+	# Range: 0 ~ 20
+	minHungerAfterGoodSleep = 14
+	enableSleepDebt = true
+	# Default: 8.0
+	# Range: 0.0 ~ 100.0
+	sleepDebtPassiveHungerPercentPerPoint = 8.0
+	# Default: 1
+	# Range: 0 ~ 100
+	sleepDebtIncreasePerMissedNight = 1
+	# Default: 5
+	# Range: 0 ~ 100
+	sleepDebtMaxPoints = 5
+	sleepDebtResetOnSleep = true
+	# Default: 2
+	# Range: 0 ~ 100
+	sleepDebtReductionPerSleep = 2
+
+[death_hunger]
+	enabled = true
+	# Default: 10
+	# Range: 0 ~ 20
+	respawnFoodLevel = 10
+	resetCravingStreakOnDeath = false
+	cancelStreakBonusOnDeath = false
+
+[full_hunger_healing]
+	enabled = true
+	onlyDesiredFoodByDefault = true
+	allowAllFoodWhenFull = false
+	healIsInstant = false
+	recentDamagePenaltyEnabled = true
+	# Default: 0.5
+	# Range: 0.0 ~ 60.0
+	recentDamageWindowSeconds = 0.5
+	# Default: 0.5
+	# Range: 0.0 ~ 1.0
+	recentDamageHealingMultiplier = 0.5
+	# Default: 6
+	# Range: 1 ~ 120
+	healingDurationSeconds = 6
+	# Default: 0.5
+	# Range: 0.0 ~ 20.0
+	healHeartsNutrition1To2 = 0.5
+	# Default: 1.0
+	# Range: 0.0 ~ 20.0
+	healHeartsNutrition3To4 = 1.0
+	# Default: 1.5
+	# Range: 0.0 ~ 20.0
+	healHeartsNutrition5To6 = 1.5
+	# Default: 2.0
+	# Range: 0.0 ~ 20.0
+	healHeartsNutrition7To10 = 2.0
+	# Default: 2.5
+	# Range: 0.0 ~ 20.0
+	healHeartsNutrition11Plus = 2.5
+	# Default: 1.5
+	# Range: 0.05 ~ 20.0
+	fullEatingTimeNutrition1To2 = 1.5
+	# Default: 1.8
+	# Range: 0.05 ~ 20.0
+	fullEatingTimeNutrition3To4 = 1.8
+	# Default: 2.1
+	# Range: 0.05 ~ 20.0
+	fullEatingTimeNutrition5To6 = 2.1
+	# Default: 2.5
+	# Range: 0.05 ~ 20.0
+	fullEatingTimeNutrition7To10 = 2.5
+	# Default: 3.0
+	# Range: 0.05 ~ 20.0
+	fullEatingTimeNutrition11Plus = 3.0
+
+[cravings]
+	#Allowed Values: food_only, category_only, food_and_category
+	cravingMode = "food_only"
+	#Allowed Values: world_day, completion_timer
+	cravingRefreshMode = "world_day"
+	# Default: 1
+	# Range: 1 ~ 365
+	worldDayIntervalDays = 1
+	# Default: 24000
+	# Range: 20 ~ 172800000
+	completionTimerTicks = 24000
+	# Default: 2
+	# Range: 0 ~ 8
+	cravingFoodCount = 2
+	randomDailyCravingCountEnabled = false
+	# Default: 2
+	# Range: 0 ~ 8
+	randomDailyCravingCountMin = 2
+	# Default: 3
+	# Range: 0 ~ 8
+	randomDailyCravingCountMax = 3
+	# Default: 0.5
+	# Range: 0.0 ~ 1.0
+	cravingOneDoneMultiplierForTwo = 0.5
+	# Default: 0.75
+	# Range: 0.0 ~ 1.0
+	cravingOneDoneMultiplierForThree = 0.75
+	# Default: 0.5
+	# Range: 0.0 ~ 1.0
+	cravingTwoDoneMultiplierForThree = 0.5
+	# Default: 5
+	# Range: 0 ~ 100
+	recentCravingHistoryDays = 5
+	#Allowed Values: all_registered, vanilla_only, discovered, configured_list, category_only
+	foodPoolMode = "all_registered"
+	# Default: 6
+	# Range: 1 ~ 256
+	minDiscoveredFoodsForCravings = 6
+	ingredientCravingUnlocksEnabled = false
+	directFoodDiscoveryUnlocksEnabled = false
+	mobDropIngredientUnlocksEnabled = true
+	itemCravingUnlocksEnabled = true
+	itemCravingUnlockRules = []
+	# Default: 20
+	# Range: 1 ~ 1200
+	cravingUnlockScanIntervalTicks = 20
+	# Default: 200
+	# Range: 20 ~ 12000
+	questUnlockRescanIntervalTicks = 200
+	# Default: 1200
+	# Range: 20 ~ 72000
+	cravingRecipeCacheRefreshTicks = 1200
+	advancementCravingUnlocksEnabled = true
+	advancementCravingUnlockRules = []
+	ftbQuestCravingUnlocksEnabled = true
+	ftbQuestCravingUnlockRules = []
+	requireCookedCravingFood = true
+	excludeNegativeEffectCravingFoods = true
+	#Allowed Values: simple, medium, balanced, hard, hardcore
+	cravingDifficultyProfile = "balanced"
+	configuredFoodPool = ["minecraft:apple", "minecraft:bread", "minecraft:baked_potato"]
+	foodPoolWhitelist = []
+	foodPoolBlacklist = []
+	defaultCategoryId = ""
+	netherForceCategory = true
+	netherForcedCategoryId = "watery"
+	netherForceFoodFromCategory = true
+	# Default: 0.75
+	# Range: 0.0 ~ 1.0
+	categoryOnlyPassiveMultiplier = 0.75
+	# Default: 0.85
+	# Range: 0.0 ~ 1.0
+	categoryBonusMultiplierWithThreeFoodsLeft = 0.85
+	# Default: 0.75
+	# Range: 0.0 ~ 1.0
+	categoryBonusMultiplierWithTwoFoodsLeft = 0.75
+	# Default: 0.65
+	# Range: 0.0 ~ 1.0
+	categoryBonusMultiplierWithOneFoodLeft = 0.65
+	allowEatingCravingFoodWhenFull = true
+	allowEatingCravingCategoryWhenFull = false
+	# Default: 0.2
+	# Range: 0.0 ~ 10.0
+	cravingRegenBonusForOneFood = 0.2
+	# Default: 0.3
+	# Range: 0.0 ~ 10.0
+	cravingRegenBonusForTwoFoods = 0.3
+	# Default: 0.4
+	# Range: 0.0 ~ 10.0
+	cravingRegenBonusForThreeFoods = 0.4
+	# Default: 0.05
+	# Range: 0.0 ~ 10.0
+	categoryRegenBonus = 0.05
+	# Default: 0.1
+	# Range: 0.0 ~ 10.0
+	strongCategoryRegenBonus = 0.1
+
+[craving_streak]
+	enabled = true
+	# Default: 3
+	# Range: 1 ~ 30
+	requiredConsecutiveDays = 3
+	# Default: 3
+	# Range: 0 ~ 30
+	rewardFreezeDays = 3
+	requireAllExactCravings = true
+	categoryCountsForStreak = false
+	streakFreezeAffectsPassiveHunger = true
+	streakFreezeAffectsElytra = false
+	customRewardsEnabled = false
+	attributeBonuses = ["minecraft:generic.movement_speed=0.05:add_multiplied_total"]
+	potionEffects = ["minecraft:haste=0"]
+	commands = []
+
+[craving_progress_rewards]
+	enabled = false
+	attributeBonuses = ["1|minecraft:generic.movement_speed=0.025:add_multiplied_total", "2|minecraft:generic.movement_speed=0.05:add_multiplied_total"]
+	potionEffects = ["2|minecraft:haste=0"]
+	commands = []
+
+[food_stack_limits]
+	enableFoodStackLimits = true
+	# Default: 16
+	# Range: 1 ~ 64
+	nutrition1To2MaxStackSize = 16
+	# Default: 12
+	# Range: 1 ~ 64
+	nutrition3To4MaxStackSize = 12
+	# Default: 8
+	# Range: 1 ~ 64
+	nutrition5To6MaxStackSize = 8
+	# Default: 4
+	# Range: 1 ~ 64
+	nutrition7To10MaxStackSize = 4
+	# Default: 2
+	# Range: 1 ~ 64
+	nutrition11To14MaxStackSize = 2
+	# Default: 1
+	# Range: 1 ~ 64
+	nutrition15PlusMaxStackSize = 1
+	multiCategoryStackRule = "lowest"
+	# Default: 8
+	# Range: 1 ~ 64
+	defaultUncategorizedFoodMaxStackSize = 8
+	foodStackSizeOverrides = ["minecraft:enchanted_golden_apple=1", "minecraft:golden_apple=4", "minecraft:mushroom_stew=4"]
+
+[food_eat_time]
+	enableFoodEatTimeMultipliers = true
+	# Default: 1.2
+	# Range: 0.05 ~ 20.0
+	defaultCategoryEatTimeMultiplier = 1.2
+	# Default: 1.2
+	# Range: 0.05 ~ 20.0
+	defaultUncategorizedEatTimeMultiplier = 1.2
+	multiCategoryEatTimeRule = "slowest"
+	foodEatTimeOverrides = []
+
+[hunger_effect_rework]
+	enabled = true
+	hungerPotionBrewingEnabled = true
+	nauseaPotionBrewingEnabled = true
+	hungerPotionWitchThrowsEnabled = true
+	nauseaPotionWitchThrowsEnabled = true
+	# Default: 2.0
+	# Range: 1.0 ~ 20.0
+	hungerLevel1PassiveMultiplier = 2.0
+	# Default: 3.0
+	# Range: 1.0 ~ 20.0
+	hungerLevel2PassiveMultiplier = 3.0
+	# Default: 0.75
+	# Range: 0.0 ~ 1.0
+	hungerLevel1FoodEffectiveness = 0.75
+	# Default: 0.6
+	# Range: 0.0 ~ 1.0
+	hungerLevel2FoodEffectiveness = 0.6
+	# Default: 0.35
+	# Range: 0.0 ~ 1.0
+	hungerLevel1FreezeDrainMultiplier = 0.35
+	# Default: 0.6
+	# Range: 0.0 ~ 1.0
+	hungerLevel2FreezeDrainMultiplier = 0.6
+
+[nausea_effect_rework]
+	blocksEating = true
+
+[starvation]
+	enableStarvation = true
+	#Allowed Values: edible_animals, food_items, stretched_food, mixed
+	playerAppearanceMode = "mixed"
+	# Default: 0.0
+	# Range: 0.0 ~ 20.0
+	triggerFoodLevel = 0.0
+	# Default: 1.0
+	# Range: 0.0 ~ 30.0
+	delayDays = 1.0
+	# Default: 10.0
+	# Range: 0.0 ~ 20.0
+	recoveryFoodLevel = 10.0
+	# Default: 0.5
+	# Range: 0.0 ~ 0.95
+	foodRestoreReduction = 0.5
+	potionBrewingEnabled = true
+	clearStarvationOnDeath = true
+	# Default: 1
+	# Range: 0 ~ 20
+	respawnFoodAfterStarvationDeath = 1
+
+[player_eating]
+	enabled = false
+	requiresStarvation = true
+	#Allowed Values: gradual, whole
+	mode = "whole"
+	# Default: 3.0
+	# Range: 0.25 ~ 30.0
+	durationSeconds = 3.0
+	# Default: 8.0
+	# Range: 0.0 ~ 20.0
+	hungerRestore = 8.0
+	#Allowed Values: health, hunger, both
+	drainMode = "health"
+	# Default: 8.0
+	# Range: 0.0 ~ 1000.0
+	healthDamage = 8.0
+	# Default: 8.0
+	# Range: 0.0 ~ 20.0
+	targetHungerDrain = 8.0
+	# Default: 3.0
+	# Range: 1.0 ~ 12.0
+	range = 3.0
+	dropPlayerHead = false
+
+[progression]
+	# Default: 0.45
+	# Range: 0.0 ~ 10.0
+	postDragonPassiveHungerMultiplier = 0.45
+	# Default: 1.5
+	# Range: 0.0 ~ 10.0
+	endBeforeProgressPassiveHungerMultiplier = 1.5
+	#Allowed Values: advancement, entity_kill, command, disabled
+	progressionUnlockMode = "entity_kill"
+	progressionAdvancementId = "minecraft:end/kill_dragon"
+	progressionEntityIds = ["minecraft:ender_dragon", "cataclysm:ender_guardian", "bosses_of_mass_destruction:void_blossom"]
+	announceProgressionUnlock = true
+	progressionUnlockMessage = ""
+
+[dimension_rules]
+	enabled = true
+	rules = ["minecraft:overworld|hunger=true|cravings=true|preferred=|required=|passive=1.0|sleep=1.0|elytra=1.0|regen=1.0", "minecraft:the_nether|hunger=true|cravings=true|required=watery|preferred=watery|passive=1.25|sleep=1.0|elytra=1.0|regen=1.0", "minecraft:the_end|hunger=true|cravings=true|preferred=|required=|passive=1.5|postDragonPassive=0.45|sleep=1.0|elytra=1.0|regen=1.0"]
+
+	[compat.farmersdelight]
+		compatDebugMode = false
+		enableGenericHungerEffectCompatibility = true
+		hungerDrainEffectMultipliers = ["farmersdelight:nourishment=0.0"]
+		removeNourishmentEffect = false
+
+	[compat.raven_abilities]
+		# Default: 1.0
+		# Range: 0.0 ~ 20.0
+		hungerMultiplier = 1.0
+		# Default: 3.0
+		# Range: 1.0 ~ 10.0
+		sugarSacrificeMaxDamageMultiplier = 3.0
+
+	[compat.craving_reroll]
+		enabled = true
+		#Allowed Values: daily, streak_reward, daily_or_streak
+		availability = "daily"
+		# Default: 3
+		# Range: 1 ~ 100
+		usesPerGrant = 3
+		# Default: 0.05
+		# Range: 0.0 ~ 1.0
+		firstPullJackpotChance = 0.05
+		#Allowed Values: matching_foods, checkmarks, random
+		jackpotStyle = "checkmarks"
+		keepUnused = true
+		# Default: 10
+		# Range: 1 ~ 1000
+		maxStored = 10
+		onlyIncomplete = true
+		# Default: 0
+		# Range: 0 ~ 100
+		grantOnSleep = 0
+		# Default: 0
+		# Range: 0 ~ 100
+		grantPerCompletedCraving = 0
+		# Default: 0
+		# Range: 0 ~ 100
+		grantOnCompletedList = 0
+		# Default: 0
+		# Range: 0 ~ 1000
+		grantEveryNCompletedCravings = 0
+		# Default: 1
+		# Range: 1 ~ 100
+		grantEveryNAmount = 1
+		# Default: 0
+		# Range: 0 ~ 100
+		grantOnFirstFoodEaten = 0
+		# Default: 0
+		# Range: 0 ~ 100
+		grantOnFoodDiscovered = 0
+		jackpotRequiresProgress = false
+		jackpotProgressiveChance = false
+		grantDailyMorningEnabled = true
+		grantOnStreakEnabled = false
+		grantOnSleepEnabled = false
+		grantPerCompletedCravingEnabled = false
+		grantOnCompletedListEnabled = false
+		grantEveryNCompletedCravingsEnabled = false
+		grantOnFirstFoodEatenEnabled = false
+		grantOnFoodDiscoveredEnabled = false

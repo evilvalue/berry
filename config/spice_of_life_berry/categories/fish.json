@@ -1,0 +1,30 @@
+{
+  "id": "fish",
+  "enabled": true,
+  "name": {
+    "en_us": "Fish Food",
+    "ru_ru": "Рыбная еда"
+  },
+  "description": {
+    "en_us": "Fish and seafood meals.",
+    "ru_ru": "Рыба и морская еда."
+  },
+  "iconItem": "minecraft:cooked_cod",
+  "color": "#6FA6CE",
+  "items": [
+    "minecraft:cod",
+    "minecraft:cooked_cod",
+    "minecraft:salmon",
+    "minecraft:cooked_salmon",
+    "minecraft:tropical_fish",
+    "minecraft:pufferfish"
+  ],
+  "tags": [
+    "#c:foods/fishes",
+    "#c:foods/fish",
+    "#forge:foods/fish",
+    "#c:foods/raw_fish",
+    "#c:foods/cooked_fish"
+  ],
+  "matchRules": []
+}

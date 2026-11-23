@@ -1,0 +1,13 @@
+name = "PackPing"
+filename = "packping-neoforge-1.1.0-mc.1.21-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/ZHYSEYHD/versions/Ew99xuEp/packping-neoforge-1.1.0-mc.1.21-1.21.1.jar"
+hash-format = "sha512"
+hash = "78b00d2d00fd0ee029791b0820624ae1658b2f2ca59b6d7905218733602dfb9a5226e887966279397547ad8ea64cdf0663ea80e79c4226057e27a937ca34a6d3"
+
+[update]
+[update.modrinth]
+mod-id = "ZHYSEYHD"
+version = "Ew99xuEp"

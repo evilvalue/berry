@@ -1,0 +1,13 @@
+name = "Dawn of Time: Beyond Vanilla"
+filename = "dotbv-neoforge-1.21.1-0.2.0.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/5elJ98Ne/versions/xeJOSgnD/dotbv-neoforge-1.21.1-0.2.0.jar"
+hash-format = "sha512"
+hash = "70aacd29122d0ccf8d24972bffb7fc109770b7067d02441671ed8427015a6db425a1d5e6ee6eb38f249aa0dfa195b14684809466fcbf001cf96a21bda86c409b"
+
+[update]
+[update.modrinth]
+mod-id = "5elJ98Ne"
+version = "xeJOSgnD"

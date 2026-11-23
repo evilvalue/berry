@@ -1,0 +1,30 @@
+{
+  "id": "vegetables",
+  "enabled": true,
+  "name": {
+    "en_us": "Vegetables",
+    "ru_ru": "Овощи"
+  },
+  "description": {
+    "en_us": "Vegetables and plant-based food.",
+    "ru_ru": "Овощи и растительная еда."
+  },
+  "iconItem": "minecraft:carrot",
+  "color": "#62BA65",
+  "items": [
+    "minecraft:carrot",
+    "minecraft:golden_carrot",
+    "minecraft:potato",
+    "minecraft:baked_potato",
+    "minecraft:poisonous_potato",
+    "minecraft:beetroot",
+    "minecraft:dried_kelp"
+  ],
+  "tags": [
+    "#c:foods/vegetables",
+    "#c:vegetables",
+    "#forge:vegetables",
+    "#c:foods/vegetable"
+  ],
+  "matchRules": []
+}

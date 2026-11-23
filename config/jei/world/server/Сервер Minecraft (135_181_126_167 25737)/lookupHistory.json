@@ -1,0 +1,5 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"thaumictinkerer:cowl_of_the_abyssal_depths"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"thaumicbases:overchanter"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

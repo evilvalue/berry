@@ -1,0 +1,9 @@
+[
+  {"version":1},
+  {"recipe":"wispwillow:alchemical_cauldron","recipeType":"minecraft:crafting","bookmarkType":"RECIPE"},
+  {"ingredient":{"id":"wispwillow:alchemical_cauldron"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"wispwillow:empyrite_ingot"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"wispwillow:empyrite_axe"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"wispwillow:empyrite_sword"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"wispwillow:willow_log"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]
