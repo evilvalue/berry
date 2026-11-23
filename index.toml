@@ -458,7 +458,7 @@ hash = "4d3264b58c502afaeca3f44e8d2db0843c54b8ba957afd21a2d450fe10dafefb"
 
 [[files]]
 file = "config/iris.properties"
-hash = "bf05f11e46f92df603a68745c823e75bf8184c3a169095476d6b5a87cbfc37c2"
+hash = "399f8582166ba5834d624f3dfbdc84b29929dd5e07601c36e2318643d1b0f451"
 
 [[files]]
 file = "config/ironfurnaces-common.toml"
@@ -2170,8 +2170,92 @@ metafile = true
 
 [[files]]
 file = "options.txt"
-hash = "72d4c21f86fa41825933ba329d291327cd7d969f8254646a2b19f60dab8fb9fb"
+hash = "a7a2e781bbc674ffd79e9b7198558969cce080075752971691a2e5d387509a90"
+
+[[files]]
+file = "resourcepacks/Clarity-Tooltips.zip"
+hash = "6042056cbd2a4ca57f0c1b5fac48d6d4273fc019c9a9e3870e1f59264aee6463"
+
+[[files]]
+file = "resourcepacks/Create LootR Chest.zip"
+hash = "04bfc424629cbbeeb0d2cfa88cfee388da893b84f55906aba2e8f8136368941c"
+
+[[files]]
+file = "resourcepacks/FA+Player-v1.1.zip"
+hash = "9ee3ae5b2fe5cd980e4041429dc66d88243f5f2420e2814e5361c746ad937f33"
+
+[[files]]
+file = "resourcepacks/Fresh Moves v3.1.zip"
+hash = "c433f3d831e86faa956836bf327ca00151bd813d1a8ab36aa064d518a58790f7"
+
+[[files]]
+file = "resourcepacks/Fresh Patch - Rotten Creatures.zip"
+hash = "36c19062f46ba16cf96ebf0179bd4d748a3e6df802ceb2c045ec4fa9cb2f1d9e"
+
+[[files]]
+file = "resourcepacks/Fresh Patch - Variants and Ventures.zip"
+hash = "7ec5893f94db8850861a428cee866e3e897550b5fd6d90d0e0898c3104efb751"
+
+[[files]]
+file = "resourcepacks/FreshAnimations_v1.11.2_1.20.zip"
+hash = "3a36e09638aa72f3b6e36fcfbcb4f9a3ba31a03b09e777466034bf75827c157e"
+
+[[files]]
+file = "resourcepacks/GUI Revision Dark 1.21.x.zip"
+hash = "af30a50269737d6b57bd418650150f85b794c4ffbe476d608de9ca923be2c076"
+
+[[files]]
+file = "resourcepacks/Mine Emotes translations v7.2.zip"
+hash = "ee39fc03820a3a756254372aa30cb28c26a1fe54c1310e733ffac03a77a34910"
+
+[[files]]
+file = "resourcepacks/RTF_v.2.8.4_1.20.x.zip"
+hash = "98f916cab8d7be0fd95582201c856f9cf26a33d81c7fe82da0d7f30321900bf6"
+
+[[files]]
+file = "resourcepacks/Rotten_Creature_x_Fresh_Animation_Fix_1.0.2.zip"
+hash = "b52358f2b3ff0068fc8142feefd32ffe17ee044f74d5d34310253fee59264a58"
+
+[[files]]
+file = "resourcepacks/Rus-For-Mods-1.21-1.1.zip"
+hash = "c516f2f942b9803c8b680aafc7173364e5a418ae3c53610a479fc112a556fd07"
+
+[[files]]
+file = "resourcepacks/SodiumTranslations.zip"
+hash = "01a2e16961c5622a8b5fc64d8c81447e3cbe22197d14078080ecab414463e599"
+
+[[files]]
+file = "resourcepacks/Stay True 1.21.5.zip"
+hash = "f748f3b0932f52ea6f8c5b0f4ffd4eb6f60af1cbfeb315802f522c520b45b6a5"
+
+[[files]]
+file = "resourcepacks/Thaumaturge-Gems-Renewed-1.0.0.zip"
+hash = "0448986a6b68634164d2c392bf425b85251d3e139db9be7b3867bf232912651c"
+
+[[files]]
+file = "resourcepacks/Torches Reimagined v1.10.zip"
+hash = "e5b2d0716ca834569aa489b338a5be983e92ed032c34047f7303bc27e48fb146"
+
+[[files]]
+file = "resourcepacks/boss-refreshed-v2-1.19-1.21.zip"
+hash = "2e61371fff5a0db6b602fc9d74beebb9f42966f36527801195d477e1500c26dc"
+
+[[files]]
+file = "resourcepacks/creepers-refreshed-fa-v1.0.zip"
+hash = "adbbd3840e7186c05a9c24fd0cf73e1dca0fa209b96922eb40e882443efeba8a"
+
+[[files]]
+file = "resourcepacks/mobs-refreshed-fa-v2.2.zip"
+hash = "f5386f79e98c7f82a8ee78c535b4b4c3ffd704cc1a3f01f4e7431368aeaff2e4"
+
+[[files]]
+file = "resourcepacks/waystones_1.21.1.zip"
+hash = "8bf91c6140d71038e0b36b46a12229cd767bea01b8db3d5daf27fc12634fc107"
 
 [[files]]
 file = "servers.dat"
 hash = "557e419550d42ec6139901b84da3562a727eb8f98b19eb3891b1e254dc7bfaf1"
+
+[[files]]
+file = "shaderpacks/Solas Shader V3.9.zip"
+hash = "e207c3c7e2ca572457e03b998dbfa383fb1251324ad78ea7b7faee90b533d748"
