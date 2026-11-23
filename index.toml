@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "automodpack/client.conf"
-hash = "3fa9486db348bc0b37e0f88fc1cc6a15b1fe67be92cde1ede669d28420f1f56a"
-
-[[files]]
 file = "config/BBEConfig.json"
 hash = "aba70c5ddb814ddb811ed7f35ab6f6276df41228d694b8b3be788231daf9b559"
 
@@ -1386,11 +1382,6 @@ metafile = true
 [[files]]
 file = "mods/asedojapan-neoforge-1.21.1-0.2.1.pw.toml"
 hash = "637e874df5dce35ed1d7b5b97d474887dc6f2ddc9a79ab08ab4ba48d03d76dfa"
-metafile = true
-
-[[files]]
-file = "mods/automodpack-5.0.0-rc.7.pw.toml"
-hash = "53b7beb4046bd6d00cee083ce3d7be9be5dfa392515c68596f932eaba7f184fe"
 metafile = true
 
 [[files]]
