@@ -953,6 +953,10 @@ file = "config/streamsreflowing/bank_features/GUIDE.md"
 hash = "09e5233e3419cb9f678ba35fcffa560110586b31e8977c83e21735678052e007"
 
 [[files]]
+file = "config/streamsreflowing/bank_features/README.md"
+hash = "a83954d7f7b42ec5d3e856c493dfedc51fd9554ed3838533b2a49f28d27ec3b8"
+
+[[files]]
 file = "config/streamsreflowing/bank_features/examples/definition_example.json"
 hash = "913d0599539b99ddc90601fb2cfe3c3583f36176d2543ca45d318f04f11acd16"
 
@@ -983,6 +987,10 @@ hash = "7f6c7f7d318e4df46c87ad2651ca22658a2fc90ddfd66150b8e642d82db205d8"
 [[files]]
 file = "config/streamsreflowing/bank_styles/GUIDE.md"
 hash = "09e5233e3419cb9f678ba35fcffa560110586b31e8977c83e21735678052e007"
+
+[[files]]
+file = "config/streamsreflowing/bank_styles/README.md"
+hash = "cdd74c271d3d3683bc47c64a862165fdc423a2c8a73f85cbae29c511c3b94884"
 
 [[files]]
 file = "config/streamsreflowing/bank_styles/examples/01_smallest.json"

@@ -3,4 +3,4 @@
 .nojekyll
 .gitattributes
 .packwizignore
-README.md
+/README.md
