@@ -3,4 +3,6 @@
 .nojekyll
 .gitattributes
 .packwizignore
+/PUBLISH.bat
+/launcher/**
 /README.md
