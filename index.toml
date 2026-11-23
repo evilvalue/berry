@@ -2169,5 +2169,9 @@ hash = "539f362e9e192cf3b2813e0dfdfc51a5e6814129c6e82a9733842529beea6242"
 metafile = true
 
 [[files]]
+file = "new-mods/Botania-Revived-1.21.1-2.0.4-NeoForge.jar"
+hash = "c9d5a827cbffdbd0c0f9d4ce375ee530f631a68982efdc7dc2a80e034db803b2"
+
+[[files]]
 file = "servers.dat"
 hash = "04dd9cd4c35299a53ad0c438403c54a0bf3215575d6cb343d03b29daf063a64e"
