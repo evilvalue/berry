@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = ".packwizignore.bak"
+hash = "a1fcf0eaf4dc74db2f36abc42844ae435061fa8145469dc71fc8dd6f4809210d"
+
+[[files]]
 file = "config/BBEConfig.json"
 hash = "aba70c5ddb814ddb811ed7f35ab6f6276df41228d694b8b3be788231daf9b559"
 
@@ -2167,10 +2171,6 @@ metafile = true
 file = "mods/yet_another_config_lib_v3-3.8.2_1.21.1-neoforge.pw.toml"
 hash = "539f362e9e192cf3b2813e0dfdfc51a5e6814129c6e82a9733842529beea6242"
 metafile = true
-
-[[files]]
-file = "new-mods/Botania-Revived-1.21.1-2.0.4-NeoForge.jar"
-hash = "c9d5a827cbffdbd0c0f9d4ce375ee530f631a68982efdc7dc2a80e034db803b2"
 
 [[files]]
 file = "servers.dat"
