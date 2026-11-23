@@ -1,6 +1,8 @@
 # Neo Server Pack (packwiz)
 
-Сборка для сервера `135.181.126.167:25737`, NeoForge 21.1.267 / MC 1.21.1, 213 модов.
+Сборка для сервера `135.181.126.167:25737`, NeoForge 21.1.267 / MC 1.21.1, 184 мода.
+
+Create и все его аддоны (включая физику Sable/Aeronautics) из сборки убраны.
 
 Этот репозиторий — не только исходник пака, но и **хостинг**: GitHub Pages отдаёт
 `pack.toml`, `index.toml`, `mods/*.pw.toml` и файлы, по которым обновляются инстансы игроков.
@@ -41,5 +43,5 @@ git add -A && git commit -m "update mods" && git push
 
 - `config/**` — конфиги модов и графики (шейдеры отключены через `config/iris.properties`)
 - `servers.dat` — сервер уже в списке multiplayer
-- `mods/*.pw.toml` — 193 мода, качаются с CDN Modrinth (в паке только хеши)
-- `mods/*.jar` — 20 модов CurseForge, отдаются прямо из этого репозитория
+- `mods/*.pw.toml` — 167 модов, качаются с CDN Modrinth (в паке только хеши)
+- `mods/*.jar` — 17 модов CurseForge, отдаются прямо из этого репозитория

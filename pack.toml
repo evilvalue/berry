@@ -1,12 +1,12 @@
 name = "BerryTrip"
 author = "NEO server"
-version = "3.0.0"
+version = "4.0.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "72586e89e0ea9cfd516fa4d723e7b2c88416229e80f1214537f6c6ad2fb2c4b8"
+hash = "764102b373736879266f3fe38008c38182057d1d4a546ace37d967e24885d9f0"
 
 [versions]
 minecraft = "1.21.1"
