@@ -20,9 +20,15 @@ git add -A && git commit -m "update mods" && git push
 
 ## BerryUp — лаунчер для игроков
 
-`launcher/BerryUp.exe` — самодостаточное приложение для Windows (C# / .NET Framework 4.8,
-который входит в Windows 10/11 по умолчанию; ничего дополнительно ставить не нужно).
-Оно само находит Prism Launcher или PineconeMC, ставит инстанс, синхронизирует пак и запускает игру.
+**Скачать установщик:** <https://evilvalue.github.io/berry/launcher/BerryUpSetup.exe>
+
+`launcher/BerryUpSetup.exe` — установщик для друзей. Распаковывает лаунчер в
+`%LOCALAPPDATA%\Programs\BerryUp`, создаёт ярлыки в меню «Пуск» и на рабочем столе и
+добавляет запись в «Приложения и возможности» (удаление оттуда ничего не ломает:
+экземпляр BerryTrip и сохранения остаются в Prism). Ничего дополнительно ставить не нужно.
+
+`launcher/BerryUp.exe` — сам лаунчер (C# / .NET Framework 4.8, входит в Windows 10/11).
+Он сам находит Prism Launcher или PineconeMC, ставит инстанс, синхронизирует пак и запускает игру.
 Если лаунчер не найден — показывает окно со ссылками на скачивание.
 
 ## Что лежит внутри
