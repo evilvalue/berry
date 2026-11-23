@@ -2,8 +2,9 @@
 .github/**
 .nojekyll
 .gitattributes
+.gitignore
 .packwizignore
 /PUBLISH.bat
 /launcher/**
+/new-mods/**
 /README.md
-new-mods/**
