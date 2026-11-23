@@ -71,6 +71,13 @@ echo [*] Пересчитываю index.toml...
 echo.
 echo [*] Коммит и пуш...
 git add -A
+git diff --cached --quiet
+if not errorlevel 1 (
+  echo [i] Изменений нет - публиковать нечего.
+  if not defined NO_PAUSE pause
+  if defined NO_PAUSE goto :eof
+  goto :menu
+)
 git -c user.name="neopack" -c user.email="neopack@local" commit -m "%MSG%"
 git push
 echo.
