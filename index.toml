@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "automodpack/client.conf"
+hash = "3fa9486db348bc0b37e0f88fc1cc6a15b1fe67be92cde1ede669d28420f1f56a"
+
+[[files]]
 file = "config/BBEConfig.json"
 hash = "aba70c5ddb814ddb811ed7f35ab6f6276df41228d694b8b3be788231daf9b559"
 
