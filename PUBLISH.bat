@@ -2,13 +2,20 @@
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
 cd /d "%~dp0"
-title Neo Server Pack - публикация обновлений
+title Neo Server Pack - publikaciya obnovleniy
 
 set "PAGES=https://evilvalue.github.io/berry/pack.toml"
-set "PACKWIZ=packwiz"
+set "PACKWIZ="
 where packwiz >nul 2>&1
-if errorlevel 1 set "PACKWIZ=%USERPROFILE%\go\bin\packwiz.exe"
-if not exist "%PACKWIZ%" if "%PACKWIZ%"=="packwiz" set "PACKWIZ="
+if not errorlevel 1 set "PACKWIZ=packwiz"
+if not defined PACKWIZ if exist "%USERPROFILE%\go\bin\packwiz.exe" set "PACKWIZ=%USERPROFILE%\go\bin\packwiz.exe"
+if not defined PACKWIZ if exist "%LOCALAPPDATA%\Programs\Go\bin\packwiz.exe" set "PACKWIZ=%LOCALAPPDATA%\Programs\Go\bin\packwiz.exe"
+if not defined PACKWIZ if exist "C:\Program Files\Go\bin\packwiz.exe" set "PACKWIZ=C:\Program Files\Go\bin\packwiz.exe"
+
+if /i "%~1"=="addmods" set "NO_PAUSE=1" & goto :addmods
+if /i "%~1"=="update"  set "NO_PAUSE=1" & goto :updateall
+if /i "%~1"=="publish" set "NO_PAUSE=1" & goto :publish
+if /i "%~1"=="status"  set "NO_PAUSE=1" & goto :status
 
 :menu
 echo.
@@ -40,32 +47,25 @@ for %%F in ("new-mods\*.jar") do (
 )
 if "!FOUND!"=="0" (
   echo.
-  echo В папке new-mods нет .jar файлов.
-  echo Положи туда новые моды и запусти снова.
+  echo В папке new-mods нет .jar файлов. Положи туда новые моды и запусти снова.
   echo.
-  pause
+  if not defined NO_PAUSE pause
+  if defined NO_PAUSE exit /b 0
   goto :menu
 )
 set "MSG=add mods"
 goto :publish
 
 :updateall
-if not defined PACKWIZ (
-  echo packwiz не найден. Установи: go install github.com/packwiz/packwiz@latest
-  pause
-  goto :menu
-)
+if not defined PACKWIZ goto :no_packwiz
 echo [*] Обновляю все моды Modrinth до свежих версий...
 "%PACKWIZ%" update --all
 set "MSG=update mods"
 goto :publish
 
 :publish
-if not defined PACKWIZ (
-  echo packwiz не найден. Установи: go install github.com/packwiz/packwiz@latest
-  pause
-  goto :menu
-)
+if not defined MSG set "MSG=pack update %DATE% %TIME%"
+if not defined PACKWIZ goto :no_packwiz
 echo [*] Пересчитываю index.toml...
 "%PACKWIZ%" refresh
 echo.
@@ -75,10 +75,11 @@ git -c user.name="neopack" -c user.email="neopack@local" commit -m "%MSG%"
 git push
 echo.
 echo [+] Отправлено. GitHub Pages пересоберёт пак за ~1 минуту.
-echo     Проверить можно так: https://evilvalue.github.io/berry/pack.toml
+echo     Проверка: https://evilvalue.github.io/berry/pack.toml
 echo     (в браузере должен открыться текст pack.toml)
 echo.
-pause
+if not defined NO_PAUSE pause
+if defined NO_PAUSE goto :eof
 goto :menu
 
 :openfolder
@@ -88,7 +89,17 @@ goto :menu
 
 :status
 echo [*] Проверяю %PAGES% ...
-powershell -NoProfile -Command "try { $r = Invoke-WebRequest -UseBasicParsing '%PAGES%' -TimeoutSec 20; Write-Host ('[+] HTTP ' + $r.StatusCode + ', ' + $r.Content.Length + ' bytes') } catch { Write-Host '[!] Сайт не отвечает: ' $_.Exception.Message }"
+powershell -NoProfile -Command "try { $r = Invoke-WebRequest -UseBasicParsing '%PAGES%' -TimeoutSec 20; Write-Host ('[+] HTTP ' + $r.StatusCode + ', ' + $r.Content.Length + ' bytes') } catch { Write-Host ('[!] Сайт не отвечает: ' + $_.Exception.Message) }"
 echo.
-pause
+if not defined NO_PAUSE pause
+if defined NO_PAUSE goto :eof
+goto :menu
+
+:no_packwiz
+echo.
+echo [!] packwiz не найден. Установи его: go install github.com/packwiz/packwiz@latest
+echo     или положи packwiz.exe в C:\Users\<ты>\go\bin
+echo.
+if not defined NO_PAUSE pause
+if defined NO_PAUSE goto :eof
 goto :menu
