@@ -1622,6 +1622,11 @@ hash = "ee66efb9eae03c2f060086e26c9d9e4a9fbece4cd1f8fc92dfbf2771f3bad296"
 metafile = true
 
 [[files]]
+file = "mods/entity-model-features.pw.toml"
+hash = "c875585a3269432ba23b379665cb287bd88517c7dbc1a22d0b5df9294f0a2ba4"
+metafile = true
+
+[[files]]
 file = "mods/entity_texture_features-7.2.7-1.21-neoforge.pw.toml"
 hash = "c3c7926d8d36ae08b2a91657f826a8f752ced79159186bf25e6a9d8ad1a24b04"
 metafile = true
