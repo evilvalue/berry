@@ -2,7 +2,7 @@
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
 cd /d "%~dp0"
-title Neo Server Pack - publikaciya obnovleniy
+title BerryTrip (BerryUp) - publikaciya obnovleniy
 
 set "PAGES=https://evilvalue.github.io/berry/pack.toml"
 set "PACKWIZ="
@@ -20,7 +20,7 @@ if /i "%~1"=="status"  set "NO_PAUSE=1" & goto :status
 :menu
 echo.
 echo ==================================================
-echo   Neo Server Pack - публикация обновлений
+echo   BerryTrip - публикация обновлений
 echo ==================================================
 echo   1. Добавить моды из папки new-mods и опубликовать
 echo   2. Обновить все моды до свежих версий и опубликовать
