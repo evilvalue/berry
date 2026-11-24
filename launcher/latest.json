@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "2.1.0",
+    "version":  "2.1.1",
     "url":  "https://evilvalue.github.io/berry/launcher/BerryUp.exe",
-    "sha256":  "af549f61240ba96c5fb97e12b5dcb9120e44bb63326f9dbc8f363d288fdeb94f",
-    "size":  265216,
-    "notes":  "2.1.0: three server regions, launch-and-connect, settings applied before launch, refreshed design"
+    "sha256":  "fcb86c13917385c4a056023844b10ccbbc0ff4f64134cfc4caf61ba42a595b92",
+    "size":  287744,
+    "notes":  "2.1.1: frameless app icon, welcome screen with site and Telegram links, fixed online counter"
 }
