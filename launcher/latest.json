@@ -1,0 +1,7 @@
+﻿{
+    "version":  "1.2.2",
+    "url":  "https://evilvalue.github.io/berry/launcher/BerryUp.exe",
+    "sha256":  "6875572daf4e52e8d03436a604905aeb405f87c470d52bce52f276058253e906",
+    "size":  204288,
+    "notes":  "Автообновление: проверка версии при запуске, обновление с перезапуском или при выходе"
+}
