@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BerryTrip — сборка Minecraft 1.21.1</title>
+<meta name="description" content="BerryTrip: сборка Minecraft 1.21.1 на NeoForge, свой сервер и лаунчер BerryUp. Prism Launcher или PineconeMC + BerryUp.jar.">
+<style>
+  :root{
+    --bg:#0d0e12; --surface:#16181e; --surface2:#1c1f27; --hover:#242832;
+    --line:#292d38; --fg:#eceff5; --muted:#939cac; --dim:#687181;
+    --accent:#e95478; --accent2:#f67090; --deep:#bc3355;
+    --ok:#4ade80; --warn:#fabf24; --tg:#2aaeee;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent2); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 22px}
+  header{
+    position:sticky; top:0; z-index:20; background:rgba(13,14,18,.86);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; gap:22px; height:64px}
+  .nav img{width:34px; height:34px; border-radius:10px}
+  .nav .brand{font-weight:700; letter-spacing:.2px}
+  .nav nav{margin-left:auto; display:flex; gap:20px; flex-wrap:wrap}
+  .nav nav a{color:var(--muted); font-size:14px}
+  .nav nav a:hover{color:var(--fg); text-decoration:none}
+  @media (max-width:720px){ .nav nav{display:none} }
+
+  .hero{padding:64px 0 30px; position:relative; overflow:hidden}
+  .hero:before{
+    content:""; position:absolute; width:620px; height:620px; right:-220px; top:-280px;
+    background:radial-gradient(circle, rgba(233,84,120,.20), transparent 65%); pointer-events:none;
+  }
+  .hero-grid{display:flex; gap:26px; align-items:center; flex-wrap:wrap}
+  .hero img{width:104px; height:104px; border-radius:26px; box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  h1{font-size:clamp(34px,6vw,56px); line-height:1.08; margin:0 0 10px; letter-spacing:-.5px}
+  .lead{color:var(--muted); max-width:640px; margin:0 0 18px; font-size:17px}
+  .badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px}
+  .badge{
+    font-size:12.5px; color:var(--muted); border:1px solid var(--line);
+    background:var(--surface); padding:5px 11px; border-radius:999px;
+  }
+  .badge b{color:var(--fg); font-weight:600}
+
+  .ip{
+    display:inline-flex; align-items:center; gap:10px; background:var(--surface);
+    border:1px solid var(--line); border-radius:12px; padding:10px 12px 10px 16px;
+  }
+  .ip code{font-family:Consolas,ui-monospace,SFMono-Regular,monospace; font-size:15px}
+  .ip button{
+    background:var(--surface2); color:var(--fg); border:1px solid var(--line);
+    border-radius:9px; padding:6px 12px; cursor:pointer; font:inherit; font-size:13px;
+  }
+  .ip button:hover{background:var(--hover)}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border-radius:12px; padding:12px 20px; font-weight:600; font-size:15px;
+    border:1px solid transparent; cursor:pointer; font-family:inherit;
+  }
+  .btn-primary{background:var(--accent); color:#fff}
+  .btn-primary:hover{background:var(--accent2); text-decoration:none}
+  .btn-secondary{background:var(--surface2); color:var(--fg); border-color:var(--line)}
+  .btn-secondary:hover{background:var(--hover); text-decoration:none}
+  .btn-ghost{background:transparent; color:var(--muted); border-color:var(--line)}
+  .btn-ghost:hover{color:var(--fg); background:var(--surface2); text-decoration:none}
+  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px}
+
+  section{padding:34px 0}
+  h2{font-size:clamp(22px,3.4vw,30px); margin:0 0 8px; letter-spacing:-.2px}
+  .sub{color:var(--muted); margin:0 0 22px}
+
+  .notice{
+    border:1px solid rgba(233,84,120,.45); border-left:4px solid var(--accent);
+    background:linear-gradient(180deg, rgba(233,84,120,.10), rgba(233,84,120,.04));
+    border-radius:var(--radius); padding:22px 24px; margin:14px 0 0;
+  }
+  .notice h3{margin:0 0 8px; font-size:19px}
+  .notice p{margin:0 0 14px; color:#cfd5e2}
+  .notice .links{display:flex; gap:10px; flex-wrap:wrap}
+  .notice small{display:block; margin-top:12px; color:var(--muted)}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr} }
+  .step{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+  .step .num{
+    width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; margin-bottom:12px;
+  }
+  .step h3{margin:0 0 6px; font-size:16px}
+  .step p{margin:0; color:var(--muted); font-size:14.5px}
+  .step .fileName{
+    display:inline-block; margin-top:10px; font-family:Consolas,ui-monospace,monospace;
+    font-size:12.5px; color:var(--fg); background:var(--surface2); border:1px solid var(--line);
+    border-radius:8px; padding:3px 8px;
+  }
+
+  .downloads{display:grid; grid-template-columns:1.2fr 1fr; gap:14px}
+  @media (max-width:860px){ .downloads{grid-template-columns:1fr} }
+  .dl{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; display:flex; flex-direction:column;
+  }
+  .dl.main{background:linear-gradient(180deg, rgba(233,84,120,.10), var(--surface)); border-color:rgba(233,84,120,.4)}
+  .dl h3{margin:0 0 4px; font-size:18px}
+  .dl .size{color:var(--dim); font-size:12.5px; font-family:Consolas,ui-monospace,monospace}
+  .dl p{color:var(--muted); font-size:14.5px; margin:10px 0 16px; flex:1}
+  .dl .row{display:flex; gap:8px; flex-wrap:wrap}
+  .mini{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
+  @media (max-width:600px){ .mini{grid-template-columns:1fr} }
+  .mini .dl{padding:18px}
+  .mini h3{font-size:15px}
+
+  .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:900px){ .features{grid-template-columns:1fr 1fr} }
+  @media (max-width:600px){ .features{grid-template-columns:1fr} }
+  .feature{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px}
+  .feature h3{margin:0 0 6px; font-size:15px}
+  .feature p{margin:0; color:var(--muted); font-size:14px}
+  .feature .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:8px}
+
+  details{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px}
+  details summary{cursor:pointer; font-weight:600; font-size:15px}
+  details summary::marker{color:var(--accent)}
+  details p{color:var(--muted); margin:10px 0 0; font-size:14.5px}
+  details code, .inline{font-family:Consolas,ui-monospace,monospace; font-size:13px; background:var(--surface2); padding:1px 6px; border-radius:6px}
+
+  footer{border-top:1px solid var(--line); margin-top:26px; padding:26px 0 40px; color:var(--dim); font-size:13.5px}
+  footer .row{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
+  footer a{color:var(--muted)}
+  .toast{
+    position:fixed; left:50%; bottom:24px; transform:translate(-50%,20px);
+    background:var(--surface2); border:1px solid var(--line); color:var(--fg);
+    padding:10px 16px; border-radius:10px; opacity:0; transition:.2s; pointer-events:none; font-size:14px;
+  }
+  .toast.show{opacity:1; transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <img src="berry.png" alt="">
+    <span class="brand">BerryTrip</span>
+    <nav>
+      <a href="#start">Как начать</a>
+      <a href="#download">Скачать</a>
+      <a href="#features">Возможности</a>
+      <a href="#faq">Вопросы</a>
+      <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <img src="berry.png" alt="Логотип BerryTrip">
+      <div>
+        <h1>BerryTrip</h1>
+        <p class="lead">Выживание, приключения и друзья. Сборка на NeoForge для Minecraft 1.21.1 со своим сервером и лаунчером BerryUp.</p>
+        <div class="badges">
+          <span class="badge">Minecraft <b>1.21.1</b></span>
+          <span class="badge">NeoForge <b>21.1.267</b></span>
+          <span class="badge"><b>184</b> мода</span>
+          <span class="badge">BerryUp <b>3.0</b></span>
+        </div>
+        <div class="ip">
+          <code id="ip">135.181.126.167:25737</code>
+          <button type="button" onclick="copyIp()">Скопировать</button>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download">Скачать BerryUp</a>
+          <a class="btn btn-secondary" href="#start">Как установить</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice" id="prism">
+      <h3>Важно: BerryUp теперь jar, а не exe</h3>
+      <p>
+        Отдельного установщика больше нет — BerryUp работает как надстройка над лаунчером
+        и выходит одним файлом <span class="inline">BerryUp.jar</span> в архиве вместе с
+        <span class="inline">BerryUp.cmd</span>. Поэтому <b>сначала</b> нужен
+        <b>Prism Launcher</b> или его форк <b>PineconeMC</b>: BerryUp находит в нём инстанс
+        BerryTrip, обновляет сборку и запускает игру. Без Prism игра не запустится.
+      </p>
+      <div class="links">
+        <a class="btn btn-primary" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Скачать Prism Launcher</a>
+        <a class="btn btn-secondary" href="https://pineconemc.com/download/" target="_blank" rel="noopener">Скачать PineconeMC</a>
+      </div>
+      <small>Java отдельно ставить не нужно: BerryUp берёт её из Prism. Если Prism только установлен — запусти в нём игру один раз, чтобы он скачал Java.</small>
+    </div>
+  </div>
+
+  <section id="start" class="wrap">
+    <h2>Как начать</h2>
+    <p class="sub">Три шага, один раз. Дальше — только кнопка «Играть».</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Поставь Prism или PineconeMC</h3>
+        <p>Обычный установщик с официального сайта. Запусти игру один раз, чтобы лаунчер скачал Java.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Распакуй BerryUp</h3>
+        <p>Скачай архив и распакуй целиком в обычную папку, например <span class="inline">C:\BerryUp</span>. Не запускай прямо из ZIP.</p>
+        <span class="fileName">BerryUp.jar + BerryUp.cmd</span>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Запусти BerryUp.cmd</h3>
+        <p>Лаунчер сам найдёт Prism, предложит «Установить сборку», скачает её и покажет «Играть».</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="wrap">
+    <h2>Скачать</h2>
+    <p class="sub">Актуальная версия BerryUp 3.0. Обновления лаунчер качает сам.</p>
+
+    <div class="downloads">
+      <div class="dl main">
+        <h3>BerryUp.zip</h3>
+        <span class="size">jar + cmd + инструкция</span>
+        <p>Рекомендуемый вариант: распакуй в отдельную папку и запусти <b>BerryUp.cmd</b>. Java искать не нужно — скрипт возьмёт её из Prism.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="launcher/BerryUp.zip" download>Скачать архив</a>
+          <a class="btn btn-ghost" href="launcher/latest-java.json" target="_blank" rel="noopener">Версия и хеш</a>
+        </div>
+      </div>
+      <div class="dl">
+        <h3>BerryUp.jar</h3>
+        <span class="size">только лаунчер</span>
+        <p>Если Java 21 уже установлена и настроена, можно скачать один jar и запускать его напрямую: <span class="inline">java -jar BerryUp.jar</span>.</p>
+        <div class="row">
+          <a class="btn btn-secondary" href="launcher/BerryUp.jar" download>Скачать jar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini">
+      <div class="dl">
+        <h3>Prism Launcher</h3>
+        <p>Основной лаунчер, поверх которого работает BerryUp.</p>
+        <div class="row"><a class="btn btn-secondary" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Скачать Prism</a></div>
+      </div>
+      <div class="dl">
+        <h3>PineconeMC</h3>
+        <p>Форк Prism — BerryUp поддерживает и его.</p>
+        <div class="row"><a class="btn btn-secondary" href="https://pineconemc.com/download/" target="_blank" rel="noopener">Скачать PineconeMC</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="wrap">
+    <h2>Что делает BerryUp</h2>
+    <p class="sub">Не заменяет Prism, а убирает всю ручную работу вокруг сборки.</p>
+    <div class="features">
+      <div class="feature"><h3><span class="dot"></span>Находит лаунчер сам</h3><p>Prism Launcher, PineconeMC или ElyPrismLauncher, включая портативные сборки. Путь можно указать вручную.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Ставит сборку</h3><p>Распаковывает инстанс BerryTrip и обновляет моды через packwiz — без ручных архивов и папок.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Три входа на сервер</h3><p>Москва, Anycast и прямое подключение. Показывает онлайна, пинг и MOTD; можно зайти сразу с сервера.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Экономит память</h3><p>Необязательные моды, ресурспаки и шейдеры выключаются одним тумблером и уезжают в <span class="inline">berry-off</span>.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Настройки памяти</h3><p>Слайдер пишет <span class="inline">MaxMemAlloc</span> в инстанс: без правки конфигов руками.</p></div>
+      <div class="feature"><h3><span class="dot"></span>Журнал и диагностика</h3><p>Видно, что нашлось, сколько модов, версию Java и пака. Отчёт копируется одной кнопкой.</p></div>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap">
+    <h2>Вопросы</h2>
+    <p class="sub">Коротко о том, что чаще всего спрашивают.</p>
+
+    <details>
+      <summary>Почему больше нет exe и установщика?</summary>
+      <p>Установщик и exe-файлы вызывали ложные срабатывания антивирусов и SmartScreen. BerryUp переписан на Java: один jar, без установки в систему, без реестра и ярлыков. Удалить — просто удалить папку.</p>
+    </details>
+    <details>
+      <summary>Нужна ли Java отдельно?</summary>
+      <p>Нет. BerryUp.cmd ищет Java в Prism Launcher, PineconeMC, <span class="inline">JAVA_HOME</span> и системе. Если ничего не найдено, скрипт откроет страницу Prism и попросит запустить игру один раз.</p>
+    </details>
+    <details>
+      <summary>Windows пишет, что файл скачан из интернета</summary>
+      <p>Это стандартная метка браузера. Нажми «Подробнее» → «Выполнить всё равно». Хеши jar и zip лежат в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — файл можно сверить.</p>
+    </details>
+    <details>
+      <summary>Где сборка и сохранения?</summary>
+      <p>В Prism: <span class="inline">%APPDATA%\PrismLauncher\instances\BerryTrip</span>. BerryUp их не удаляет и не переносит; настройки лаунчера — в <span class="inline">%APPDATA%\BerryUp</span>.</p>
+    </details>
+    <details>
+      <summary>Как обновляется BerryUp?</summary>
+      <p>Лаунчер сам проверяет <span class="inline">latest-java.json</span> и скачивает новый jar. BerryUp.cmd подменяет файл при следующем запуске — вручную ничего делать не нужно.</p>
+    </details>
+    <details>
+      <summary>Можно поставить сборку без BerryUp?</summary>
+      <p>Да. Prism → Add Instance → Import from zip → <a href="launcher/instance.zip">instance.zip</a>, затем Launch: Prism сам скачает моды через packwiz.</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>BerryTrip · Minecraft 1.21.1 · NeoForge</span>
+    <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">BerryUp на GitHub</a>
+    <a href="https://github.com/evilvalue/berry" target="_blank" rel="noopener">Исходники сборки</a>
+    <span style="margin-left:auto">Сервер: 135.181.126.167:25737</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Адрес скопирован</div>
+
+<script>
+function copyIp(){
+  var text = document.getElementById('ip').textContent.trim();
+  var done = function(){
+    var toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+  function fallback(){
+    var area = document.createElement('textarea');
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(area);
+  }
+}
+</script>
+</body>
+</html>
