@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "2.0.0",
+    "version":  "2.1.0",
     "url":  "https://evilvalue.github.io/berry/launcher/BerryUp.exe",
-    "sha256":  "7d932229d9207e96d50ba91087d3efd51a742e62c0b553c715df206b6a055548",
-    "size":  256512,
-    "notes":  "2.0.0: новый интерфейс, статус сервера, разделы клиента и диагностики, переустановка сборки"
+    "sha256":  "af549f61240ba96c5fb97e12b5dcb9120e44bb63326f9dbc8f363d288fdeb94f",
+    "size":  265216,
+    "notes":  "2.1.0: three server regions, launch-and-connect, settings applied before launch, refreshed design"
 }
