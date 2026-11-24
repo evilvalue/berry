@@ -1,10 +1,10 @@
 ﻿{
     "version":  "3.0.0",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "1ab9f2bfceef02640607c72db2588cd74c4a6b934c5b83f90e4819aafe3bc093",
-    "size":  1360267,
+    "sha256":  "bedd95b9866c754c7b5d43201b5d24a5a26295a9e5ee5d47329c17779e5ef883",
+    "size":  1360745,
     "zip":  "https://evilvalue.github.io/berry/launcher/BerryUp.zip",
-    "zip_sha256":  "fb845fab7e2e7744a8d554408c94e6a802f537ed6657c498814035521ce29c92",
-    "zip_size":  1275288,
+    "zip_sha256":  "bf6c49be0e4611182c12b39202290a6d5462f116034836d31d95dc2621e7552d",
+    "zip_size":  1275761,
     "notes":  "3.0: BerryUp переписан на Java — BerryUp.jar + BerryUp.cmd, нужен Prism Launcher или PineconeMC"
 }
