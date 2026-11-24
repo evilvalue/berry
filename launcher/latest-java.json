@@ -1,10 +1,10 @@
 ﻿{
-    "version":  "3.0.0",
+    "version":  "3.0.1",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "bedd95b9866c754c7b5d43201b5d24a5a26295a9e5ee5d47329c17779e5ef883",
-    "size":  1360745,
+    "sha256":  "e71b2b6e039527093c046348252021455a3f178c5ef0285e19c223d152b4a760",
+    "size":  1361706,
     "zip":  "https://evilvalue.github.io/berry/launcher/BerryUp.zip",
-    "zip_sha256":  "bf6c49be0e4611182c12b39202290a6d5462f116034836d31d95dc2621e7552d",
-    "zip_size":  1275761,
-    "notes":  "3.0: BerryUp переписан на Java — BerryUp.jar + BerryUp.cmd, нужен Prism Launcher или PineconeMC"
+    "zip_sha256":  "b2d3325740d13d3df35547c0b04c3ab55895c1f7353beacac2c987c5c5f7a70c",
+    "zip_size":  1276536,
+    "notes":  "3.0.1: после установки сборка сразу качает моды через packwiz"
 }
