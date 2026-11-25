@@ -4,343 +4,819 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BerryTrip — сборка Minecraft 1.21.1</title>
-<meta name="description" content="BerryTrip: сборка Minecraft 1.21.1 на NeoForge, свой сервер и лаунчер BerryUp. Prism Launcher или PineconeMC + BerryUp.jar.">
+<meta name="description" content="BerryTrip — сборка Minecraft 1.21.1 на NeoForge: 184 мода, свой сервер и лаунчер BerryUp в одном jar. Prism Launcher или PineconeMC, три шага до игры.">
+<meta name="theme-color" content="#06070a">
+<link rel="icon" href="berry.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0d0e12; --surface:#16181e; --surface2:#1c1f27; --hover:#242832;
-    --line:#292d38; --fg:#eceff5; --muted:#939cac; --dim:#687181;
-    --accent:#e95478; --accent2:#f67090; --deep:#bc3355;
-    --ok:#4ade80; --warn:#fabf24; --tg:#2aaeee;
-    --radius:16px;
+    --bg:#06070a;
+    --bg-soft:#0a0c11;
+    --surface:#11141c;
+    --surface-2:#171b25;
+    --hover:#1f2431;
+    --line:rgba(255,255,255,.075);
+    --line-strong:rgba(255,255,255,.14);
+    --fg:#f3f5fa;
+    --muted:#99a2b6;
+    --dim:#687087;
+    --pink:#ff4d7d;
+    --pink-soft:#ff85a8;
+    --violet:#8b5cf6;
+    --mint:#5ee9b5;
+    --amber:#ffc46b;
+    --grad:linear-gradient(135deg,#ff4d7d 0%,#ff7a5c 58%,#ffb35c 100%);
+    --grad-soft:linear-gradient(135deg,rgba(255,77,125,.16),rgba(139,92,246,.10));
+    --radius:20px;
+    --max:1180px;
+    --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth; scroll-padding-top:92px}
   body{
     margin:0; background:var(--bg); color:var(--fg);
-    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
-    line-height:1.6; -webkit-font-smoothing:antialiased;
+    font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  a{color:var(--accent2); text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 22px}
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(900px 620px at 88% -12%, rgba(255,77,125,.17), transparent 62%),
+      radial-gradient(760px 540px at 2% 4%, rgba(139,92,246,.13), transparent 66%),
+      radial-gradient(900px 700px at 50% 118%, rgba(94,233,181,.05), transparent 60%);
+  }
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 78%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 78%);
+  }
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+  /* ------------------------------------------------------------ шапка */
   header{
-    position:sticky; top:0; z-index:20; background:rgba(13,14,18,.86);
-    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    transition:background .25s var(--ease), border-color .25s var(--ease), backdrop-filter .25s;
+    border-bottom:1px solid transparent;
   }
-  .nav{display:flex; align-items:center; gap:22px; height:64px}
-  .nav img{width:34px; height:34px; border-radius:10px}
-  .nav .brand{font-weight:700; letter-spacing:.2px}
-  .nav nav{margin-left:auto; display:flex; gap:20px; flex-wrap:wrap}
-  .nav nav a{color:var(--muted); font-size:14px}
-  .nav nav a:hover{color:var(--fg); text-decoration:none}
-  @media (max-width:720px){ .nav nav{display:none} }
+  header.scrolled{
+    background:rgba(6,7,10,.78); backdrop-filter:blur(18px) saturate(140%);
+    border-bottom-color:var(--line);
+  }
+  .nav{display:flex; align-items:center; gap:14px; height:76px}
+  .brand{display:flex; align-items:center; gap:11px; font-family:"Unbounded",sans-serif; font-weight:600; font-size:17px; letter-spacing:-.2px}
+  .brand img{width:38px; height:38px; border-radius:11px; box-shadow:0 6px 18px rgba(255,77,125,.22)}
+  .brand small{display:block; font-family:"Manrope",sans-serif; font-size:9.5px; font-weight:700; letter-spacing:.16em; color:var(--dim); margin-top:1px}
+  .nav-links{display:flex; align-items:center; gap:4px; margin-left:auto}
+  .nav-links a{
+    padding:9px 14px; border-radius:10px; color:var(--muted);
+    font-size:14px; font-weight:600; transition:color .18s, background .18s;
+  }
+  .nav-links a:hover{color:var(--fg); background:rgba(255,255,255,.05)}
+  .nav-cta{display:flex; align-items:center; gap:8px; margin-left:8px}
+  .icon-btn{
+    width:40px; height:40px; display:grid; place-items:center; border-radius:11px;
+    border:1px solid var(--line); background:rgba(255,255,255,.035); color:var(--muted);
+    transition:.18s var(--ease);
+  }
+  .icon-btn:hover{color:#fff; background:rgba(255,255,255,.08); border-color:var(--line-strong)}
+  .burger{display:none; width:42px; height:42px; border-radius:11px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--fg); cursor:pointer; place-items:center}
+  .burger svg{width:20px; height:20px}
 
-  .hero{padding:64px 0 30px; position:relative; overflow:hidden}
-  .hero:before{
-    content:""; position:absolute; width:620px; height:620px; right:-220px; top:-280px;
-    background:radial-gradient(circle, rgba(233,84,120,.20), transparent 65%); pointer-events:none;
-  }
-  .hero-grid{display:flex; gap:26px; align-items:center; flex-wrap:wrap}
-  .hero img{width:104px; height:104px; border-radius:26px; box-shadow:0 18px 40px rgba(0,0,0,.45)}
-  h1{font-size:clamp(34px,6vw,56px); line-height:1.08; margin:0 0 10px; letter-spacing:-.5px}
-  .lead{color:var(--muted); max-width:640px; margin:0 0 18px; font-size:17px}
-  .badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px}
-  .badge{
-    font-size:12.5px; color:var(--muted); border:1px solid var(--line);
-    background:var(--surface); padding:5px 11px; border-radius:999px;
-  }
-  .badge b{color:var(--fg); font-weight:600}
-
-  .ip{
-    display:inline-flex; align-items:center; gap:10px; background:var(--surface);
-    border:1px solid var(--line); border-radius:12px; padding:10px 12px 10px 16px;
-  }
-  .ip code{font-family:Consolas,ui-monospace,SFMono-Regular,monospace; font-size:15px}
-  .ip button{
-    background:var(--surface2); color:var(--fg); border:1px solid var(--line);
-    border-radius:9px; padding:6px 12px; cursor:pointer; font:inherit; font-size:13px;
-  }
-  .ip button:hover{background:var(--hover)}
-
+  /* ------------------------------------------------------------ кнопки */
   .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    border-radius:12px; padding:12px 20px; font-weight:600; font-size:15px;
-    border:1px solid transparent; cursor:pointer; font-family:inherit;
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:14px 22px; border-radius:13px; font-weight:700; font-size:15px;
+    font-family:inherit; border:1px solid transparent; cursor:pointer;
+    transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), border-color .18s;
+    white-space:nowrap;
   }
-  .btn-primary{background:var(--accent); color:#fff}
-  .btn-primary:hover{background:var(--accent2); text-decoration:none}
-  .btn-secondary{background:var(--surface2); color:var(--fg); border-color:var(--line)}
-  .btn-secondary:hover{background:var(--hover); text-decoration:none}
-  .btn-ghost{background:transparent; color:var(--muted); border-color:var(--line)}
-  .btn-ghost:hover{color:var(--fg); background:var(--surface2); text-decoration:none}
-  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px}
+  .btn svg{width:18px; height:18px; flex:none}
+  .btn-primary{background:var(--grad); color:#1a0a10; box-shadow:0 14px 34px -12px rgba(255,77,125,.65)}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 20px 44px -14px rgba(255,77,125,.75)}
+  .btn-secondary{background:rgba(255,255,255,.055); color:var(--fg); border-color:var(--line-strong)}
+  .btn-secondary:hover{background:rgba(255,255,255,.09); transform:translateY(-2px)}
+  .btn-sm{padding:10px 16px; font-size:13.5px; border-radius:11px}
+  .btn-lg{padding:16px 26px; font-size:16px; border-radius:14px}
 
-  section{padding:34px 0}
-  h2{font-size:clamp(22px,3.4vw,30px); margin:0 0 8px; letter-spacing:-.2px}
-  .sub{color:var(--muted); margin:0 0 22px}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:11.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--pink-soft);
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:8px; padding:7px 13px;
+    border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.035);
+    color:var(--muted); font-size:13px; font-weight:600;
+  }
+  .chip b{color:var(--fg); font-weight:700}
+  .inline{font-family:ui-monospace,Consolas,monospace; font-size:.86em; color:var(--fg); background:rgba(255,255,255,.07); padding:1px 6px; border-radius:6px}
+  .mono{font-family:ui-monospace,Consolas,monospace; font-size:.9em; color:var(--fg)}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--mint); box-shadow:0 0 0 4px rgba(94,233,181,.12); flex:none}
 
+  /* ------------------------------------------------------------ hero */
+  .hero{position:relative; padding:132px 0 34px}
+  .hero-grid{display:grid; grid-template-columns:1.02fr .98fr; gap:52px; align-items:center}
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:10px; padding:8px 14px 8px 10px;
+    border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.035);
+    font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:26px;
+  }
+  .hero-badge span{
+    background:var(--grad); color:#22060f; border-radius:999px; padding:2px 9px;
+    font-size:11px; font-weight:800; letter-spacing:.04em;
+  }
+  h1{
+    font-family:"Unbounded",sans-serif; font-weight:700; letter-spacing:-2.5px;
+    font-size:clamp(52px,7.4vw,92px); line-height:.95; margin:0 0 12px;
+  }
+  h1 .accent, .tagline .accent{
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .tagline{font-size:clamp(19px,2.2vw,26px); font-weight:700; letter-spacing:-.4px; line-height:1.25; margin:0 0 16px; color:var(--fg)}
+  .lead{color:var(--muted); font-size:17.5px; max-width:540px; margin:0 0 30px}
+  .lead b{color:var(--fg); font-weight:600}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:26px}
+  .meta{display:flex; gap:8px; flex-wrap:wrap}
+
+  .hero-visual{
+    position:relative; border-radius:26px; padding:10px;
+    background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 42%,rgba(255,77,125,.10));
+    border:1px solid var(--line-strong);
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.9), 0 0 80px -30px rgba(255,77,125,.35);
+  }
+  .hero-shot{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/3.2; background:#0b0d13}
+  .hero-shot img{width:100%; height:100%; object-fit:cover; transform:scale(1.02)}
+  .hero-shot::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(6,7,10,0) 38%,rgba(6,7,10,.72) 82%,rgba(6,7,10,.94));
+  }
+  .float{
+    position:absolute; z-index:2; display:flex; align-items:center; gap:10px;
+    padding:10px 14px; border-radius:14px; background:rgba(10,12,17,.82);
+    border:1px solid var(--line-strong); backdrop-filter:blur(14px);
+    box-shadow:0 18px 40px -20px rgba(0,0,0,.9); font-size:12.5px; font-weight:700;
+  }
+  .float small{display:block; font-size:10.5px; font-weight:600; color:var(--dim); letter-spacing:.02em}
+  .float.top{top:26px; left:-18px}
+  .float.bottom{right:-14px; bottom:98px}
+  .float .ico{
+    width:32px; height:32px; border-radius:10px; display:grid; place-items:center;
+    background:var(--grad-soft); border:1px solid rgba(255,77,125,.28); color:var(--pink-soft);
+  }
+  .float .ico svg{width:17px; height:17px}
+  .hero-caption{
+    position:absolute; left:26px; right:26px; bottom:22px; z-index:2;
+    display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  }
+  .hero-caption h2{font-family:"Unbounded",sans-serif; font-size:19px; margin:0 0 4px; font-weight:600; letter-spacing:-.3px}
+  .hero-caption p{margin:0; color:var(--muted); font-size:12.5px}
+
+  /* ------------------------------------------------------------ полоса «один jar» */
   .notice{
-    border:1px solid rgba(233,84,120,.45); border-left:4px solid var(--accent);
-    background:linear-gradient(180deg, rgba(233,84,120,.10), rgba(233,84,120,.04));
-    border-radius:var(--radius); padding:22px 24px; margin:14px 0 0;
+    display:grid; grid-template-columns:auto 1fr auto; gap:22px; align-items:center;
+    margin-top:46px; padding:22px 24px; border-radius:var(--radius);
+    border:1px solid rgba(255,77,125,.26);
+    background:linear-gradient(110deg,rgba(255,77,125,.12),rgba(139,92,246,.07) 50%,rgba(255,255,255,.02));
   }
-  .notice h3{margin:0 0 8px; font-size:19px}
-  .notice p{margin:0 0 14px; color:#cfd5e2}
-  .notice .links{display:flex; gap:10px; flex-wrap:wrap}
-  .notice small{display:block; margin-top:12px; color:var(--muted)}
+  .notice .badge-file{
+    width:54px; height:54px; border-radius:16px; display:grid; place-items:center;
+    background:rgba(255,77,125,.14); border:1px solid rgba(255,77,125,.34); color:var(--pink-soft);
+  }
+  .notice .badge-file svg{width:26px; height:26px}
+  .notice h3{margin:0 0 5px; font-size:16.5px; font-weight:800; letter-spacing:-.2px}
+  .notice p{margin:0; color:var(--muted); font-size:14px; max-width:660px}
+  .notice .inline{color:var(--fg); font-family:ui-monospace,Consolas,monospace; font-size:12.5px; background:rgba(255,255,255,.07); padding:2px 6px; border-radius:6px}
+  .notice .actions{display:flex; gap:8px; flex-wrap:wrap}
 
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-  @media (max-width:860px){ .steps{grid-template-columns:1fr} }
-  .step{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
-  .step .num{
-    width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff;
-    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; margin-bottom:12px;
+  /* ------------------------------------------------------------ секции */
+  section{padding:88px 0 0}
+  .sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:34px; flex-wrap:wrap}
+  .sec-head h2{font-family:"Unbounded",sans-serif; font-size:clamp(26px,3.6vw,40px); line-height:1.1; letter-spacing:-1px; margin:8px 0 0; font-weight:600}
+  .sec-head p{margin:0; color:var(--muted); max-width:420px; font-size:15px}
+  .sub{color:var(--muted); margin:10px 0 0; font-size:15px}
+
+  /* ------------------------------------------------------------ шаги */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .step{
+    position:relative; padding:26px 24px 24px; border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    border:1px solid var(--line); overflow:hidden;
   }
-  .step h3{margin:0 0 6px; font-size:16px}
+  .step::before{
+    content:""; position:absolute; inset:0 0 auto; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  }
+  .step .num{
+    font-family:"Unbounded",sans-serif; font-size:13px; font-weight:600; letter-spacing:.1em;
+    color:var(--pink-soft); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .step .num i{
+    display:block; width:26px; height:1px; background:linear-gradient(90deg,var(--pink),transparent);
+  }
+  .step h3{margin:0 0 8px; font-size:17.5px; font-weight:800; letter-spacing:-.2px}
   .step p{margin:0; color:var(--muted); font-size:14.5px}
   .step .fileName{
-    display:inline-block; margin-top:10px; font-family:Consolas,ui-monospace,monospace;
-    font-size:12.5px; color:var(--fg); background:var(--surface2); border:1px solid var(--line);
-    border-radius:8px; padding:3px 8px;
+    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
+    font-family:ui-monospace,Consolas,monospace; font-size:12.5px; color:var(--fg);
+    background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:8px; padding:4px 9px;
   }
+  .step .fileName svg{width:13px; height:13px; color:var(--pink-soft)}
+  .step-link{display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-size:13px; font-weight:700; color:var(--pink-soft)}
+  .step-link:hover{color:#fff}
+  .step-link svg{width:14px; height:14px}
 
-  .downloads{display:grid; grid-template-columns:1.2fr 1fr; gap:14px}
-  @media (max-width:860px){ .downloads{grid-template-columns:1fr} }
+  /* ------------------------------------------------------------ скачать */
+  .dl-grid{display:grid; grid-template-columns:1.35fr .85fr; gap:16px; align-items:start}
   .dl{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px; display:flex; flex-direction:column;
+    position:relative; padding:30px; border-radius:var(--radius);
+    background:var(--surface); border:1px solid var(--line);
   }
-  .dl.main{background:linear-gradient(180deg, rgba(233,84,120,.10), var(--surface)); border-color:rgba(233,84,120,.4)}
-  .dl h3{margin:0 0 4px; font-size:18px}
-  .dl .size{color:var(--dim); font-size:12.5px; font-family:Consolas,ui-monospace,monospace}
-  .dl p{color:var(--muted); font-size:14.5px; margin:10px 0 16px; flex:1}
-  .dl .row{display:flex; gap:8px; flex-wrap:wrap}
-  .mini{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
-  @media (max-width:600px){ .mini{grid-template-columns:1fr} }
-  .mini .dl{padding:18px}
-  .mini h3{font-size:15px}
+  .dl.feature{
+    border:1px solid transparent;
+    background:
+      linear-gradient(180deg,#141018,#0f1119 55%) padding-box,
+      linear-gradient(135deg,rgba(255,77,125,.75),rgba(139,92,246,.35) 55%,rgba(255,179,92,.45)) border-box;
+    box-shadow:0 30px 70px -40px rgba(255,77,125,.5);
+  }
+  .dl .tag{
+    display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:800;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--pink-soft); margin-bottom:16px;
+  }
+  .dl h3{margin:0 0 6px; font-size:24px; font-weight:800; letter-spacing:-.6px; font-family:"Unbounded",sans-serif}
+  .dl .size{color:var(--dim); font-size:12.5px; font-family:ui-monospace,Consolas,monospace}
+  .dl p{color:var(--muted); font-size:14.5px; margin:14px 0 22px}
+  .dl .row{display:flex; gap:10px; flex-wrap:wrap}
+  .dl .hintline{display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim)}
+  .dl .hintline span{display:inline-flex; align-items:center; gap:6px}
+  .dl .hintline svg{width:14px; height:14px; color:var(--mint)}
+  .side-stack{display:grid; gap:16px}
+  .side-card{
+    display:flex; align-items:center; gap:14px; padding:18px; border-radius:16px;
+    background:var(--surface); border:1px solid var(--line); transition:.18s var(--ease);
+  }
+  .side-card:hover{border-color:var(--line-strong); background:var(--surface-2); transform:translateY(-2px)}
+  .side-card .ico{
+    width:42px; height:42px; flex:none; border-radius:12px; display:grid; place-items:center;
+    background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--fg);
+  }
+  .side-card .ico svg{width:20px; height:20px}
+  .side-card h4{margin:0 0 2px; font-size:14.5px; font-weight:800}
+  .side-card p{margin:0; font-size:12.5px; color:var(--dim)}
+  .side-card .arrow{margin-left:auto; color:var(--dim); transition:.18s}
+  .side-card:hover .arrow{color:var(--pink-soft); transform:translateX(2px)}
+  .side-card .arrow svg{width:18px; height:18px}
+  .help-card{padding:20px; border-radius:16px; border:1px dashed var(--line-strong); color:var(--muted); font-size:13.5px}
+  .help-card b{display:block; color:var(--fg); font-size:14px; margin-bottom:6px}
+  .help-card .inline{font-family:ui-monospace,Consolas,monospace; font-size:12px; color:var(--fg); background:rgba(255,255,255,.06); padding:1px 6px; border-radius:6px}
 
-  .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-  @media (max-width:900px){ .features{grid-template-columns:1fr 1fr} }
-  @media (max-width:600px){ .features{grid-template-columns:1fr} }
-  .feature{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px}
-  .feature h3{margin:0 0 6px; font-size:15px}
+  /* ------------------------------------------------------------ возможности */
+  .features{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .feature{
+    padding:24px; border-radius:18px; background:var(--surface); border:1px solid var(--line);
+    transition:.2s var(--ease);
+  }
+  .feature:hover{border-color:var(--line-strong); background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+  .feature .ico{
+    width:42px; height:42px; border-radius:12px; display:grid; place-items:center; margin-bottom:16px;
+    background:var(--grad-soft); border:1px solid rgba(255,77,125,.24); color:var(--pink-soft);
+  }
+  .feature .ico svg{width:20px; height:20px}
+  .feature h3{margin:0 0 7px; font-size:16px; font-weight:800; letter-spacing:-.2px}
   .feature p{margin:0; color:var(--muted); font-size:14px}
-  .feature .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:8px}
 
-  details{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px}
-  details summary{cursor:pointer; font-weight:600; font-size:15px}
-  details summary::marker{color:var(--accent)}
-  details p{color:var(--muted); margin:10px 0 0; font-size:14.5px}
-  details code, .inline{font-family:Consolas,ui-monospace,monospace; font-size:13px; background:var(--surface2); padding:1px 6px; border-radius:6px}
-
-  footer{border-top:1px solid var(--line); margin-top:26px; padding:26px 0 40px; color:var(--dim); font-size:13.5px}
-  footer .row{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
-  footer a{color:var(--muted)}
-  .toast{
-    position:fixed; left:50%; bottom:24px; transform:translate(-50%,20px);
-    background:var(--surface2); border:1px solid var(--line); color:var(--fg);
-    padding:10px 16px; border-radius:10px; opacity:0; transition:.2s; pointer-events:none; font-size:14px;
+  /* ------------------------------------------------------------ цифры сборки */
+  .build{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch;
+    padding:30px; border-radius:24px; border:1px solid var(--line);
+    background:
+      radial-gradient(600px 300px at 100% 0%,rgba(139,92,246,.16),transparent 60%),
+      linear-gradient(180deg,#101319,#0b0d13);
   }
-  .toast.show{opacity:1; transform:translate(-50%,0)}
+  .build h2{font-family:"Unbounded",sans-serif; font-size:clamp(24px,3vw,32px); line-height:1.14; letter-spacing:-.8px; margin:10px 0 12px; font-weight:600}
+  .build p{color:var(--muted); font-size:14.5px; margin:0 0 18px; max-width:440px}
+  .build ul{list-style:none; padding:0; margin:0; display:grid; gap:9px}
+  .build li{display:flex; gap:9px; align-items:flex-start; color:var(--muted); font-size:14px}
+  .build li svg{width:16px; height:16px; color:var(--mint); flex:none; margin-top:2px}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; align-content:center}
+  .stat{padding:18px; border-radius:16px; background:rgba(255,255,255,.04); border:1px solid var(--line)}
+  .stat b{display:block; font-family:"Unbounded",sans-serif; font-size:26px; letter-spacing:-1px; line-height:1.1; margin-bottom:4px}
+  .stat span{font-size:12px; color:var(--dim); font-weight:700; letter-spacing:.04em; text-transform:uppercase}
+  .stat:nth-child(1) b{color:var(--pink-soft)}
+  .stat:nth-child(2) b{color:var(--amber)}
+  .stat:nth-child(3) b{color:var(--violet)}
+  .stat:nth-child(4) b{color:var(--mint)}
+
+  /* ------------------------------------------------------------ faq */
+  .faq-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:40px; align-items:start}
+  .faq-grid .sec-head{margin-bottom:18px; display:block}
+  .faq-grid .sec-head h2{font-size:clamp(24px,2.9vw,34px)}
+  @media (min-width:1081px){ .faq-grid>div:first-child{position:sticky; top:104px} }
+  .faq-grid .note{
+    margin-top:18px; padding:18px; border-radius:14px; border:1px solid var(--line);
+    background:rgba(255,255,255,.03); color:var(--muted); font-size:13.5px;
+  }
+  .faq-grid .note a{color:var(--pink-soft); font-weight:700}
+  details{
+    border:1px solid var(--line); border-radius:14px; background:var(--surface);
+    margin-bottom:10px; overflow:hidden; transition:border-color .18s, background .18s;
+  }
+  details[open]{border-color:rgba(255,77,125,.3); background:var(--surface-2)}
+  details summary{
+    cursor:pointer; list-style:none; padding:18px 52px 18px 20px; position:relative;
+    font-weight:700; font-size:14.5px; color:var(--fg);
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{
+    content:""; position:absolute; right:20px; top:50%; width:9px; height:9px;
+    border-right:1.8px solid var(--dim); border-bottom:1.8px solid var(--dim);
+    transform:translateY(-65%) rotate(45deg); transition:transform .2s var(--ease), border-color .2s;
+  }
+  details[open] summary::after{transform:translateY(-25%) rotate(-135deg); border-color:var(--pink-soft)}
+  details p{color:var(--muted); margin:0; padding:0 20px 19px; font-size:14px}
+  details .inline{font-family:ui-monospace,Consolas,monospace; font-size:12.5px; color:var(--fg); background:rgba(255,255,255,.07); padding:1px 6px; border-radius:6px}
+  details a{color:var(--pink-soft); font-weight:600}
+
+  /* ------------------------------------------------------------ финальный призыв */
+  .cta{
+    position:relative; margin-top:88px; padding:50px 40px; border-radius:26px; overflow:hidden;
+    border:1px solid rgba(255,77,125,.3);
+    background:linear-gradient(120deg,rgba(255,77,125,.16),rgba(139,92,246,.12) 55%,rgba(255,179,92,.10));
+    text-align:center;
+  }
+  .cta::before{
+    content:""; position:absolute; width:520px; height:520px; left:50%; top:-380px; transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(255,77,125,.35),transparent 65%); pointer-events:none;
+  }
+  .cta h2{position:relative; font-family:"Unbounded",sans-serif; font-size:clamp(26px,4vw,42px); letter-spacing:-1.2px; line-height:1.1; margin:0 0 12px; font-weight:600}
+  .cta p{position:relative; color:var(--muted); margin:0 auto 26px; max-width:520px; font-size:15px}
+  .cta .hero-actions{position:relative; justify-content:center; margin:0}
+
+  /* ------------------------------------------------------------ подвал */
+  footer{margin-top:80px; border-top:1px solid var(--line); background:rgba(8,9,13,.6)}
+  .foot{display:flex; align-items:center; gap:22px; padding:28px 0 34px; flex-wrap:wrap}
+  .foot-brand{display:flex; align-items:center; gap:10px}
+  .foot-brand img{width:32px; height:32px; border-radius:9px}
+  .foot-brand div{font-family:"Unbounded",sans-serif; font-size:14px; font-weight:600}
+  .foot-brand small{display:block; font-family:"Manrope",sans-serif; font-size:11px; color:var(--dim); font-weight:600; margin-top:1px}
+  .foot nav{display:flex; gap:20px; flex-wrap:wrap; margin-left:auto}
+  .foot nav a{font-size:13px; color:var(--muted); font-weight:600}
+  .foot nav a:hover{color:var(--fg)}
+  .foot-note{padding:0 0 30px; color:var(--dim); font-size:12px}
+  .foot-note span{display:block; max-width:760px}
+
+  /* ------------------------------------------------------------ адаптив */
+  @media (max-width:1080px){
+    .hero-grid{grid-template-columns:1fr; gap:42px}
+    .hero{padding-top:112px}
+    h1{font-size:clamp(44px,9vw,68px)}
+    .hero-shot{aspect-ratio:16/9}
+    .float.top{left:14px}
+    .float.bottom{right:14px}
+    .dl-grid{grid-template-columns:1fr}
+    .features{grid-template-columns:1fr 1fr}
+    .build{grid-template-columns:1fr; gap:26px}
+    .faq-grid{grid-template-columns:1fr; gap:24px}
+  }
+  @media (max-width:860px){
+    .nav-links{
+      display:none; position:absolute; top:76px; left:16px; right:16px;
+      flex-direction:column; align-items:stretch; gap:4px; padding:12px;
+      background:rgba(10,12,18,.97); border:1px solid var(--line-strong);
+      border-radius:16px; backdrop-filter:blur(18px);
+      box-shadow:0 30px 60px -20px rgba(0,0,0,.9);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 14px; font-size:15px}
+    .burger{display:grid}
+    .nav-cta .btn{display:none}
+    .steps{grid-template-columns:1fr}
+    .notice{grid-template-columns:1fr; gap:16px}
+    .notice .actions{justify-self:start}
+    .sec-head{flex-direction:column; align-items:flex-start; gap:12px}
+    .foot nav{margin-left:0; width:100%}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px}
+    .hero{padding-top:104px}
+    .lead{font-size:15.5px}
+    .hero-actions .btn{width:100%}
+    .features{grid-template-columns:1fr}
+    .stat-grid{grid-template-columns:1fr 1fr}
+    .dl,.build{padding:22px}
+    .cta{padding:38px 20px; margin-top:64px}
+    .float.top{top:14px; left:14px; font-size:11.5px}
+    .float{display:none}
+    .hero-caption .chip{display:none}
+    .hero-caption h2{font-size:17px}
+    .hero-caption{left:18px; right:18px; bottom:16px}
+    section{padding-top:64px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important; transition:none!important}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
 
-<header>
+<header id="header">
   <div class="wrap nav">
-    <img src="berry.png" alt="">
-    <span class="brand">BerryTrip</span>
-    <nav>
+    <a class="brand" href="#top">
+      <img src="berry.png" alt="BerryTrip">
+      <div>BerryTrip<small>MINECRAFT · NEOFORGE</small></div>
+    </a>
+    <div class="nav-links" id="navLinks">
       <a href="#start">Как начать</a>
       <a href="#download">Скачать</a>
       <a href="#features">Возможности</a>
+      <a href="#build">Сборка</a>
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
-    </nav>
+    </div>
+    <div class="nav-cta">
+      <a class="icon-btn" href="https://t.me/killberries" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 4.3 18.4 20c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.1 13.1 1.3 11.6c-1-.3-1-1 .2-1.5L20.2 3c.9-.3 1.6.2 1.4 1.3z"/></svg>
+      </a>
+      <a class="btn btn-primary btn-sm" href="launcher/BerryUp.jar" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+        Скачать
+      </a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main>
+<main id="top">
+  <!-- ============================================================ hero -->
   <div class="wrap hero">
     <div class="hero-grid">
-      <img src="berry.png" alt="Логотип BerryTrip">
       <div>
+        <div class="hero-badge"><span>3.2</span> BerryUp · сборка обновляется сама</div>
         <h1>BerryTrip</h1>
-        <p class="lead">Выживание, приключения и друзья. Сборка на NeoForge для Minecraft 1.21.1 со своим сервером и лаунчером BerryUp.</p>
-        <div class="badges">
-          <span class="badge">Minecraft <b>1.21.1</b></span>
-          <span class="badge">NeoForge <b>21.1.267</b></span>
-          <span class="badge"><b>184</b> мода</span>
-          <span class="badge">BerryUp <b>3.1</b></span>
-        </div>
-        <div class="ip">
-          <code id="ip">135.181.126.167:25737</code>
-          <button type="button" onclick="copyIp()">Скопировать</button>
-        </div>
+        <p class="tagline">Выживание, приключения и <span class="accent">свои люди</span></p>
+        <p class="lead">
+          Сборка на <b>NeoForge</b> для Minecraft <b>1.21.1</b>: магия, уютный декор и друзья рядом.
+          Ставится за три шага, обновляется лаунчером и запускается одной кнопкой.
+        </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="launcher/BerryUp.jar" download>Скачать BerryUp.jar</a>
-          <a class="btn btn-secondary" href="#start">Как установить</a>
+          <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+            Скачать BerryUp.jar
+          </a>
+          <a class="btn btn-secondary btn-lg" href="#start">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+            Как начать
+          </a>
+        </div>
+        <div class="meta">
+          <span class="chip"><span class="dot"></span><b>1.21.1</b> Minecraft</span>
+          <span class="chip"><b>184</b> мода</span>
+          <span class="chip"><b>NeoForge</b> 21.1.267</span>
+          <span class="chip"><b>Java</b> из Prism</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-shot">
+          <img src="img/hero.jpg" alt="Мир BerryTrip: цветущие деревья и блочные горы на закате">
+          <div class="hero-caption">
+            <div>
+              <h2>Мир BerryTrip</h2>
+              <p>1.21.1 · NeoForge · 184 мода · свой сервер</p>
+            </div>
+            <span class="chip"><span class="dot"></span>Сборка готова к игре</span>
+          </div>
+        </div>
+        <div class="float top">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8"/><path d="M2 4h20v4H2z"/><path d="M10 12h4"/></svg>
+          </span>
+          <div>BerryUp 3.2<small>один jar, без установки</small></div>
+        </div>
+        <div class="float bottom">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v6c0 4.4 3.4 7.4 8 8 4.6-.6 8-3.6 8-8V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div>Prism Launcher<small>или PineconeMC</small></div>
         </div>
       </div>
     </div>
 
-    <div class="notice" id="prism">
-      <h3>Важно: BerryUp — это один jar, а не exe</h3>
-      <p>
-        Отдельного установщика больше нет: BerryUp — ровно один файл
-        <span class="inline">BerryUp.jar</span>, без архивов и скриптов рядом. Он работает
-        как надстройка над лаунчером, поэтому <b>сначала</b> нужен
-        <b>Prism Launcher</b> или его форк <b>PineconeMC</b>: BerryUp находит в нём инстанс
-        BerryTrip, обновляет сборку и запускает игру. Без Prism игра не запустится.
-      </p>
-      <div class="links">
-        <a class="btn btn-primary" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Скачать Prism Launcher</a>
-        <a class="btn btn-secondary" href="https://pineconemc.com/download/" target="_blank" rel="noopener">Скачать PineconeMC</a>
+    <div class="notice">
+      <span class="badge-file">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 11v6m0 0 2.5-2.5M12 17l-2.5-2.5"/></svg>
+      </span>
+      <div>
+        <h3>BerryUp — это один jar, а не установщик</h3>
+        <p>
+          Ровно один файл <span class="inline">BerryUp.jar</span>: без архивов и скриптов рядом.
+          Он работает поверх <b>Prism Launcher</b> или его форка <b>PineconeMC</b> — поставь лаунчер
+          один раз, запусти игру, и BerryUp сам найдёт сборку, скачает моды и запустит сервер.
+        </p>
       </div>
-      <small>Java отдельно ставить не нужно: BerryUp берёт её из Prism. Если Prism только установлен — запусти в нём игру один раз, чтобы он скачал Java.</small>
+      <div class="actions">
+        <a class="btn btn-primary btn-sm" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Prism Launcher</a>
+        <a class="btn btn-secondary btn-sm" href="https://pineconemc.com/download/" target="_blank" rel="noopener">PineconeMC</a>
+      </div>
     </div>
   </div>
 
+  <!-- ============================================================ шаги -->
   <section id="start" class="wrap">
-    <h2>Как начать</h2>
-    <p class="sub">Три шага, один раз. Дальше — только кнопка «Играть».</p>
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Старт</span>
+        <h2>Три шага — и ты в игре</h2>
+      </div>
+      <p>Ничего не нужно настраивать вручную: ни Java, ни пути к папкам, ни моды.</p>
+    </div>
     <div class="steps">
       <div class="step">
-        <div class="num">1</div>
+        <div class="num">01 <i></i></div>
         <h3>Поставь Prism или PineconeMC</h3>
-        <p>Обычный установщик с официального сайта. Запусти игру один раз, чтобы лаунчер скачал Java.</p>
+        <p>Обычный установщик с официального сайта. Запусти игру один раз — лаунчер скачает нужную Java.</p>
+        <a class="step-link" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">
+          Скачать Prism
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </div>
       <div class="step">
-        <div class="num">2</div>
+        <div class="num">02 <i></i></div>
         <h3>Скачай BerryUp.jar</h3>
-        <p>Один файл, 1.4 МБ. Положи в обычную папку, например <span class="inline">C:\BerryUp</span>, — не в Program Files.</p>
-        <span class="fileName">BerryUp.jar</span>
+        <p>Один файл на 1,4 МБ. Положи в обычную папку, например <span class="inline">C:\BerryUp</span> — не в Program Files.</p>
+        <span class="fileName">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+          BerryUp.jar
+        </span>
       </div>
       <div class="step">
-        <div class="num">3</div>
-        <h3>Запусти BerryUp.jar</h3>
-        <p>Лаунчер сам найдёт Prism, предложит «Установить сборку», скачает её и покажет «Играть».</p>
+        <div class="num">03 <i></i></div>
+        <h3>Запусти и нажми «Играть»</h3>
+        <p>BerryUp найдёт Prism, установит сборку, докачает моды и подключит к серверу. Дальше — только кнопка.</p>
+        <a class="step-link" href="launcher/BerryUp.jar" download>
+          Скачать BerryUp.jar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- ============================================================ скачать -->
   <section id="download" class="wrap">
-    <h2>Скачать</h2>
-    <p class="sub">Актуальная версия BerryUp 3.1. Обновления лаунчер качает сам.</p>
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Загрузки</span>
+        <h2>Скачать</h2>
+      </div>
+      <p>Актуальная версия BerryUp 3.2. Обновления лаунчер забирает сам — вручную ничего переставлять не нужно.</p>
+    </div>
 
-    <div class="downloads">
-      <div class="dl main">
+    <div class="dl-grid">
+      <div class="dl feature">
+        <span class="tag"><span class="dot"></span>Основной файл</span>
         <h3>BerryUp.jar</h3>
-        <span class="size">один файл · 1.4 МБ · v3.1</span>
-        <p>Лаунчер целиком в одном jar: ни установщика, ни архива, ни скриптов. Положи в папку вроде <span class="inline">C:\BerryUp</span> и запусти — дальше BerryUp сам найдёт Prism, поставит сборку и обновит моды.</p>
+        <span class="size">v3.2 · 1,4 МБ · один файл</span>
+        <p>
+          Лаунчер целиком в одном jar. Сам находит Prism, ставит сборку BerryTrip, обновляет моды через
+          packwiz, следит за памятью и подключает к серверу. Обновляется BerryUp тоже сам: скачивает
+          новую версию и подменяет свой файл по кнопке «Перезапустить».
+        </p>
         <div class="row">
-          <a class="btn btn-primary" href="launcher/BerryUp.jar" download>Скачать BerryUp.jar</a>
-          <a class="btn btn-ghost" href="launcher/latest-java.json" target="_blank" rel="noopener">Версия и хеш</a>
+          <a class="btn btn-primary" href="launcher/BerryUp.jar" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+            Скачать BerryUp.jar
+          </a>
+          <a class="btn btn-secondary" href="launcher/latest-java.json" target="_blank" rel="noopener">Версия и хеш</a>
+        </div>
+        <div class="hintline">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Без установки в систему</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Удаляется одним файлом</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>SHA-256 в json</span>
         </div>
       </div>
-      <div class="dl">
-        <h3>Не открывается двойным щелчком?</h3>
-        <p>Значит Windows не связала <span class="inline">.jar</span> с Java. Правый клик по файлу → «Открыть с помощью» → выбери <span class="inline">javaw.exe</span> из <span class="inline">%APPDATA%\PrismLauncher\java</span>. Или в командной строке: <span class="inline">java -jar BerryUp.jar</span>.</p>
-      </div>
-    </div>
 
-    <div class="mini">
-      <div class="dl">
-        <h3>Prism Launcher</h3>
-        <p>Основной лаунчер, поверх которого работает BerryUp.</p>
-        <div class="row"><a class="btn btn-secondary" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Скачать Prism</a></div>
-      </div>
-      <div class="dl">
-        <h3>PineconeMC</h3>
-        <p>Форк Prism — BerryUp поддерживает и его.</p>
-        <div class="row"><a class="btn btn-secondary" href="https://pineconemc.com/download/" target="_blank" rel="noopener">Скачать PineconeMC</a></div>
+      <div class="side-stack">
+        <a class="side-card" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v13H4z"/><path d="M2 3h20v4H2z"/><path d="M9 12h6"/></svg>
+          </span>
+          <div>
+            <h4>Prism Launcher</h4>
+            <p>Основной лаунчер для BerryUp</p>
+          </div>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </a>
+        <a class="side-card" href="https://pineconemc.com/download/" target="_blank" rel="noopener">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
+          </span>
+          <div>
+            <h4>PineconeMC</h4>
+            <p>Форк Prism — тоже поддерживается</p>
+          </div>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </a>
+        <a class="side-card" href="launcher/instance.zip">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8"/><path d="M2 4h20v4H2z"/><path d="M10 12h4"/></svg>
+          </span>
+          <div>
+            <h4>instance.zip</h4>
+            <p>Сборка без BerryUp для Prism</p>
+          </div>
+          <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </a>
+        <div class="help-card">
+          <b>Не открывается двойным щелчком?</b>
+          Windows не связала <span class="inline">.jar</span> с Java. Правый клик → «Открыть с помощью» →
+          <span class="inline">javaw.exe</span> из папки Java в Prism, либо в консоли:
+          <span class="inline">java -jar BerryUp.jar</span>.
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ============================================================ возможности -->
   <section id="features" class="wrap">
-    <h2>Что делает BerryUp</h2>
-    <p class="sub">Не заменяет Prism, а убирает всю ручную работу вокруг сборки.</p>
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">BerryUp</span>
+        <h2>Меньше ручной работы</h2>
+      </div>
+      <p>BerryUp не заменяет Prism — он убирает всё, что обычно делают руками вокруг сборки.</p>
+    </div>
     <div class="features">
-      <div class="feature"><h3><span class="dot"></span>Находит лаунчер сам</h3><p>Prism Launcher, PineconeMC или ElyPrismLauncher, включая портативные сборки. Путь можно указать вручную.</p></div>
-      <div class="feature"><h3><span class="dot"></span>Ставит сборку</h3><p>Распаковывает инстанс BerryTrip и обновляет моды через packwiz — без ручных архивов и папок.</p></div>
-      <div class="feature"><h3><span class="dot"></span>Три входа на сервер</h3><p>Москва, Anycast и прямое подключение. Показывает онлайна, пинг и MOTD; можно зайти сразу с сервера.</p></div>
-      <div class="feature"><h3><span class="dot"></span>Экономит память</h3><p>Необязательные моды, ресурспаки и шейдеры выключаются одним тумблером и уезжают в <span class="inline">berry-off</span>.</p></div>
-      <div class="feature"><h3><span class="dot"></span>Настройки памяти</h3><p>Слайдер пишет <span class="inline">MaxMemAlloc</span> в инстанс: без правки конфигов руками.</p></div>
-      <div class="feature"><h3><span class="dot"></span>Журнал и диагностика</h3><p>Видно, что нашлось, сколько модов, версию Java и пака. Отчёт копируется одной кнопкой.</p></div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <h3>Находит лаунчер сам</h3>
+        <p>Prism Launcher, PineconeMC или ElyPrismLauncher, включая портативные сборки. Путь можно указать вручную.</p>
+      </div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8"/><path d="M2 4h20v4H2z"/><path d="M12 11v5m0 0 2-2m-2 2-2-2"/></svg></span>
+        <h3>Ставит и обновляет сборку</h3>
+        <p>Распаковывает инстанс BerryTrip и тянет моды через packwiz — без архивов и папок вручную.</p>
+      </div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg></span>
+        <h3>Подключает к серверу</h3>
+        <p>Один клик «Играть с подключением»: BerryUp сам подставляет нужный адрес и запускает игру.</p>
+      </div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15v6m0 0 2.5-2.5M17 21l-2.5-2.5"/></svg></span>
+        <h3>Экономит память</h3>
+        <p>Необязательные моды, ресурспаки и шейдеры выключаются тумблером и уезжают в <span class="mono">berry-off</span>.</p>
+      </div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10v4M11 10v4M15 10v4M19 10v4"/></svg></span>
+        <h3>Настройка памяти</h3>
+        <p>Слайдер пишет <span class="mono">MaxMemAlloc</span> прямо в инстанс: конфиги править не нужно.</p>
+      </div>
+      <div class="feature">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 4-4-4-4"/><path d="M11 19h9"/></svg></span>
+        <h3>Понятная диагностика</h3>
+        <p>Видно, что нашлось, сколько модов, версию Java и пака. Отчёт для помощи копируется одной кнопкой.</p>
+      </div>
     </div>
   </section>
 
-  <section id="faq" class="wrap">
-    <h2>Вопросы</h2>
-    <p class="sub">Коротко о том, что чаще всего спрашивают.</p>
+  <!-- ============================================================ сборка -->
+  <section id="build" class="wrap">
+    <div class="build">
+      <div>
+        <span class="eyebrow">Сборка</span>
+        <h2>184 мода, которые не надо ставить по одному</h2>
+        <p>
+          BerryTrip — это готовый инстанс: генерация мира, приключения, магия, декор и оптимизация уже
+          подобраны и проверены вместе. Сервер держит тот же набор модов, поэтому клиент и мир совпадают.
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Minecraft 1.21.1 и NeoForge 21.1.267</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Моды обновляются через packwiz, без переустановки</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>Сохранения и настройки остаются в инстансе Prism</li>
+        </ul>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><b>184</b><span>мода</span></div>
+        <div class="stat"><b>1.21.1</b><span>Minecraft</span></div>
+        <div class="stat"><b>3.2</b><span>BerryUp</span></div>
+        <div class="stat"><b>1</b><span>файл для старта</span></div>
+      </div>
+    </div>
+  </section>
 
-    <details>
-      <summary>Почему больше нет exe и установщика?</summary>
-      <p>Установщик и exe-файлы вызывали ложные срабатывания антивирусов и SmartScreen. BerryUp переписан на Java: один jar, без установки в систему, без реестра и ярлыков. Удалить — просто удалить файл.</p>
-    </details>
-    <details>
-      <summary>Нужна ли Java отдельно?</summary>
-      <p>Нет. BerryUp работает на Java, которая уже есть в Prism Launcher (или PineconeMC) — отдельно ставить ничего не нужно. Если Prism только установлен, запусти в нём игру один раз: он скачает Java, и BerryUp её найдёт.</p>
-    </details>
-    <details>
-      <summary>Двойной щелчок по jar ничего не делает</summary>
-      <p>На чистой Windows файлы <span class="inline">.jar</span> ничем не открываются. Это лечится один раз: правый клик по <span class="inline">BerryUp.jar</span> → «Открыть с помощью» → «Выбрать другое приложение» → укажи <span class="inline">javaw.exe</span> из <span class="inline">%APPDATA%\PrismLauncher\java\java-runtime-*\bin</span> и поставь галочку «Всегда». Дальше — обычный двойной щелчок.</p>
-    </details>
-    <details>
-      <summary>Windows пишет, что файл скачан из интернета</summary>
-      <p>Это стандартная метка браузера. Нажми «Подробнее» → «Выполнить всё равно». SHA-256 файла лежит в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — хеш можно сверить.</p>
-    </details>
-    <details>
-      <summary>Где сборка и сохранения?</summary>
-      <p>В Prism: <span class="inline">%APPDATA%\PrismLauncher\instances\BerryTrip</span>. BerryUp их не удаляет и не переносит; настройки лаунчера — в <span class="inline">%APPDATA%\BerryUp</span>.</p>
-    </details>
-    <details>
-      <summary>Как обновляется BerryUp?</summary>
-      <p>Лаунчер сам проверяет <span class="inline">latest-java.json</span>, скачивает новый jar и по кнопке «Перезапустить» подменяет свой же файл — вручную ничего делать не нужно. Никаких скриптов и архивов рядом с лаунчером нет.</p>
-    </details>
-    <details>
-      <summary>Можно поставить сборку без BerryUp?</summary>
-      <p>Да. Prism → Add Instance → Import from zip → <a href="launcher/instance.zip">instance.zip</a>, затем Launch: Prism сам скачает моды через packwiz.</p>
-    </details>
+  <!-- ============================================================ faq -->
+  <section id="faq" class="wrap">
+    <div class="faq-grid">
+      <div>
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Частые вопросы</h2>
+            <p class="sub">Коротко о том, что спрашивают чаще всего.</p>
+          </div>
+        </div>
+        <div class="note">
+          Не нашёл ответ? Напиши в <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a> —
+          там же анонсы обновлений сборки.
+        </div>
+      </div>
+
+      <div>
+        <details>
+          <summary>Почему нет exe и установщика?</summary>
+          <p>Установщик и exe вызывали ложные срабатывания антивирусов и SmartScreen. BerryUp переписан на Java: один jar, без установки в систему, реестра и ярлыков. Удалить — просто удалить файл.</p>
+        </details>
+        <details>
+          <summary>Нужна ли Java отдельно?</summary>
+          <p>Нет. BerryUp работает на Java, которая уже есть в Prism Launcher или PineconeMC. Если Prism только установлен, запусти в нём игру один раз: он скачает Java, и BerryUp её найдёт.</p>
+        </details>
+        <details>
+          <summary>Двойной щелчок по jar ничего не делает</summary>
+          <p>На чистой Windows файлы <span class="inline">.jar</span> ничем не открываются. Это лечится один раз: правый клик по <span class="inline">BerryUp.jar</span> → «Открыть с помощью» → «Выбрать другое приложение» → укажи <span class="inline">javaw.exe</span> из <span class="inline">%APPDATA%\PrismLauncher\java\java-runtime-*\bin</span> и поставь галочку «Всегда». Дальше — обычный двойной щелчок.</p>
+        </details>
+        <details>
+          <summary>Windows пишет, что файл скачан из интернета</summary>
+          <p>Это стандартная метка браузера. Нажми «Подробнее» → «Выполнить всё равно». SHA-256 файла лежит в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — хеш можно сверить.</p>
+        </details>
+        <details>
+          <summary>Где сборка и сохранения?</summary>
+          <p>В Prism: <span class="inline">%APPDATA%\PrismLauncher\instances\BerryTrip</span>. BerryUp их не удаляет и не переносит; настройки лаунчера — в <span class="inline">%APPDATA%\BerryUp</span>.</p>
+        </details>
+        <details>
+          <summary>Как обновляется BerryUp?</summary>
+          <p>Лаунчер сам проверяет <span class="inline">latest-java.json</span>, скачивает новый jar и по кнопке «Перезапустить» заменяет свой же файл. Никаких скриптов и архивов рядом с лаунчером нет.</p>
+        </details>
+        <details>
+          <summary>Можно поставить сборку без BerryUp?</summary>
+          <p>Да. Prism → Add Instance → Import from zip → <a href="launcher/instance.zip">instance.zip</a>, затем Launch: Prism сам скачает моды через packwiz.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Осталось скачать один файл</h2>
+      <p>BerryUp поставит сборку, обновит моды и подключит к серверу. Дальше игра запускается одной кнопкой.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+          Скачать BerryUp.jar
+        </a>
+        <a class="btn btn-secondary btn-lg" href="#start">Как начать</a>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap row">
-    <span>BerryTrip · Minecraft 1.21.1 · NeoForge</span>
-    <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
-    <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">BerryUp на GitHub</a>
-    <a href="https://github.com/evilvalue/berry" target="_blank" rel="noopener">Исходники сборки</a>
-    <span style="margin-left:auto">Сервер: 135.181.126.167:25737</span>
+  <div class="wrap">
+    <div class="foot">
+      <a class="foot-brand" href="#top">
+        <img src="berry.png" alt="">
+        <div>BerryTrip<small>Minecraft 1.21.1 · NeoForge</small></div>
+      </a>
+      <nav>
+        <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://github.com/evilvalue/berry" target="_blank" rel="noopener">Исходники сборки</a>
+        <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">BerryUp на GitHub</a>
+        <a href="launcher/latest-java.json" target="_blank" rel="noopener">Версии</a>
+      </nav>
+    </div>
+    <div class="foot-note">
+      <span>BerryTrip — неофициальная сборка. Не связана с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang Studios.</span>
+    </div>
   </div>
 </footer>
 
-<div class="toast" id="toast">Адрес скопирован</div>
-
 <script>
-function copyIp(){
-  var text = document.getElementById('ip').textContent.trim();
-  var done = function(){
-    var toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(function(){ toast.classList.remove('show'); }, 1600);
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done, fallback);
-  } else {
-    fallback();
-  }
-  function fallback(){
-    var area = document.createElement('textarea');
-    area.value = text;
-    document.body.appendChild(area);
-    area.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(area);
-  }
-}
+  (function(){
+    var header = document.getElementById('header');
+    var burger = document.getElementById('burger');
+    var links = document.getElementById('navLinks');
+    function onScroll(){
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+    burger.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 </script>
 </body>
 </html>
