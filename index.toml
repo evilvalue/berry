@@ -898,7 +898,7 @@ hash = "73bcadced43cda21618d5bf19c1ef32ae1283857f8b1a5ad86c029238b02d338"
 
 [[files]]
 file = "index.html"
-hash = "be0a1f26cb3b1a171f11a50f7e8c8a0c69bbb79114a181f2ac971380b2c52c0b"
+hash = "b229d4049feba2bff8bbcf260a21bad674ac5dc39b8dd5ea78bd0e657982da2c"
 
 [[files]]
 file = "mods/BadOptimizations-2.4.1-1.21.1.pw.toml"
@@ -1158,7 +1158,7 @@ metafile = true
 
 [[files]]
 file = "mods/berryauth-1.0.0.jar"
-hash = "13c512c83173782db9d53a5c28a512e5dad6cf7dd257a6ba394849824d440bb4"
+hash = "20f1c9d188b8a9a8e177cbf0da876d07d3c85ee3c74a734da7b903af2a1d3fcf"
 
 [[files]]
 file = "mods/bf_blockpack-neoforge-1.21.1-1.1.2.pw.toml"

@@ -128,6 +128,15 @@
   }
   .packline a{color:var(--fg); font-weight:700; border-bottom:1px solid var(--line-strong)}
 
+  /* правила */
+  .rules{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
+  .rules li{
+    padding:14px 16px; border-radius:13px; background:var(--surface);
+    border:1px solid var(--line); color:var(--muted); font-size:14.5px;
+  }
+  .rules li b{color:var(--fg); font-weight:700}
+  .rules li::before{content:"—"; color:#ff9bb6; font-weight:800; margin-right:8px}
+
   /* вопросы */
   .faq{max-width:760px}
   details{border:1px solid var(--line); border-radius:13px; background:var(--surface); margin-bottom:8px}
@@ -162,6 +171,7 @@
     .hero-grid{grid-template-columns:1fr; gap:34px}
     .hero{padding-top:106px}
     .steps{grid-template-columns:1fr}
+    .rules{grid-template-columns:1fr}
     .faq{max-width:none}
   }
   @media (max-width:680px){
@@ -181,6 +191,7 @@
     <a class="brand" href="#top"><img src="berry.png" alt="">BerryTrip</a>
     <nav class="nav-links">
       <a href="#start">Как начать</a>
+      <a href="#rules">Правила</a>
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
     </nav>
@@ -236,7 +247,7 @@
       <li class="step">
         <div class="n">4</div>
         <h3>Войди через Telegram</h3>
-        <p>Вкладка «Аккаунт» → «Войти». Бот <a href="https://t.me/killberriesbot" target="_blank" rel="noopener">@killberriesbot</a> пришлёт код — зайди в игру и напиши <code>/verify КОД</code>.</p>
+        <p>Вкладка «Аккаунт» → «Войти». Бот <a href="https://t.me/killberriesbot" target="_blank" rel="noopener">@killberriesbot</a> получит ник прямо из лаунчера и пришлёт код — зайди в игру и напиши <code>/verify КОД</code>.</p>
       </li>
     </ol>
   </section>
@@ -247,7 +258,7 @@
     <div class="dl">
       <div class="txt">
         <h3>BerryUp.jar</h3>
-        <div class="meta">Версия 3.3.0 · 1,3 МБ · Windows</div>
+        <div class="meta">Версия 3.4.0 · 1,3 МБ · Windows</div>
         <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a></span>
       </div>
       <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
@@ -261,6 +272,19 @@
     </div>
   </section>
 
+  <section id="rules" class="wrap">
+    <h2>Правила</h2>
+    <p class="sub">Коротко: играй честно и не мешай другим.</p>
+    <ul class="rules">
+      <li>Без читов, автокликера и X-ray. Моды из сборки — можно.</li>
+      <li>Не гриферь и не ломай чужие постройки.</li>
+      <li>PvP — только по согласию обеих сторон.</li>
+      <li><b>Один ник — один человек.</b> Вход привязан к Telegram, передавать его нельзя.</li>
+      <li>Обход входа или игры с чужого аккаунта — бан без разговоров.</li>
+      <li>Вопросы и заявки — в <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>.</li>
+    </ul>
+  </section>
+
   <section id="faq" class="wrap">
     <div class="faq">
     <h2>Вопросы</h2>
@@ -272,6 +296,14 @@
     <details>
       <summary>Антивирус ругается на файл</summary>
       <p>BerryUp — обычный Java-файл: без установщика, драйверов и скрытых действий, исходники открыты на <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">GitHub</a>. Сверь SHA-256 с <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — если совпадает, файл тот самый. Предупреждение браузера про скачанный jar — стандартная метка, а не вирус.</p>
+    </details>
+    <details>
+      <summary>Бот не принимает ник из сообщения</summary>
+      <p>Так и должно быть: ник приходит только по ссылке из лаунчера, вручную его не привязать — иначе чужой ник мог бы занять кто угодно. Открой BerryUp → «Аккаунт» → «Войти». Если ник занят другой заявкой, она освободится сама через час или админ снимет её командой <code>/release</code>.</p>
+    </details>
+    <details>
+      <summary>Пишет «сессия истекла»</summary>
+      <p>Токен входа живёт 30 дней. Нажми «Войти» в лаунчере ещё раз, получи новый код в боте и введи <code>/verify КОД</code> в игре — старый токен заменится.</p>
     </details>
     <details>
       <summary>Куда ставится сборка</summary>

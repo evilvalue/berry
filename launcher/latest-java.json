@@ -1,7 +1,7 @@
-{
-    "version": "3.3.0",
-    "jar": "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256": "538cc5956c121ca79ca8661a702f9dada811510bd8a39a67012f95d377f208ee",
-    "size": 1342829,
-    "notes": "3.3.0: вход через Telegram — бот @killberriesbot, мод BerryTrip Auth ставится в сборку сам; вкладка «Аккаунт» с ником и скином QuickSkin."
+﻿{
+    "version":  "3.4.0",
+    "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
+    "sha256":  "850e6602cec737fc8ac7c474aec28582bd94453dc8987bb1ee1a8793937fd98c",
+    "size":  1354672,
+    "notes":  "Вход только по ссылке из лаунчера: чужой ник больше не занять. Токен привязан к Telegram, проверяется срок и владелец. Старые моды входа удаляются."
 }
