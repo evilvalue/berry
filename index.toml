@@ -1158,7 +1158,7 @@ metafile = true
 
 [[files]]
 file = "mods/berryauth-1.1.0.jar"
-hash = "5dcef8c8cb823f09b5fbfeabae6cab47ec1e970c596f1643ec0d892ea742becc"
+hash = "e61b2ccd776cdba060a91c439f11ee9f4acdb4d83f5a50161e171e3c4261dd34"
 
 [[files]]
 file = "mods/bf_blockpack-neoforge-1.21.1-1.1.2.pw.toml"
