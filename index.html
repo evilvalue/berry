@@ -235,13 +235,15 @@
       <li class="step">
         <div class="n">2</div>
         <h3>Скачай BerryUp.jar</h3>
-        <p>Один файл. Положи куда удобно — на рабочий стол или в отдельную папку.</p>
+        <p>Один файл. Запусти его — BerryUp сам поставится в <code>%LOCALAPPDATA%\BerryUp</code>
+          и сделает ярлык на рабочем столе и в «Пуске».</p>
         <span class="file">BerryUp.jar</span>
       </li>
       <li class="step">
         <div class="n">3</div>
-        <h3>Открой и нажми «Играть»</h3>
-        <p>BerryUp найдёт Prism, поставит сборку и подключит к серверу. Первый раз — пару минут.</p>
+        <h3>Запускай с ярлыка и жми «Играть»</h3>
+        <p>Ярлык берёт Java из Prism — шрифт не мылится. BerryUp найдёт Prism, поставит
+          сборку и подключит к серверу. Первый раз — пару минут.</p>
         <a href="#faq">Файл не открывается? →</a>
       </li>
       <li class="step">
@@ -258,7 +260,7 @@
     <div class="dl">
       <div class="txt">
         <h3>BerryUp.jar</h3>
-        <div class="meta">Версия 3.6.4 · 1,3 МБ · Windows</div>
+        <div class="meta">Версия 3.7.0 · 1,4 МБ · Windows</div>
         <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a></span>
       </div>
       <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
@@ -308,6 +310,19 @@
     <details>
       <summary>Куда ставится сборка</summary>
       <p>В Prism, папка <code>instances/BerryTrip</code>. Сохранения и настройки лежат там же, BerryUp их не переносит и не удаляет.</p>
+    </details>
+    <details>
+      <summary>Куда ставится сам BerryUp</summary>
+      <p>При первом запуске jar переезжает в <code>%LOCALAPPDATA%\BerryUp</code>, ярлыки
+        появляются на рабочем столе и в меню «Пуск», настройки лежат в <code>%APPDATA%\BerryUp</code>.
+        Обновления лаунчер ставит сам при перезапуске. Удалить просто: закрой BerryUp,
+        удали папку <code>%LOCALAPPDATA%\BerryUp</code> и ярлыки — сборка и сохранения в Prism останутся.</p>
+    </details>
+    <details>
+      <summary>Скин: можно посмотреть заранее?</summary>
+      <p>Да. «Аккаунт» → «Скин · 3D-просмотр»: выбери PNG 64×64 или HD 128×128 либо перетащи
+        файл на модель, покрути мышью и нажми «Применить». BerryUp положит скин в папку
+        QuickSkin и пропишет его в конфиг мода.</p>
     </details>
     </div>
   </section>
