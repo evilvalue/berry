@@ -172,25 +172,25 @@
           <span class="badge">Minecraft <b>1.21.1</b></span>
           <span class="badge">NeoForge <b>21.1.267</b></span>
           <span class="badge"><b>184</b> мода</span>
-          <span class="badge">BerryUp <b>3.0</b></span>
+          <span class="badge">BerryUp <b>3.1</b></span>
         </div>
         <div class="ip">
           <code id="ip">135.181.126.167:25737</code>
           <button type="button" onclick="copyIp()">Скопировать</button>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#download">Скачать BerryUp</a>
+          <a class="btn btn-primary" href="launcher/BerryUp.jar" download>Скачать BerryUp.jar</a>
           <a class="btn btn-secondary" href="#start">Как установить</a>
         </div>
       </div>
     </div>
 
     <div class="notice" id="prism">
-      <h3>Важно: BerryUp теперь jar, а не exe</h3>
+      <h3>Важно: BerryUp — это один jar, а не exe</h3>
       <p>
-        Отдельного установщика больше нет — BerryUp работает как надстройка над лаунчером
-        и выходит одним файлом <span class="inline">BerryUp.jar</span> в архиве вместе с
-        <span class="inline">BerryUp.cmd</span>. Поэтому <b>сначала</b> нужен
+        Отдельного установщика больше нет: BerryUp — ровно один файл
+        <span class="inline">BerryUp.jar</span>, без архивов и скриптов рядом. Он работает
+        как надстройка над лаунчером, поэтому <b>сначала</b> нужен
         <b>Prism Launcher</b> или его форк <b>PineconeMC</b>: BerryUp находит в нём инстанс
         BerryTrip, обновляет сборку и запускает игру. Без Prism игра не запустится.
       </p>
@@ -213,13 +213,13 @@
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h3>Распакуй BerryUp</h3>
-        <p>Скачай архив и распакуй целиком в обычную папку, например <span class="inline">C:\BerryUp</span>. Не запускай прямо из ZIP.</p>
-        <span class="fileName">BerryUp.jar + BerryUp.cmd</span>
+        <h3>Скачай BerryUp.jar</h3>
+        <p>Один файл, 1.4 МБ. Положи в обычную папку, например <span class="inline">C:\BerryUp</span>, — не в Program Files.</p>
+        <span class="fileName">BerryUp.jar</span>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>Запусти BerryUp.cmd</h3>
+        <h3>Запусти BerryUp.jar</h3>
         <p>Лаунчер сам найдёт Prism, предложит «Установить сборку», скачает её и покажет «Играть».</p>
       </div>
     </div>
@@ -227,25 +227,21 @@
 
   <section id="download" class="wrap">
     <h2>Скачать</h2>
-    <p class="sub">Актуальная версия BerryUp 3.0. Обновления лаунчер качает сам.</p>
+    <p class="sub">Актуальная версия BerryUp 3.1. Обновления лаунчер качает сам.</p>
 
     <div class="downloads">
       <div class="dl main">
-        <h3>BerryUp.zip</h3>
-        <span class="size">jar + cmd + инструкция</span>
-        <p>Рекомендуемый вариант: распакуй в отдельную папку и запусти <b>BerryUp.cmd</b>. Java искать не нужно — скрипт возьмёт её из Prism.</p>
+        <h3>BerryUp.jar</h3>
+        <span class="size">один файл · 1.4 МБ · v3.1</span>
+        <p>Лаунчер целиком в одном jar: ни установщика, ни архива, ни скриптов. Положи в папку вроде <span class="inline">C:\BerryUp</span> и запусти — дальше BerryUp сам найдёт Prism, поставит сборку и обновит моды.</p>
         <div class="row">
-          <a class="btn btn-primary" href="launcher/BerryUp.zip" download>Скачать архив</a>
+          <a class="btn btn-primary" href="launcher/BerryUp.jar" download>Скачать BerryUp.jar</a>
           <a class="btn btn-ghost" href="launcher/latest-java.json" target="_blank" rel="noopener">Версия и хеш</a>
         </div>
       </div>
       <div class="dl">
-        <h3>BerryUp.jar</h3>
-        <span class="size">только лаунчер</span>
-        <p>Если Java 21 уже установлена и настроена, можно скачать один jar и запускать его напрямую: <span class="inline">java -jar BerryUp.jar</span>.</p>
-        <div class="row">
-          <a class="btn btn-secondary" href="launcher/BerryUp.jar" download>Скачать jar</a>
-        </div>
+        <h3>Не открывается двойным щелчком?</h3>
+        <p>Значит Windows не связала <span class="inline">.jar</span> с Java. Правый клик по файлу → «Открыть с помощью» → выбери <span class="inline">javaw.exe</span> из <span class="inline">%APPDATA%\PrismLauncher\java</span>. Или в командной строке: <span class="inline">java -jar BerryUp.jar</span>.</p>
       </div>
     </div>
 
@@ -282,15 +278,19 @@
 
     <details>
       <summary>Почему больше нет exe и установщика?</summary>
-      <p>Установщик и exe-файлы вызывали ложные срабатывания антивирусов и SmartScreen. BerryUp переписан на Java: один jar, без установки в систему, без реестра и ярлыков. Удалить — просто удалить папку.</p>
+      <p>Установщик и exe-файлы вызывали ложные срабатывания антивирусов и SmartScreen. BerryUp переписан на Java: один jar, без установки в систему, без реестра и ярлыков. Удалить — просто удалить файл.</p>
     </details>
     <details>
       <summary>Нужна ли Java отдельно?</summary>
-      <p>Нет. BerryUp.cmd ищет Java в Prism Launcher, PineconeMC, <span class="inline">JAVA_HOME</span> и системе. Если ничего не найдено, скрипт откроет страницу Prism и попросит запустить игру один раз.</p>
+      <p>Нет. BerryUp работает на Java, которая уже есть в Prism Launcher (или PineconeMC) — отдельно ставить ничего не нужно. Если Prism только установлен, запусти в нём игру один раз: он скачает Java, и BerryUp её найдёт.</p>
+    </details>
+    <details>
+      <summary>Двойной щелчок по jar ничего не делает</summary>
+      <p>На чистой Windows файлы <span class="inline">.jar</span> ничем не открываются. Это лечится один раз: правый клик по <span class="inline">BerryUp.jar</span> → «Открыть с помощью» → «Выбрать другое приложение» → укажи <span class="inline">javaw.exe</span> из <span class="inline">%APPDATA%\PrismLauncher\java\java-runtime-*\bin</span> и поставь галочку «Всегда». Дальше — обычный двойной щелчок.</p>
     </details>
     <details>
       <summary>Windows пишет, что файл скачан из интернета</summary>
-      <p>Это стандартная метка браузера. Нажми «Подробнее» → «Выполнить всё равно». Хеши jar и zip лежат в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — файл можно сверить.</p>
+      <p>Это стандартная метка браузера. Нажми «Подробнее» → «Выполнить всё равно». SHA-256 файла лежит в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — хеш можно сверить.</p>
     </details>
     <details>
       <summary>Где сборка и сохранения?</summary>
@@ -298,7 +298,7 @@
     </details>
     <details>
       <summary>Как обновляется BerryUp?</summary>
-      <p>Лаунчер сам проверяет <span class="inline">latest-java.json</span> и скачивает новый jar. BerryUp.cmd подменяет файл при следующем запуске — вручную ничего делать не нужно.</p>
+      <p>Лаунчер сам проверяет <span class="inline">latest-java.json</span>, скачивает новый jar и по кнопке «Перезапустить» подменяет свой же файл — вручную ничего делать не нужно. Никаких скриптов и архивов рядом с лаунчером нет.</p>
     </details>
     <details>
       <summary>Можно поставить сборку без BerryUp?</summary>

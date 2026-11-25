@@ -22,17 +22,16 @@ git add -A && git commit -m "update mods" && git push
 
 ## BerryUp 3 — лаунчер для игроков
 
-**Скачать:** <https://evilvalue.github.io/berry/launcher/BerryUp.zip>
-(внутри `BerryUp.jar` + `BerryUp.cmd`), либо только jar:
-<https://evilvalue.github.io/berry/launcher/BerryUp.jar>
+**Скачать:** <https://evilvalue.github.io/berry/launcher/BerryUp.jar>
 (релизы: <https://github.com/evilvalue/berry-launcher/releases>).
 
-BerryUp переписан на Java: установщика и exe больше нет, это обычный jar.
+BerryUp переписан на Java: установщика, exe и архивов больше нет — это один jar.
 Лаунчер работает поверх **Prism Launcher** или **PineconeMC** — их нужно поставить
-один раз, Java отдельно не требуется (`BerryUp.cmd` берёт её из Prism).
-Распакуй архив в папку вроде `C:\BerryUp` и запусти `BerryUp.cmd`: лаунчер найдёт
-инстанс BerryTrip, поставит или обновит сборку и запустит игру. Подробная
-инструкция для игроков — в `README.txt` внутри архива и на главной странице сайта.
+один раз, Java отдельно не требуется (BerryUp запускается на Java из Prism).
+Положи jar в папку вроде `C:\BerryUp` и запусти: лаунчер найдёт
+инстанс BerryTrip, поставит или обновит сборку и запустит игру. Обновления BerryUp
+применяет сам: скачивает новый jar и подменяет свой файл при перезапуске. Инструкция
+для игроков — на главной странице сайта.
 
 Старые `launcher/BerryUp.exe` и `latest.json` остаются для версии 2.1.2:
 exe-версия не умеет обновляться в jar, её стоит заменить вручную.
@@ -41,8 +40,8 @@ exe-версия не умеет обновляться в jar, её стоит 
 
 1. Поднять `VERSION` в `launcher-java/src/main/java/ru/berrytrip/berryup/Cfg.java`.
 2. `powershell -ExecutionPolicy Bypass -File build\publish-java.ps1 -Notes "что нового"` —
-   соберёт fat jar, упакует `BerryUp.zip`, посчитает SHA-256 и обновит
-   `launcher/latest-java.json` вместе с файлами в `launcher/`.
+   соберёт fat jar, посчитает SHA-256 и обновит `launcher/BerryUp.jar` вместе с
+   `launcher/latest-java.json`.
 3. `git add -A; git commit; git push` — Pages отдаст новую версию, и запущенные
    лаунчеры предложат обновиться.
 4. По желанию: релиз в <https://github.com/evilvalue/berry-launcher>.
