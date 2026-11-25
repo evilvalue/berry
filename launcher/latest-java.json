@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "3.2.0",
+    "version":  "3.2.1",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "6ddd056b4f0c21e412da042e5e393bea9fc4d972ed10445e9334674c5fa994d4",
-    "size":  1417520,
-    "notes":  "Новый дизайн окна и иконки: ягодный градиент, объёмные карточки, новая навигация. Лендинг BerryTrip полностью переработан."
+    "sha256":  "ce6a90792733ab6c230ebda3d4c5e85c8f51b73ea3df9db67abd44fff12c6c44",
+    "size":  1363086,
+    "notes":  "Простая минималистичная иконка и тот же ягодный градиент на сайте, в Prism и в лаунчере."
 }
