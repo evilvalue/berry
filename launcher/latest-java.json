@@ -1,7 +1,7 @@
-﻿{
-    "version":  "3.2.2",
-    "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "02247b4b169f21ae75c4575d9ba2d5bad32b7b260fd2e3e68d4a433bcbad022f",
-    "size":  1277462,
-    "notes":  "Короткий сайт: только как начать играть. В jar убраны нативные библиотеки — файл легче и без DLL внутри."
+{
+    "version": "3.3.0",
+    "jar": "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
+    "sha256": "538cc5956c121ca79ca8661a702f9dada811510bd8a39a67012f95d377f208ee",
+    "size": 1342829,
+    "notes": "3.3.0: вход через Telegram — бот @killberriesbot, мод BerryTrip Auth ставится в сборку сам; вкладка «Аккаунт» с ником и скином QuickSkin."
 }
