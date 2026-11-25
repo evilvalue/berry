@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "3.2.1",
+    "version":  "3.2.2",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "ce6a90792733ab6c230ebda3d4c5e85c8f51b73ea3df9db67abd44fff12c6c44",
-    "size":  1363086,
-    "notes":  "Простая минималистичная иконка и тот же ягодный градиент на сайте, в Prism и в лаунчере."
+    "sha256":  "02247b4b169f21ae75c4575d9ba2d5bad32b7b260fd2e3e68d4a433bcbad022f",
+    "size":  1277462,
+    "notes":  "Короткий сайт: только как начать играть. В jar убраны нативные библиотеки — файл легче и без DLL внутри."
 }
