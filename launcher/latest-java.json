@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "3.6.3",
+    "version":  "3.6.4",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "2f9a1737a3c757a88395c38bcde263144da81d8808611713742e0f5be7aafec1",
-    "size":  1357214,
-    "notes":  "Бот не выдаёт занятый ник из вайтлиста; один Telegram = один ник."
+    "sha256":  "4a6c9e33e31d40b358dda850a2e68f354be9ae571a088228c654874475749381",
+    "size":  1357222,
+    "notes":  "berryauth 1.1.2: исправлена версия в манифесте мода"
 }
