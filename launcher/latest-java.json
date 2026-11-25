@@ -1,7 +1,7 @@
 ﻿{
-    "version":  "3.12.0",
+    "version":  "3.12.1",
     "jar":  "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256":  "7ab939327974ad79f3ccadd420f59c95ebe70f44b160b56d13b1769d2b437f7a",
-    "size":  1587595,
-    "notes":  "BerryUp 3.12.0: вход через Telegram на порту 25712, исправленные второй слой и Slim-скины, защита установленной версии от отката старым jar."
+    "sha256":  "b8fb5aee22552a22e24ed2838c0f691fd9a5ce517f22db2b32566a27ba067550",
+    "size":  1588402,
+    "notes":  "BerryUp 3.12.1: вход в Telegram открывается напрямую через tg:// — токен больше не теряется; окно не дублирует элементы при изменении размера."
 }
