@@ -335,16 +335,28 @@
       liveText.innerHTML = html;
       live.classList.toggle('on', !!online);
     }
+    function render(d){
+      var p = d.players || {};
+      var n = p.online || 0, m = p.max || 0;
+      show('<b>' + n + '</b>' + (m ? ' / ' + m : '') + ' игроков в сети', true);
+    }
+    function fallback(){
+      fetch('https://api.mcstatus.io/v2/status/java/135.181.126.167:25737', {cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if (d && d.online === true) return render(d);
+          show('Сервер выключен', false);
+        })
+        .catch(function(){ show('Статус недоступен', false); });
+    }
     function poll(){
       fetch('https://api.mcsrvstat.us/3/135.181.126.167:25737', {cache:'no-store'})
         .then(function(r){ return r.json(); })
         .then(function(d){
-          if (!d || d.online !== true) return show('Сервер выключен', false);
-          var p = d.players || {};
-          var n = p.online || 0, m = p.max || 0;
-          show('<b>' + n + '</b>' + (m ? ' / ' + m : '') + ' игроков в сети', true);
+          if (d && d.online === true) return render(d);
+          fallback();
         })
-        .catch(function(){ show('Статус недоступен', false); });
+        .catch(fallback);
     }
     poll();
     setInterval(poll, 60000);
