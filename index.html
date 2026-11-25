@@ -63,6 +63,16 @@
   .btn-ghost:hover{background:rgba(255,255,255,.09)}
   .btn-lg{padding:15px 24px; font-size:15.5px; border-radius:13px}
 
+  /* онлайн */
+  .live{
+    display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:6px 13px 6px 11px;
+    border-radius:999px; background:rgba(255,255,255,.05); border:1px solid var(--line);
+    color:var(--muted); font-size:13px; font-weight:700;
+  }
+  .live b{color:var(--fg); font-weight:800}
+  .live .dot{width:8px; height:8px; border-radius:50%; background:var(--dim); box-shadow:0 0 0 3px rgba(107,115,133,.16); flex:none}
+  .live.on .dot{background:#43d17a; box-shadow:0 0 0 3px rgba(67,209,122,.18)}
+
   /* hero */
   .hero{padding:126px 0 10px}
   .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center}
@@ -184,6 +194,7 @@
       <div>
         <h1>BerryTrip</h1>
         <p class="tagline">Сервер по Minecraft 1.21.1</p>
+        <p class="live" id="live"><span class="dot"></span><span id="live-text">Проверяю сервер…</span></p>
         <p class="lead">Сборка, моды и подключение уже собраны в один файл. Скачиваешь BerryUp, открываешь и жмёшь «Играть».</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
@@ -285,6 +296,27 @@
 </footer>
 
 <script>
+  (function(){
+    var live = document.getElementById('live');
+    var liveText = document.getElementById('live-text');
+    function show(html, online){
+      liveText.innerHTML = html;
+      live.classList.toggle('on', !!online);
+    }
+    function poll(){
+      fetch('https://api.mcsrvstat.us/3/135.181.126.167:25737', {cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if (!d || d.online !== true) return show('Сервер выключен', false);
+          var p = d.players || {};
+          var n = p.online || 0, m = p.max || 0;
+          show('<b>' + n + '</b>' + (m ? ' / ' + m : '') + ' игроков в сети', true);
+        })
+        .catch(function(){ show('Статус недоступен', false); });
+    }
+    poll();
+    setInterval(poll, 60000);
+  })();
   (function(){
     var header = document.getElementById('header');
     function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 8); }
