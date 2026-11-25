@@ -1,7 +1,7 @@
 {
     "version": "3.12.2",
     "jar": "https://evilvalue.github.io/berry/launcher/BerryUp.jar",
-    "sha256": "aac79f548cb7e26109f8b696fe6e21d3cd26a4d8ede63637eab0c6b2ab25ef4d",
-    "size": 1598604,
+    "sha256": "2581aec71c9c314b45311993ff1d8c991dd10bd2cb6782eee7c454f32a10a038",
+    "size": 1598629,
     "notes": "BerryUp 3.12.2: в настройках появился Distant Horizons — по умолчанию выключен; при включении лаунчер скачивает мод 3.3.3 для Minecraft 1.21.1 и убирает его в berry-off при выключении."
 }
