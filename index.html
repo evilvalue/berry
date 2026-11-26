@@ -5,181 +5,272 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BerryTrip — сервер Minecraft 1.21.1</title>
 <meta name="description" content="Сервер BerryTrip по Minecraft 1.21.1. Скачай BerryUp.jar, открой и нажми «Играть» — сборка и моды поставятся сами.">
-<meta name="theme-color" content="#06070a">
+<meta name="theme-color" content="#0b0d12">
 <link rel="icon" href="berry.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:"Monocraft";
+    src:url("fonts/Monocraft.ttf") format("truetype");
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:"Monocraft";
+    src:url("fonts/Monocraft-SemiBold.ttf") format("truetype");
+    font-weight:600 800; font-style:normal; font-display:swap;
+  }
   :root{
-    --bg:#06070a;
-    --surface:#10131a;
-    --line:rgba(255,255,255,.08);
-    --line-strong:rgba(255,255,255,.15);
-    --fg:#f3f5fa;
-    --muted:#9aa3b5;
-    --dim:#6b7385;
-    --pink:#ff4d7d;
-    --grad:linear-gradient(135deg,#ff4d7d 0%,#ff7a5c 58%,#ffb35c 100%);
-    --radius:18px;
+    --bg:#0b0d12;
+    --bg-soft:#0f1219;
+    --panel:#151923;
+    --panel-2:#1d2330;
+    --panel-3:#242b3a;
+    --line:#353d4f;
+    --line-soft:#252c3a;
+    --fg:#f2f4f8;
+    --muted:#a9b2c3;
+    --dim:#747e90;
+    --pink:#ff5d86;
+    --pink-hi:#ff86a5;
+    --pink-deep:#b62e52;
+    --orange:#ffa36b;
+    --green:#4be39f;
+    --violet:#9b87ff;
+    --shadow:#07080c;
+    --nav:76px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth; scroll-padding-top:88px}
+  html{scroll-behavior:smooth; scroll-padding-top:calc(var(--nav) + 18px)}
   body{
     margin:0; background:var(--bg); color:var(--fg);
-    font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    font-family:"Monocraft","Consolas",monospace;
+    font-size:15px; line-height:1.7; letter-spacing:.02em;
+    -webkit-font-smoothing:none; overflow-x:hidden;
   }
   body::before{
     content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:
-      radial-gradient(820px 540px at 86% -10%, rgba(255,77,125,.16), transparent 62%),
-      radial-gradient(720px 500px at 0% 2%, rgba(139,92,246,.12), transparent 66%);
+    background-image:
+      linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
+    background-size:32px 32px;
   }
   a{color:inherit; text-decoration:none}
   img{max-width:100%; display:block}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 24px}
+  .pxicon{width:16px; height:16px; flex:none; shape-rendering:crispEdges}
 
+  /* ---------- шапка ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    border-bottom:1px solid transparent; transition:background .2s, border-color .2s;
+    background:var(--bg); border-bottom:2px solid transparent;
   }
-  header.scrolled{background:rgba(6,7,10,.82); backdrop-filter:blur(16px); border-bottom-color:var(--line)}
-  .nav{display:flex; align-items:center; gap:22px; height:72px}
-  .brand{display:flex; align-items:center; gap:10px; font-family:"Unbounded",sans-serif; font-size:17px; font-weight:600}
-  .brand img{width:34px; height:34px; border-radius:10px}
-  .nav-links{display:flex; gap:22px; margin-left:auto; font-size:14px; font-weight:600; color:var(--muted)}
-  .nav-links a:hover{color:var(--fg)}
+  header.scrolled{border-bottom-color:var(--line); background:var(--bg-soft)}
+  .nav{display:flex; align-items:center; gap:22px; height:var(--nav)}
+  .brand{
+    display:flex; align-items:center; gap:11px; font-weight:700; font-size:18px;
+    letter-spacing:.02em;
+  }
+  .brand img{
+    width:36px; height:36px; image-rendering:pixelated;
+    border:2px solid var(--line); box-shadow:3px 3px 0 var(--shadow);
+  }
+  .nav-links{
+    display:flex; gap:22px; margin-left:auto;
+    font-size:12px; font-weight:600; color:var(--muted); text-transform:uppercase;
+  }
+  .nav-links a{padding:4px 0; border-bottom:2px solid transparent}
+  .nav-links a:hover{color:var(--fg); border-bottom-color:var(--pink)}
+
+  /* ---------- кнопки ---------- */
   .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    padding:12px 20px; border-radius:12px; font-weight:700; font-size:14.5px;
-    border:1px solid transparent; cursor:pointer; font-family:inherit; white-space:nowrap;
-    transition:transform .16s, box-shadow .16s, background .16s;
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding:12px 19px; border:3px solid var(--pink-deep); background:var(--pink);
+    color:#1a0b11; font-family:inherit; font-weight:700; font-size:13px;
+    text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
+    cursor:pointer; box-shadow:5px 5px 0 var(--shadow);
   }
-  .btn svg{width:17px; height:17px; flex:none}
-  .btn-primary{background:var(--grad); color:#1d0910; box-shadow:0 12px 30px -14px rgba(255,77,125,.7)}
-  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 16px 36px -14px rgba(255,77,125,.8)}
-  .btn-ghost{background:rgba(255,255,255,.05); border-color:var(--line-strong); color:var(--fg)}
-  .btn-ghost:hover{background:rgba(255,255,255,.09)}
-  .btn-lg{padding:15px 24px; font-size:15.5px; border-radius:13px}
+  .btn:hover{background:var(--pink-hi); transform:translate(2px,2px); box-shadow:3px 3px 0 var(--shadow)}
+  .btn:active{transform:translate(5px,5px); box-shadow:0 0 0 var(--shadow)}
+  .btn-ghost{
+    background:var(--panel-2); border-color:var(--line); color:var(--fg);
+    box-shadow:5px 5px 0 var(--shadow);
+  }
+  .btn-ghost:hover{background:var(--panel-3); border-color:var(--pink)}
+  .btn-lg{padding:13px 16px; font-size:13px}
+  .hero-actions .btn-lg{padding:12px 15px}
+  .hero-actions .count{padding:7px 9px; font-size:10.5px}
 
-  /* онлайн */
+  /* ---------- счётчик ---------- */
+  .count{
+    display:inline-flex; align-items:center; gap:7px; padding:8px 11px;
+    border:2px solid var(--line); background:var(--panel); color:var(--muted);
+    font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.03em;
+    box-shadow:3px 3px 0 var(--shadow);
+  }
+  .count::before{
+    content:""; width:7px; height:7px; background:var(--green);
+    box-shadow:0 0 0 2px rgba(75,227,159,.18);
+  }
+
+  /* ---------- онлайн ---------- */
   .live{
-    display:inline-flex; align-items:center; gap:8px; margin:0 0 18px; padding:6px 13px 6px 11px;
-    border-radius:999px; background:rgba(255,255,255,.05); border:1px solid var(--line);
-    color:var(--muted); font-size:13px; font-weight:700;
+    display:inline-flex; align-items:center; gap:9px; margin:0 0 18px;
+    padding:6px 11px; border:2px solid var(--line); background:var(--panel);
+    color:var(--muted); font-size:11px; text-transform:uppercase;
   }
-  .live b{color:var(--fg); font-weight:800}
-  .live .dot{width:8px; height:8px; border-radius:50%; background:var(--dim); box-shadow:0 0 0 3px rgba(107,115,133,.16); flex:none}
-  .live.on .dot{background:#43d17a; box-shadow:0 0 0 3px rgba(67,209,122,.18)}
+  .live b{color:var(--fg); font-weight:700}
+  .live .dot{
+    width:8px; height:8px; background:var(--dim); flex:none;
+    box-shadow:0 0 0 2px rgba(116,126,144,.18);
+  }
+  .live.on .dot{background:var(--green); box-shadow:0 0 0 2px rgba(75,227,159,.2)}
 
-  /* hero */
-  .hero{padding:126px 0 10px}
-  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center}
-  h1{font-family:"Unbounded",sans-serif; font-size:clamp(46px,6.6vw,76px); line-height:1; letter-spacing:-2px; margin:0 0 14px; font-weight:700}
-  .tagline{font-size:clamp(19px,2.1vw,24px); font-weight:700; margin:0 0 12px; letter-spacing:-.3px}
-  .lead{color:var(--muted); font-size:17px; max-width:460px; margin:0 0 28px}
+  /* ---------- hero ---------- */
+  .hero{padding:calc(var(--nav) + 54px) 0 10px}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:center}
+  h1{
+    font-size:clamp(44px,6.4vw,74px); line-height:1; letter-spacing:-.01em;
+    margin:0 0 16px; font-weight:700;
+  }
+  .tagline{font-size:clamp(18px,2vw,22px); font-weight:700; margin:0 0 14px; color:var(--fg)}
+  .lead{color:var(--muted); font-size:15px; max-width:470px; margin:0 0 26px}
   .lead b{color:var(--fg); font-weight:600}
-  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px}
-  .note{color:var(--dim); font-size:13px}
+  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px}
+  .note{color:var(--dim); font-size:12px; margin:0}
+
   .shot{
-    border-radius:22px; padding:8px; border:1px solid var(--line-strong);
-    background:linear-gradient(150deg,rgba(255,255,255,.09),rgba(255,255,255,.02) 45%,rgba(255,77,125,.1));
-    box-shadow:0 30px 70px -40px rgba(0,0,0,.9);
+    position:relative; padding:7px; border:3px solid var(--line);
+    background:var(--panel); box-shadow:9px 9px 0 var(--shadow);
   }
-  .shot img{width:100%; height:100%; aspect-ratio:4/3.1; object-fit:cover; border-radius:16px}
+  .shot::before,.shot::after{
+    content:""; position:absolute; width:10px; height:10px; background:var(--pink);
+  }
+  .shot::before{top:-3px; left:-3px; box-shadow:0 0 0 3px var(--bg)}
+  .shot::after{bottom:-3px; right:-3px; box-shadow:0 0 0 3px var(--bg)}
+  .shot img{
+    width:100%; height:100%; aspect-ratio:4/3.1; object-fit:cover;
+    border:2px solid var(--line-soft);
+  }
 
-  section.wrap{padding:74px 24px 0}
-  h2{font-family:"Unbounded",sans-serif; font-size:clamp(22px,2.6vw,30px); letter-spacing:-.7px; line-height:1.15; margin:0 0 8px; font-weight:600}
-  .sub{color:var(--muted); font-size:15px; margin:0 0 28px}
+  /* ---------- секции ---------- */
+  section.wrap{padding:78px 24px 0}
+  h2{
+    display:flex; align-items:center; gap:12px;
+    font-size:clamp(22px,2.7vw,30px); line-height:1.2; margin:0 0 8px;
+    font-weight:700; text-transform:uppercase; letter-spacing:.01em;
+  }
+  h2::before{
+    content:""; width:12px; height:12px; background:var(--pink);
+    box-shadow:3px 3px 0 var(--shadow); flex:none;
+  }
+  .sub{color:var(--muted); font-size:14px; margin:0 0 28px}
 
-  /* шаги */
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; list-style:none; padding:0; margin:0}
-  .step{padding:22px; border-radius:16px; background:var(--surface); border:1px solid var(--line)}
+  .steps{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; list-style:none; padding:0; margin:0}
+  .step{
+    padding:22px; background:var(--panel); border:2px solid var(--line);
+    box-shadow:6px 6px 0 var(--shadow);
+  }
   .step .n{
-    width:28px; height:28px; border-radius:9px; display:grid; place-items:center;
-    background:rgba(255,77,125,.14); border:1px solid rgba(255,77,125,.3);
-    color:#ff8fae; font-size:13px; font-weight:800; margin-bottom:14px;
+    width:30px; height:30px; display:grid; place-items:center;
+    background:var(--pink-deep); border:2px solid var(--pink);
+    color:var(--fg); font-size:13px; font-weight:700; margin-bottom:14px;
+    box-shadow:2px 2px 0 var(--shadow);
   }
-  .step h3{font-size:16px; margin:0 0 6px; font-weight:800; letter-spacing:-.2px}
-  .step p{margin:0; color:var(--muted); font-size:14px}
-  .step a{color:#ff9bb6; font-weight:700; font-size:13.5px; display:inline-block; margin-top:10px}
-  .step a:hover{color:#fff}
-  .file{
-    display:inline-block; margin-top:10px; padding:3px 8px; border-radius:7px;
-    background:rgba(255,255,255,.06); border:1px solid var(--line);
-    font-family:ui-monospace,Consolas,monospace; font-size:12px;
+  .step h3{font-size:15px; margin:0 0 7px; font-weight:700; line-height:1.4}
+  .step p{margin:0; color:var(--muted); font-size:13.5px}
+  .step a{color:var(--pink-hi); font-weight:700; display:inline-block; margin-top:11px; border-bottom:2px solid var(--pink-deep)}
+  .step a:hover{color:var(--fg); border-bottom-color:var(--pink)}
+  .file, code{
+    display:inline-block; padding:2px 6px; background:var(--panel-3);
+    border:2px solid var(--line-soft); color:var(--fg);
+    font-family:inherit; font-size:12px;
   }
+  .file{margin-top:11px}
 
-  /* скачать */
+  /* ---------- скачать ---------- */
   .dl{
-    display:flex; align-items:center; gap:20px; flex-wrap:wrap;
-    padding:24px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--line);
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+    padding:24px; background:var(--panel); border:3px solid var(--line);
+    box-shadow:8px 8px 0 var(--shadow);
   }
   .dl .txt{flex:1 1 320px}
-  .dl h3{margin:0 0 4px; font-size:19px; font-weight:800; letter-spacing:-.3px}
-  .dl .meta{color:var(--dim); font-size:13px}
-  .dl .hash{display:block; margin-top:14px; color:var(--dim); font-size:12.5px}
-  .dl .hash a{color:#ff9bb6; font-weight:600}
+  .dl h3{margin:0 0 5px; font-size:19px; font-weight:700}
+  .dl .meta{color:var(--muted); font-size:12.5px}
+  .dl .hash{display:block; margin-top:12px; color:var(--dim); font-size:12px}
+  .dl .hash a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
+  .dl-action{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
   .packline{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    margin-top:12px; padding:14px 18px; border-radius:14px;
-    border:1px dashed var(--line-strong); color:var(--muted); font-size:13.5px;
+    margin-top:14px; padding:14px 16px; border:2px dashed var(--line);
+    color:var(--muted); font-size:12.5px;
   }
-  .packline a{color:var(--fg); font-weight:700; border-bottom:1px solid var(--line-strong)}
+  .packline a{color:var(--fg); font-weight:700; border-bottom:2px solid var(--pink-deep)}
 
-  /* правила */
+  /* ---------- правила ---------- */
   .rules{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
   .rules li{
-    padding:14px 16px; border-radius:13px; background:var(--surface);
-    border:1px solid var(--line); color:var(--muted); font-size:14.5px;
+    padding:14px 16px; background:var(--panel); border:2px solid var(--line);
+    color:var(--muted); font-size:13.5px;
   }
   .rules li b{color:var(--fg); font-weight:700}
-  .rules li::before{content:"—"; color:#ff9bb6; font-weight:800; margin-right:8px}
+  .rules li::before{
+    content:""; display:inline-block; width:8px; height:8px;
+    background:var(--pink); box-shadow:2px 2px 0 var(--shadow);
+    margin-right:10px; vertical-align:1px;
+  }
+  .rules li a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
 
-  /* вопросы */
-  .faq{max-width:760px}
-  details{border:1px solid var(--line); border-radius:13px; background:var(--surface); margin-bottom:8px}
-  details[open]{border-color:rgba(255,77,125,.28)}
+  /* ---------- вопросы ---------- */
+  .faq{max-width:780px}
+  details{
+    border:2px solid var(--line); background:var(--panel);
+    margin-bottom:9px; box-shadow:4px 4px 0 var(--shadow);
+  }
+  details[open]{border-color:var(--pink-deep)}
   summary{
-    cursor:pointer; list-style:none; padding:16px 46px 16px 18px; position:relative;
-    font-weight:700; font-size:14.5px;
+    cursor:pointer; list-style:none; padding:15px 48px 15px 16px; position:relative;
+    font-weight:700; font-size:13.5px; line-height:1.5;
   }
   summary::-webkit-details-marker{display:none}
   summary::after{
-    content:""; position:absolute; right:18px; top:50%; width:8px; height:8px;
-    border-right:2px solid var(--dim); border-bottom:2px solid var(--dim);
-    transform:translateY(-60%) rotate(45deg); transition:transform .18s;
+    content:"+"; position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    color:var(--pink); font-size:20px; font-weight:700; line-height:1;
   }
-  details[open] summary::after{transform:translateY(-20%) rotate(-135deg)}
-  details p{color:var(--muted); margin:0; padding:0 18px 16px; font-size:14px}
-  details code{
-    font-family:ui-monospace,Consolas,monospace; font-size:12.5px;
-    background:rgba(255,255,255,.07); padding:1px 5px; border-radius:5px; color:var(--fg);
-  }
-  details a{color:#ff9bb6; font-weight:600}
+  details[open] summary::after{content:"\2212"}
+  details p{color:var(--muted); margin:0; padding:0 16px 16px; font-size:13px}
+  details a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
+  details p a:hover{color:var(--fg)}
 
-  footer{margin-top:64px; border-top:1px solid var(--line)}
+  /* ---------- ягодки и подвал ---------- */
+  .berry-strip{display:flex; gap:14px; align-items:flex-end; justify-content:center; padding:64px 0 0}
+  .berry-strip img{width:20px; height:20px; image-rendering:pixelated; opacity:.75}
+  .berry-strip img:nth-child(2n){width:14px; height:14px; opacity:.5}
+  .berry-strip img:nth-child(3n){width:26px; height:26px; opacity:.9}
+
+  footer{margin-top:46px; border-top:2px solid var(--line); background:var(--bg-soft)}
   .foot{display:flex; align-items:center; gap:18px; padding:24px 0 28px; flex-wrap:wrap}
-  .foot-brand{display:flex; align-items:center; gap:9px; font-family:"Unbounded",sans-serif; font-size:14px; font-weight:600}
-  .foot-brand img{width:28px; height:28px; border-radius:8px}
-  .foot nav{display:flex; gap:18px; margin-left:auto; font-size:13px; color:var(--muted); font-weight:600; flex-wrap:wrap}
-  .foot nav a:hover{color:var(--fg)}
-  .fine{color:var(--dim); font-size:12px; padding-bottom:26px}
+  .foot-brand{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700}
+  .foot-brand img{width:28px; height:28px; image-rendering:pixelated}
+  .foot nav{display:flex; gap:18px; margin-left:auto; font-size:11px; color:var(--muted); text-transform:uppercase; flex-wrap:wrap}
+  .foot nav a:hover{color:var(--pink)}
+  .fine{color:var(--dim); font-size:11px; padding-bottom:26px}
 
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr; gap:34px}
-    .hero{padding-top:106px}
-    .steps{grid-template-columns:1fr}
-    .rules{grid-template-columns:1fr}
-    .faq{max-width:none}
+    .hero{padding-top:calc(var(--nav) + 38px)}
+    .shot{max-width:620px}
+  }
+  @media (max-width:720px){
+    .steps,.rules{grid-template-columns:1fr}
+    .nav-links{display:none}
   }
   @media (max-width:680px){
     .wrap{padding-left:18px; padding-right:18px}
-    .nav-links{display:none}
-    section.wrap{padding-top:56px; padding-left:18px; padding-right:18px}
+    section.wrap{padding-top:58px; padding-left:18px; padding-right:18px}
     .hero-actions .btn{width:100%}
-    .dl{padding:20px}
+    .hero-actions .count{width:100%; justify-content:center}
+    .dl{padding:19px}
+    .dl-action{width:100%}
+    .dl-action .btn{flex:1}
     .foot nav{margin-left:0; width:100%}
   }
 </style>
@@ -195,7 +286,7 @@
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
     </nav>
-    <a class="btn btn-primary" href="launcher/BerryUp.jar" download>Скачать</a>
+    <a class="btn" href="launcher/BerryUp.jar" download>Скачать</a>
   </div>
 </header>
 
@@ -208,13 +299,14 @@
         <p class="live" id="live"><span class="dot"></span><span id="live-text">Проверяю сервер…</span></p>
         <p class="lead">Сборка, моды и подключение уже собраны в один файл. Скачиваешь BerryUp, открываешь и жмёшь «Играть».</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+          <a class="btn btn-lg" href="launcher/BerryUp.jar" download>
+            <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
             Скачать BerryUp.jar
           </a>
+          <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp.jar с GitHub Releases">…</span>
           <a class="btn btn-ghost btn-lg" href="#start">Как начать</a>
         </div>
-        <p class="note">Windows · 1,3 МБ · нужен Prism Launcher</p>
+        <p class="note">Windows · 1,6 МБ · нужен Prism Launcher</p>
       </div>
       <div class="shot">
         <img src="img/hero.jpg" alt="Мир сервера BerryTrip">
@@ -256,17 +348,20 @@
 
   <section id="download" class="wrap">
     <h2>Скачать</h2>
-    <p class="sub">Одна версия, всегда актуальная. Обновляется сам.</p>
+    <p class="sub">Одна версия, всегда актуальная. Обновляется сам, конфиги не трогает.</p>
     <div class="dl">
       <div class="txt">
         <h3>BerryUp.jar</h3>
-        <div class="meta">Версия 3.13.0 · 1,6 МБ · Windows</div>
+        <div class="meta">Версия 3.14.0 · 1,6 МБ · Windows</div>
         <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a></span>
       </div>
-      <a class="btn btn-primary btn-lg" href="launcher/BerryUp.jar" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
-        Скачать
-      </a>
+      <div class="dl-action">
+        <a class="btn btn-lg" href="launcher/BerryUp.jar" download>
+          <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
+          Скачать
+        </a>
+        <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp.jar с GitHub Releases">…</span>
+      </div>
     </div>
     <div class="packline">
       Только сборка, без лаунчера? Prism → Add Instance → Import from zip, файл
@@ -312,6 +407,14 @@
       <p>В Prism, папка <code>instances/BerryTrip</code>. Сохранения и настройки лежат там же, BerryUp их не переносит и не удаляет.</p>
     </details>
     <details>
+      <summary>Обновление сбросит мои конфиги?</summary>
+      <p>Нет. Перед обновлением BerryUp сохраняет <code>config/</code>, <code>options.txt</code>, клавиши и список серверов, а после возвращает их на место. Настройки модов, графики и серверов остаются твоими.</p>
+    </details>
+    <details>
+      <summary>Как вернуть конфиги к исходным?</summary>
+      <p>«Настройки» → «Сбросить конфиги». BerryUp уберёт твои файлы, распакует исходные из сборки и сохранит копию старых в <code>instances/BerryTrip/berry-config-backup</code>. Сохранения, моды и вход не тронет.</p>
+    </details>
+    <details>
       <summary>Куда ставится сам BerryUp</summary>
       <p>При первом запуске jar переезжает в <code>%LOCALAPPDATA%\BerryUp</code>, ярлыки
         появляются на рабочем столе и в меню «Пуск», настройки лежат в <code>%APPDATA%\BerryUp</code>.
@@ -323,10 +426,16 @@
       <p>Да. «Аккаунт» → «Внешний вид»: выбери файл или перетащи его в карточку, покрути
         модель мышью и нажми «Применить скин» / «Применить плащ». BerryUp принимает только
         форматы QuickSkin — PNG или GIF, скин 64×32 или 64×64…2048×2048, плащ 64×32…2048×1024 —
-        и кладёт файл прямо в пул мода: <code>quickskin/uploads/skins</code> или <code>capes</code>.</p>
+        и кладёт файл в <code>%APPDATA%\QuickSkin\skins</code> или <code>%APPDATA%\QuickSkin\capes</code>.</p>
     </details>
     </div>
   </section>
+
+  <div class="berry-strip" aria-hidden="true">
+    <img src="berry.png" alt=""><img src="berry.png" alt=""><img src="berry.png" alt="">
+    <img src="berry.png" alt=""><img src="berry.png" alt=""><img src="berry.png" alt="">
+    <img src="berry.png" alt="">
+  </div>
 </main>
 
 <footer>
@@ -339,7 +448,7 @@
         <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">BerryUp на GitHub</a>
       </nav>
     </div>
-    <div class="fine">Неофициальный сервер, не связан с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang Studios.</div>
+    <div class="fine">Неофициальный сервер, не связан с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang Studios.<br>Шрифт Monocraft распространяется по лицензии <a href="fonts/Monocraft-LICENSE.txt">OFL</a>.</div>
   </div>
 </footer>
 
@@ -377,6 +486,46 @@
     poll();
     setInterval(poll, 60000);
   })();
+
+  (function(){
+    var nodes = document.querySelectorAll('[data-downloads]');
+    if (!nodes.length) return;
+    var key = 'berryup.downloads';
+    var timeKey = 'berryup.downloads.at';
+    function paint(total){
+      var text = Number(total).toLocaleString('ru-RU') + ' скачиваний';
+      for (var i = 0; i < nodes.length; i++) nodes[i].textContent = text;
+    }
+    try {
+      var saved = localStorage.getItem(key);
+      var at = Number(localStorage.getItem(timeKey) || 0);
+      if (saved !== null && at && Date.now() - at < 3600000) paint(saved);
+    } catch (ignored) {}
+    fetch('https://api.github.com/repos/evilvalue/berry-launcher/releases?per_page=100', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(releases){
+        var total = 0;
+        (releases || []).forEach(function(release){
+          (release.assets || []).forEach(function(asset){
+            if (/^BerryUp\.jar$/i.test(asset.name || '')) total += asset.download_count || 0;
+          });
+        });
+        if (!total) throw new Error('empty');
+        paint(total);
+        try {
+          localStorage.setItem(key, String(total));
+          localStorage.setItem(timeKey, String(Date.now()));
+        } catch (ignored) {}
+      })
+      .catch(function(){
+        try {
+          if (localStorage.getItem(key) === null) {
+            for (var i = 0; i < nodes.length; i++) nodes[i].textContent = 'скачиваний: —';
+          }
+        } catch (ignored) {}
+      });
+  })();
+
   (function(){
     var header = document.getElementById('header');
     function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 8); }
