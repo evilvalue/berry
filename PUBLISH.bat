@@ -2,7 +2,7 @@
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
 cd /d "%~dp0"
-title BerryTrip (BerryUp) - publikaciya obnovleniy
+title BerryTrip - publikaciya obnovleniy
 
 set "PAGES=https://evilvalue.github.io/berry/pack.toml"
 set "PACKWIZ="

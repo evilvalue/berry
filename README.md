@@ -28,35 +28,26 @@ git add -A && git commit -m "update mods" && git push
 Моды, которых нет на Modrinth, лежат прямо в `mods/*.jar` — их достаточно заменить
 файлом и выполнить `packwiz refresh`. Клиенты получат новый файл на следующем запуске.
 
-## BerryUp 3 — лаунчер для игроков
+## BerryTrip Launcher
 
-**Скачать:** <https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip>
-(релизы: <https://github.com/evilvalue/berry-launcher/releases>).
+Новый лаунчер для игроков — самостоятельный форк Prism Launcher:
+<https://github.com/evilvalue/prism-berry>. Отдельный Prism, Java и ручная
+сборка не нужны: лаунчер сам скачивает Java, пак и обновления.
 
-BerryUp переписан на Java: установщика и exe больше нет — в архиве лежат jar и `START-BerryUp.bat`, который находит Java и запускает лаунчер.
-Лаунчер работает поверх **Prism Launcher** или **PineconeMC** — их нужно поставить
-один раз, Java отдельно не требуется (BerryUp запускается на Java из Prism).
-Запусти jar из любой папки: при первом запуске BerryUp сам поставится в
-`%LOCALAPPDATA%\BerryUp`, сделает ярлыки на рабочем столе и в «Пуске» и уберёт
-скачанный файл. Дальше — запуск с ярлыка: он берёт Java из Prism, поэтому на
-масштабе Windows 125–150% шрифт не мылится. Лаунчер найдёт инстанс BerryTrip,
-поставит или обновит сборку и запустит игру, а обновления BerryUp применяет сам.
-Скин и плащ QuickSkin можно посмотреть в 3D прямо в лаунчере: лаунчер принимает
-только поддерживаемые модом форматы и кладёт файлы в пул мода. Инструкция для
-игроков — на главной странице сайта.
+Скачать: <https://github.com/evilvalue/prism-berry/releases/latest>
 
-Старые `launcher/BerryUp.exe` и `latest.json` остаются для версии 2.1.2:
-exe-версия не умеет обновляться в jar, её стоит заменить вручную.
+Сайт отдаёт установщик и портативный zip из последнего GitHub-релиза через
+JavaScript; статические ссылки ведут на страницу релизов, поэтому страница
+не ломается при смене версии. SHA-256 берётся из поля `digest` GitHub API.
 
-### Как выпустить новую версию BerryUp
+Старые файлы `launcher/BerryUp.*` и `launcher/latest*.json` остаются только
+для совместимости с BerryUp 3. Новый сайт на них не ссылается.
 
-1. Поднять `VERSION` в `launcher-java/src/main/java/ru/berrytrip/berryup/Cfg.java`.
-2. `powershell -ExecutionPolicy Bypass -File build\publish-java.ps1 -Notes "что нового"` —
-   соберёт fat jar, посчитает SHA-256 и обновит `launcher/BerryUp.jar` вместе с
-   `launcher/latest-java.json`.
-3. `git add -A; git commit; git push` — Pages отдаст новую версию, и запущенные
-   лаунчеры предложат обновиться.
-4. По желанию: релиз в <https://github.com/evilvalue/berry-launcher>.
+### Как обновить сайт
 
-Исходники лаунчера живут в отдельном репозитории:
-<https://github.com/evilvalue/berry-launcher>.
+1. Измени `index.html` или файлы в `img/`/`fonts/`.
+2. `git add -A && git commit -m "site: ..." && git push` — GitHub Pages
+   пересоберёт страницу автоматически.
+3. Проверь <https://evilvalue.github.io/berry/> и ссылки на релиз.
+
+Исходники лаунчера: <https://github.com/evilvalue/prism-berry>.

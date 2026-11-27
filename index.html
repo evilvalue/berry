@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BerryTrip — сервер Minecraft 1.21.1</title>
-<meta name="description" content="Сервер BerryTrip по Minecraft 1.21.1. Скачай BerryUp, открой и нажми «Играть» — сборка и моды поставятся сами.">
+<title>BerryTrip — лаунчер и сервер Minecraft 1.21.1</title>
+<meta name="description" content="BerryTrip Launcher — один установщик для сервера BerryTrip. Без Prism, Java и ручной сборки: скачай, запусти и войди через Telegram.">
 <meta name="theme-color" content="#0b0d12">
 <link rel="icon" href="berry.png" type="image/png">
 <style>
@@ -50,10 +50,9 @@
   }
   a{color:inherit; text-decoration:none}
   img{max-width:100%; display:block}
-  .wrap{max-width:1060px; margin:0 auto; padding:0 24px}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px}
   .pxicon{width:16px; height:16px; flex:none; shape-rendering:crispEdges}
 
-  /* ---------- шапка ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:50;
     background:var(--bg); border-bottom:2px solid transparent;
@@ -65,7 +64,7 @@
     letter-spacing:.02em;
   }
   .brand img{
-    width:36px; height:36px; image-rendering:pixelated;
+    width:38px; height:38px; image-rendering:pixelated;
     border:2px solid var(--line); box-shadow:3px 3px 0 var(--shadow);
   }
   .nav-links{
@@ -74,8 +73,8 @@
   }
   .nav-links a{padding:4px 0; border-bottom:2px solid transparent}
   .nav-links a:hover{color:var(--fg); border-bottom-color:var(--pink)}
+  .nav .btn{padding:9px 15px; font-size:11px}
 
-  /* ---------- кнопки ---------- */
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:9px;
     padding:12px 19px; border:3px solid var(--pink-deep); background:var(--pink);
@@ -85,16 +84,10 @@
   }
   .btn:hover{background:var(--pink-hi); transform:translate(2px,2px); box-shadow:3px 3px 0 var(--shadow)}
   .btn:active{transform:translate(5px,5px); box-shadow:0 0 0 var(--shadow)}
-  .btn-ghost{
-    background:var(--panel-2); border-color:var(--line); color:var(--fg);
-    box-shadow:5px 5px 0 var(--shadow);
-  }
+  .btn-ghost{background:var(--panel-2); border-color:var(--line); color:var(--fg)}
   .btn-ghost:hover{background:var(--panel-3); border-color:var(--pink)}
-  .btn-lg{padding:13px 16px; font-size:13px}
-  .hero-actions .btn-lg{padding:12px 15px}
-  .hero-actions .count{padding:7px 9px; font-size:10.5px}
+  .btn-lg{padding:13px 17px; font-size:13px}
 
-  /* ---------- счётчик ---------- */
   .count{
     display:inline-flex; align-items:center; gap:7px; padding:8px 11px;
     border:2px solid var(--line); background:var(--panel); color:var(--muted);
@@ -105,8 +98,6 @@
     content:""; width:7px; height:7px; background:var(--green);
     box-shadow:0 0 0 2px rgba(75,227,159,.18);
   }
-
-  /* ---------- онлайн ---------- */
   .live{
     display:inline-flex; align-items:center; gap:9px; margin:0 0 18px;
     padding:6px 11px; border:2px solid var(--line); background:var(--panel);
@@ -119,19 +110,18 @@
   }
   .live.on .dot{background:var(--green); box-shadow:0 0 0 2px rgba(75,227,159,.2)}
 
-  /* ---------- hero ---------- */
   .hero{padding:calc(var(--nav) + 54px) 0 10px}
-  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:center}
+  .hero-grid{display:grid; grid-template-columns:1.02fr .98fr; gap:42px; align-items:center}
   h1{
-    font-size:clamp(44px,6.4vw,74px); line-height:1; letter-spacing:-.01em;
-    margin:0 0 16px; font-weight:700;
+    font-size:clamp(44px,6.2vw,72px); line-height:1; letter-spacing:-.01em;
+    margin:0 0 14px; font-weight:700;
   }
-  .tagline{font-size:clamp(18px,2vw,22px); font-weight:700; margin:0 0 14px; color:var(--fg)}
-  .lead{color:var(--muted); font-size:15px; max-width:470px; margin:0 0 26px}
+  .tagline{font-size:clamp(18px,2vw,22px); font-weight:700; margin:0 0 13px; color:var(--fg); line-height:1.35}
+  .lead{color:var(--muted); font-size:14.5px; max-width:480px; margin:0 0 24px}
   .lead b{color:var(--fg); font-weight:600}
-  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px}
+  .hero-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px}
   .note{color:var(--dim); font-size:12px; margin:0}
-
+  .note b{color:var(--muted); font-weight:600}
   .shot{
     position:relative; padding:7px; border:3px solid var(--line);
     background:var(--panel); box-shadow:9px 9px 0 var(--shadow);
@@ -142,11 +132,15 @@
   .shot::before{top:-3px; left:-3px; box-shadow:0 0 0 3px var(--bg)}
   .shot::after{bottom:-3px; right:-3px; box-shadow:0 0 0 3px var(--bg)}
   .shot img{
-    width:100%; height:100%; aspect-ratio:4/3.1; object-fit:cover;
+    width:100%; aspect-ratio:1240/760; object-fit:cover;
     border:2px solid var(--line-soft);
   }
+  .shot-tag{
+    position:absolute; left:18px; bottom:18px; padding:5px 8px;
+    background:rgba(11,13,18,.9); border:2px solid var(--pink-deep);
+    color:var(--muted); font-size:10px; letter-spacing:.04em;
+  }
 
-  /* ---------- секции ---------- */
   section.wrap{padding:78px 24px 0}
   h2{
     display:flex; align-items:center; gap:12px;
@@ -157,9 +151,9 @@
     content:""; width:12px; height:12px; background:var(--pink);
     box-shadow:3px 3px 0 var(--shadow); flex:none;
   }
-  .sub{color:var(--muted); font-size:14px; margin:0 0 28px}
+  .sub{color:var(--muted); font-size:14px; margin:0 0 28px; max-width:720px}
 
-  .steps{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; list-style:none; padding:0; margin:0}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; list-style:none; padding:0; margin:0}
   .step{
     padding:22px; background:var(--panel); border:2px solid var(--line);
     box-shadow:6px 6px 0 var(--shadow);
@@ -171,27 +165,49 @@
     box-shadow:2px 2px 0 var(--shadow);
   }
   .step h3{font-size:15px; margin:0 0 7px; font-weight:700; line-height:1.4}
-  .step p{margin:0; color:var(--muted); font-size:13.5px}
-  .step a{color:var(--pink-hi); font-weight:700; display:inline-block; margin-top:11px; border-bottom:2px solid var(--pink-deep)}
+  .step p{margin:0; color:var(--muted); font-size:13px}
+  .step a{color:var(--pink-hi); font-weight:700; display:inline-block; margin-top:10px; border-bottom:2px solid var(--pink-deep)}
   .step a:hover{color:var(--fg); border-bottom-color:var(--pink)}
-  .file, code{
-    display:inline-block; padding:2px 6px; background:var(--panel-3);
+  code{
+    display:inline-block; padding:1px 5px; background:var(--panel-3);
     border:2px solid var(--line-soft); color:var(--fg);
-    font-family:inherit; font-size:12px;
+    font-family:inherit; font-size:11.5px; word-break:break-all;
   }
-  .file{margin-top:11px}
+  .callout{
+    margin-top:16px; padding:16px 18px; border:2px dashed var(--line);
+    color:var(--muted); font-size:13px;
+  }
+  .callout b{color:var(--fg)}
 
-  /* ---------- скачать ---------- */
+  .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .feature{
+    padding:19px; background:var(--panel); border:2px solid var(--line);
+    box-shadow:5px 5px 0 var(--shadow);
+  }
+  .feature .ico{
+    width:10px; height:10px; background:var(--pink); margin-bottom:12px;
+    box-shadow:2px 2px 0 var(--shadow);
+  }
+  .feature h3{font-size:14px; margin:0 0 6px; line-height:1.4}
+  .feature p{margin:0; color:var(--muted); font-size:12.5px}
+  .feature b{color:var(--fg); font-weight:600}
+  .feature-shot{display:grid; grid-template-columns:1fr 1.05fr; gap:24px; align-items:center; margin-top:16px}
+  .feature-shot .txt{color:var(--muted); font-size:13.5px}
+  .feature-shot .txt h3{color:var(--fg); font-size:18px; margin:0 0 8px}
+  .feature-shot .txt ul{margin:12px 0 0; padding-left:18px}
+  .feature-shot .txt li{margin:5px 0}
+  .feature-shot img{border:3px solid var(--line); box-shadow:7px 7px 0 var(--shadow); width:100%}
+
   .dl{
     display:flex; align-items:center; gap:22px; flex-wrap:wrap;
     padding:24px; background:var(--panel); border:3px solid var(--line);
     box-shadow:8px 8px 0 var(--shadow);
   }
-  .dl .txt{flex:1 1 320px}
+  .dl .txt{flex:1 1 340px; min-width:0}
   .dl h3{margin:0 0 5px; font-size:19px; font-weight:700}
   .dl .meta{color:var(--muted); font-size:12.5px}
-  .dl .hash{display:block; margin-top:12px; color:var(--dim); font-size:12px}
-  .dl .hash a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
+  .dl .hash{display:block; margin-top:12px; color:var(--dim); font-size:11.5px; word-break:break-all}
+  .dl .hash code{font-size:10.5px; margin-top:5px; display:block}
   .dl-action{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
   .packline{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
@@ -199,12 +215,12 @@
     color:var(--muted); font-size:12.5px;
   }
   .packline a{color:var(--fg); font-weight:700; border-bottom:2px solid var(--pink-deep)}
+  .small{color:var(--dim); font-size:11.5px; margin:12px 0 0}
 
-  /* ---------- правила ---------- */
   .rules{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
   .rules li{
     padding:14px 16px; background:var(--panel); border:2px solid var(--line);
-    color:var(--muted); font-size:13.5px;
+    color:var(--muted); font-size:13px;
   }
   .rules li b{color:var(--fg); font-weight:700}
   .rules li::before{
@@ -214,8 +230,7 @@
   }
   .rules li a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
 
-  /* ---------- вопросы ---------- */
-  .faq{max-width:780px}
+  .faq{max-width:820px}
   details{
     border:2px solid var(--line); background:var(--panel);
     margin-bottom:9px; box-shadow:4px 4px 0 var(--shadow);
@@ -230,12 +245,10 @@
     content:"+"; position:absolute; right:14px; top:50%; transform:translateY(-50%);
     color:var(--pink); font-size:20px; font-weight:700; line-height:1;
   }
-  details[open] summary::after{content:"\2212"}
+  details[open] summary::after{content:"−"}
   details p{color:var(--muted); margin:0; padding:0 16px 16px; font-size:13px}
   details a{color:var(--pink-hi); border-bottom:2px solid var(--pink-deep)}
-  details p a:hover{color:var(--fg)}
 
-  /* ---------- ягодки и подвал ---------- */
   .berry-strip{display:flex; gap:14px; align-items:flex-end; justify-content:center; padding:64px 0 0}
   .berry-strip img{width:20px; height:20px; image-rendering:pixelated; opacity:.75}
   .berry-strip img:nth-child(2n){width:14px; height:14px; opacity:.5}
@@ -247,15 +260,18 @@
   .foot-brand img{width:28px; height:28px; image-rendering:pixelated}
   .foot nav{display:flex; gap:18px; margin-left:auto; font-size:11px; color:var(--muted); text-transform:uppercase; flex-wrap:wrap}
   .foot nav a:hover{color:var(--pink)}
-  .fine{color:var(--dim); font-size:11px; padding-bottom:26px}
+  .fine{color:var(--dim); font-size:11px; padding-bottom:26px; line-height:1.7}
+  .fine a{color:var(--muted); border-bottom:1px solid var(--line)}
 
-  @media (max-width:900px){
+  @media (max-width:960px){
     .hero-grid{grid-template-columns:1fr; gap:34px}
     .hero{padding-top:calc(var(--nav) + 38px)}
-    .shot{max-width:620px}
+    .shot{max-width:720px}
+    .steps,.features{grid-template-columns:1fr 1fr}
+    .feature-shot{grid-template-columns:1fr}
   }
   @media (max-width:720px){
-    .steps,.rules{grid-template-columns:1fr}
+    .steps,.features,.rules{grid-template-columns:1fr}
     .nav-links{display:none}
   }
   @media (max-width:680px){
@@ -277,11 +293,13 @@
     <a class="brand" href="#top"><img src="berry.png" alt="">BerryTrip</a>
     <nav class="nav-links">
       <a href="#start">Как начать</a>
+      <a href="#features">Возможности</a>
+      <a href="#download">Скачать</a>
       <a href="#rules">Правила</a>
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
     </nav>
-    <a class="btn" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">Скачать</a>
+    <a class="btn" href="#download">Скачать</a>
   </div>
 </header>
 
@@ -289,79 +307,128 @@
   <div class="wrap hero">
     <div class="hero-grid">
       <div>
-        <h1>BerryTrip</h1>
-        <p class="tagline">Сервер по Minecraft 1.21.1</p>
         <p class="live" id="live"><span class="dot"></span><span id="live-text">Проверяю сервер…</span></p>
-        <p class="lead">Сборка, моды и подключение уже собраны в один файл. Скачиваешь BerryUp, открываешь и жмёшь «Играть».</p>
+        <h1>BerryTrip</h1>
+        <p class="tagline">Лаунчер и сервер<br>Minecraft 1.21.1</p>
+        <p class="lead">Один установщик вместо Prism, Java и ручной сборки. Скачай, запусти и нажми <b>«Играть»</b> — лаунчер сам скачает Java, моды и подключение к серверу.</p>
         <div class="hero-actions">
-          <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">
+          <a class="btn btn-lg" id="hero-download" href="https://github.com/evilvalue/prism-berry/releases/latest">
             <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
-            Скачать BerryUp
+            Скачать лаунчер
           </a>
-          <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp с GitHub Releases">…</span>
           <a class="btn btn-ghost btn-lg" href="#start">Как начать</a>
+          <span class="count" data-downloads aria-live="polite" title="Скачивания лаунчера с GitHub Releases">…</span>
         </div>
-        <p class="note">Windows · 1,6 МБ · нужен Prism Launcher</p>
+        <p class="note">Windows 10/11 x64 · <b id="hero-size">≈ 14 МБ</b> · <b id="hero-version">v0.7.0</b> · обновляется сам</p>
       </div>
       <div class="shot">
-        <img src="img/hero.jpg" alt="Мир сервера BerryTrip">
+        <img src="img/launcher-home.png" alt="Главный экран BerryTrip Launcher с 3D-скином">
+        <span class="shot-tag">BERRYTRIP LAUNCHER 0.7</span>
       </div>
     </div>
   </div>
 
   <section id="start" class="wrap">
-    <h2>Как начать</h2>
-    <p class="sub">Четыре шага, без настроек и ручной установки модов.</p>
+    <h2>Три шага</h2>
+    <p class="sub">Никаких «сначала поставь Prism». Лаунчер самостоятельный: внутри уже есть Prism-ядро, Qt и загрузчик Java.</p>
     <ol class="steps">
       <li class="step">
         <div class="n">1</div>
-        <h3>Поставь Prism Launcher</h3>
-        <p>Обычный лаунчер Minecraft. Запусти его один раз — он сам скачает Java.</p>
-        <a href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener">Скачать Prism →</a>
+        <h3>Скачай установщик</h3>
+        <p>Один <code>BerryTrip-Setup.exe</code> для Windows. Установка в <code>%LOCALAPPDATA%</code>, права администратора не нужны.</p>
+        <a href="#download">К скачиванию →</a>
       </li>
       <li class="step">
         <div class="n">2</div>
-        <h3>Скачай BerryUp.zip</h3>
-        <p>Распакуй архив и запусти <code>START-BerryUp.bat</code> — он сам найдёт Java из Prism. BerryUp поставится в <code>%LOCALAPPDATA%\BerryUp</code>
-          и сделает ярлык на рабочем столе и в «Пуске».</p>
-        <span class="file">START-BerryUp.bat</span>
+        <h3>Запусти и нажми «Играть»</h3>
+        <p>Лаунчер сам скачает Java, сборку, моды и ресурсы. Первый запуск занимает пару минут, дальше — только обновления.</p>
+        <a href="#faq">Нужен ли Prism? →</a>
       </li>
       <li class="step">
         <div class="n">3</div>
-        <h3>Запускай с ярлыка и жми «Играть»</h3>
-        <p>Ярлык берёт Java из Prism — шрифт не мылится. BerryUp найдёт Prism, поставит
-          сборку и подключит к серверу. Первый раз — пару минут.</p>
-        <a href="#faq">Файл не открывается? →</a>
-      </li>
-      <li class="step">
-        <div class="n">4</div>
         <h3>Войди через Telegram</h3>
-        <p>Вкладка «Аккаунт» → впиши ник → «Войти» → нажми Start в боте <a href="https://t.me/killberriesbot" target="_blank" rel="noopener">@killberriesbot</a>. Сервер сразу привяжет ник и добавит его в вайтлист, а лаунчер покажет «Вход выполнен». Коды и /verify не нужны.</p>
+        <p>Вкладка «Аккаунт» → ник → «Войти» → Start в <a href="https://t.me/killberriesbot" target="_blank" rel="noopener">@killberriesbot</a>. Вайтлист и вход произойдут сами.</p>
+        <a href="https://t.me/killberriesbot" target="_blank" rel="noopener">Открыть бота →</a>
       </li>
     </ol>
+    <div class="callout"><b>Prism больше не нужен.</b> BerryTrip Launcher — отдельный форк Prism Launcher: весь Prism уже внутри <code>berrytrip.exe</code>. Старый BerryUp, который искал установленный Prism, можно удалить.</div>
+  </section>
+
+  <section id="features" class="wrap">
+    <h2>Что уже внутри</h2>
+    <p class="sub">Не просто запуск игры, а весь путь от чистой Windows до сервера BerryTrip.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>3D-скин на главной</h3>
+        <p>Модель Quick Skin с плащом, слоями и живым вращением мышью. Скин и плащ ставятся в библиотеку мода прямо из лаунчера.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>Вход через Telegram</h3>
+        <p>Одна кнопка, никакого Microsoft-аккаунта и кодов. Бот привязывает ник к Telegram и сразу добавляет его в вайтлист.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>Сборка по SHA-256</h3>
+        <p>Каждый файл сверяется с манифестом. Скачиваются только изменения, повреждённые и лишние файлы не остаются.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>Автообновление</h3>
+        <p>Лаунчер сам проверяет GitHub при запуске, скачивает установщик, проверяет SHA-256 и перезапускается уже на новой версии.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>Настройки и диагностика</h3>
+        <p>Память, Java, моды, ресурспаки и шейдеры — в одном окне. Диагностика показывает Java, моды, память и свободное место.</p>
+      </div>
+      <div class="feature">
+        <div class="ico"></div>
+        <h3>Сервер и статус</h3>
+        <p>Ping, онлайн, MOTD и быстрый вход на <b>135.181.126.167:25737</b>. Сервер и сборка обновляются отдельно от лаунчера.</p>
+      </div>
+    </div>
+    <div class="feature-shot">
+      <div class="txt">
+        <h3>Всё в одном пиксельном окне</h3>
+        <p>Главная, аккаунт, скины, настройки, диагностика и «О программе» — без менеджера инстансов, лишних кнопок и английского интерфейса.</p>
+        <ul>
+          <li>3D-превью скина и плаща</li>
+          <li>память и Java в два клика</li>
+          <li>отчёт для помощи в чате</li>
+          <li>обновление лаунчера и сборки</li>
+        </ul>
+      </div>
+      <img src="img/launcher-settings.png" alt="Настройки BerryTrip Launcher">
+    </div>
   </section>
 
   <section id="download" class="wrap">
     <h2>Скачать</h2>
-    <p class="sub">Одна версия, всегда актуальная. Обновляется сам, конфиги не трогает.</p>
+    <p class="sub">Одна актуальная версия. Ссылки и SHA-256 подтягиваются из последнего GitHub-релиза.</p>
     <div class="dl">
       <div class="txt">
-        <h3>BerryUp.zip</h3>
-        <div class="meta">Версия 3.14.0 · 1,6 МБ · Windows</div>
-        <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> · только <a href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.jar">BerryUp.jar</a></span>
+        <h3>BerryTrip Launcher <span id="dl-version">0.7.0</span></h3>
+        <div class="meta">Windows 10/11 x64 · установщик · <span id="dl-size">≈ 14 МБ</span> · без прав администратора</div>
+        <span class="hash">SHA-256: <code id="dl-hash">уточняется…</code></span>
       </div>
       <div class="dl-action">
-        <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">
+        <a class="btn btn-lg" id="dl-setup" href="https://github.com/evilvalue/prism-berry/releases/latest">
           <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
-          Скачать
+          Скачать установщик
         </a>
-        <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp с GitHub Releases">…</span>
+        <span class="count" data-downloads aria-live="polite" title="Скачивания лаунчера с GitHub Releases">…</span>
       </div>
     </div>
     <div class="packline">
-      Только сборка, без лаунчера? Prism → Add Instance → Import from zip, файл
-      <a href="launcher/instance.zip">instance.zip</a>.
+      Портативная версия: <a id="dl-zip" href="https://github.com/evilvalue/prism-berry/releases/latest">BerryTrip-win64.zip</a>
+      <span>·</span>
+      <a href="https://github.com/evilvalue/prism-berry/releases" target="_blank" rel="noopener">все релизы</a>
+      <span>·</span>
+      <a href="https://github.com/evilvalue/prism-berry/blob/berry/SIGNING.md" target="_blank" rel="noopener">как проверить подпись</a>
     </div>
+    <p class="small">Установщик подписан сертификатом BerryTrip. Если Windows покажет SmartScreen, нажми «Подробнее» → «Выполнить в любом случае»; SHA-256 выше можно сверить с GitHub.</p>
   </section>
 
   <section id="rules" class="wrap">
@@ -379,50 +446,49 @@
 
   <section id="faq" class="wrap">
     <div class="faq">
-    <h2>Вопросы</h2>
-    <p class="sub">Коротко о том, что обычно ломается.</p>
-    <details>
-      <summary>BerryUp не запускается двойным щелчком</summary>
-      <p>Windows не связала <code>.jar</code> с Java, а сама Java в системе не прописана — поэтому двойной щелчок по jar ничего не делает. Решение: скачай <code>BerryUp.zip</code>, распакуй и запусти <code>START-BerryUp.bat</code>: он сам находит Java из Prism, официального лаунчера Minecraft или установленных JDK и открывает лаунчер. Связывать <code>.jar</code> с Java и ставить её отдельно не нужно. Если Windows покажет «Windows защитила ваш компьютер», нажми «Подробнее» → «Выполнить в любом случае» — у батника нет цифровой подписи, это нормально.</p>
-    </details>
-    <details>
-      <summary>Антивирус ругается на файл</summary>
-      <p>BerryUp — обычный Java-файл: без установщика, драйверов и скрытых действий, исходники открыты на <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">GitHub</a>. Сверь SHA-256 с <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> — если совпадает, файл тот самый. Предупреждение браузера про скачанный jar — стандартная метка, а не вирус.</p>
-    </details>
-    <details>
-      <summary>Бот не принимает ник из сообщения</summary>
-      <p>Ник берётся из одноразовой ссылки, которую сервер выдаёт лаунчеру: вручную написать боту чужой ник нельзя. Открой BerryUp → «Аккаунт» → впиши ник → «Войти» и нажми Start. Бот сразу привяжет ник и добавит его в вайтлист; лаунчер сам покажет, что вход готов. Один Telegram может привязать только один ник, а уже подтверждённый ник другому не отдаётся.</p>
-    </details>
-    <details>
-      <summary>Пишет «сессия истекла»</summary>
-      <p>Токен входа живёт 30 дней. Нажми «Войти» в лаунчере ещё раз и Start в боте — сервер выдаст новую ссылку и свежий токен, лаунчер сам его сохранит. Если игра уже открыта, перезапусти её после входа.</p>
-    </details>
-    <details>
-      <summary>Куда ставится сборка</summary>
-      <p>В Prism, папка <code>instances/BerryTrip</code>. Сохранения и настройки лежат там же, BerryUp их не переносит и не удаляет.</p>
-    </details>
-    <details>
-      <summary>Обновление сбросит мои конфиги?</summary>
-      <p>Нет. Перед обновлением BerryUp сохраняет <code>config/</code>, <code>options.txt</code>, клавиши и список серверов, а после возвращает их на место. Настройки модов, графики и серверов остаются твоими.</p>
-    </details>
-    <details>
-      <summary>Как вернуть конфиги к исходным?</summary>
-      <p>«Настройки» → «Сбросить конфиги». BerryUp уберёт твои файлы, распакует исходные из сборки и сохранит копию старых в <code>instances/BerryTrip/berry-config-backup</code>. Сохранения, моды и вход не тронет.</p>
-    </details>
-    <details>
-      <summary>Куда ставится сам BerryUp</summary>
-      <p>При первом запуске jar переезжает в <code>%LOCALAPPDATA%\BerryUp</code>, ярлыки
-        появляются на рабочем столе и в меню «Пуск», настройки лежат в <code>%APPDATA%\BerryUp</code>.
-        Обновления лаунчер ставит сам при перезапуске. Удалить просто: закрой BerryUp,
-        удали папку <code>%LOCALAPPDATA%\BerryUp</code> и ярлыки — сборка и сохранения в Prism останутся.</p>
-    </details>
-    <details>
-      <summary>Скин и плащ: можно посмотреть заранее?</summary>
-      <p>Да. «Аккаунт» → «Внешний вид»: выбери файл или перетащи его в карточку, покрути
-        модель мышью и нажми «Применить скин» / «Применить плащ». BerryUp принимает только
-        форматы QuickSkin — PNG или GIF, скин 64×32 или 64×64…2048×2048, плащ 64×32…2048×1024 —
-        и кладёт файл в <code>%APPDATA%\QuickSkin\skins</code> или <code>%APPDATA%\QuickSkin\capes</code>.</p>
-    </details>
+      <h2>Вопросы</h2>
+      <p class="sub">Коротко о том, что обычно спрашивают перед первым запуском.</p>
+
+      <details>
+        <summary>Нужен ли установленный Prism Launcher?</summary>
+        <p><b>Нет.</b> BerryTrip Launcher — самостоятельный форк Prism: весь код Prism, Qt-библиотеки и загрузчик Java уже внутри. Отдельный Prism, старый BerryUp и ручная установка модов не нужны. Лаунчер создаёт свой инстанс <code>BerryTrip</code> и сам поддерживает его в актуальном состоянии.</p>
+      </details>
+      <details>
+        <summary>Нужно ли ставить Java?</summary>
+        <p>Обычно нет. В лаунчере включён автоматический загрузчик Java: если подходящей JRE нет, он скачает её сам. Если Java уже стоит или ты хочешь указать свою, путь можно задать в «Настройках» → «Java».</p>
+      </details>
+      <details>
+        <summary>SmartScreen или антивирус ругается на установщик</summary>
+        <p>Установщик подписан сертификатом BerryTrip, но это не сертификат Microsoft, поэтому SmartScreen может показать предупреждение. Нажми «Подробнее» → «Выполнить в любом случае». SHA-256 на этой странице берётся из GitHub-релиза — сверь его, если сомневаешься. Исходники открыты: <a href="https://github.com/evilvalue/prism-berry" target="_blank" rel="noopener">github.com/evilvalue/prism-berry</a>.</p>
+      </details>
+      <details>
+        <summary>Где лежат сохранения и настройки?</summary>
+        <p>Инстанс: <code>%APPDATA%\PrismLauncher\instances\BerryTrip</code>. Миры — в <code>minecraft\saves</code>, настройки игры — в <code>minecraft\options.txt</code> и <code>config</code>. Обновления сборки не удаляют сохранения.</p>
+      </details>
+      <details>
+        <summary>Куда ставится сам лаунчер?</summary>
+        <p>По умолчанию в <code>%LOCALAPPDATA%\Programs\BerryTrip</code>. Удаление — через «Параметры → Приложения → BerryTrip Launcher» или <code>uninstall.exe</code>; сохранения и инстанс при этом остаются.</p>
+      </details>
+      <details>
+        <summary>Как работают обновления?</summary>
+        <p>При запуске лаунчер проверяет GitHub. Если есть новая версия, на главной появляется баннер: скачать, проверить SHA-256 и установить. Установщик запускается после закрытия лаунчера и сам открывает новую версию. Настройки, скины и сохранения не трогаются.</p>
+      </details>
+      <details>
+        <summary>Бот не принимает ник из сообщения</summary>
+        <p>Ник берётся из одноразовой ссылки, которую сервер выдаёт лаунчеру: вручную написать боту чужой ник нельзя. Открой «Аккаунт» → впиши ник → «Войти» и нажми Start в боте. Один Telegram может привязать только один ник.</p>
+      </details>
+      <details>
+        <summary>Пишет «сессия истекла»</summary>
+        <p>Токен входа живёт 30 дней. Нажми «Войти» ещё раз и Start в боте — лаунчер сохранит новый токен. Если игра уже открыта, перезапусти её после входа.</p>
+      </details>
+      <details>
+        <summary>Скин и плащ: можно посмотреть заранее?</summary>
+        <p>Да. На главной справа крутится 3D-модель, а во вкладке «Скины» можно выбрать PNG/GIF, примерить и применить. Файлы кладутся в библиотеку Quick Skin, игра видит их без перезапуска лаунчера.</p>
+      </details>
+      <details>
+        <summary>Что делать со старым BerryUp?</summary>
+        <p>Он больше не нужен. Закрой BerryUp, удали его папку <code>%LOCALAPPDATA%\BerryUp</code> и ярлыки. Инстанс <code>BerryTrip</code> и сохранения в Prism-папке останутся, новый лаунчер подхватит их.</p>
+      </details>
     </div>
   </section>
 
@@ -439,11 +505,12 @@
       <a class="foot-brand" href="#top"><img src="berry.png" alt="">BerryTrip</a>
       <nav>
         <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://github.com/evilvalue/prism-berry" target="_blank" rel="noopener">Лаунчер на GitHub</a>
         <a href="https://github.com/evilvalue/berry" target="_blank" rel="noopener">Сборка на GitHub</a>
-        <a href="https://github.com/evilvalue/berry-launcher" target="_blank" rel="noopener">BerryUp на GitHub</a>
+        <a href="https://github.com/evilvalue/prism-berry/releases" target="_blank" rel="noopener">Релизы</a>
       </nav>
     </div>
-    <div class="fine">Неофициальный сервер, не связан с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang Studios.<br>Шрифт Minecraft Rus © 2004–2012 BOGDAN Software — <a href="fonts/MinecraftRus-COPYRIGHT.txt">copyright</a>.</div>
+    <div class="fine">Неофициальный сервер, не связан с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang Studios.<br>Шрифт Minecraft Rus © 2004–2012 BOGDAN Software — <a href="fonts/MinecraftRus-COPYRIGHT.txt">copyright</a>. BerryTrip Launcher распространяется по GPL-3.0.</div>
   </div>
 </footer>
 
@@ -483,10 +550,44 @@
   })();
 
   (function(){
+    var api = 'https://github.com/evilvalue/prism-berry/releases/latest';
+    var apiReleases = 'https://api.github.com/repos/evilvalue/prism-berry/releases?per_page=100';
+    function mb(bytes){
+      if (!bytes) return '≈ 14 МБ';
+      return (bytes / 1048576).toFixed(1).replace('.', ',') + ' МБ';
+    }
+    function set(id, text){ var el = document.getElementById(id); if (el) el.textContent = text; }
+    function each(sel, fn){ Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+
+    fetch('https://api.github.com/repos/evilvalue/prism-berry/releases/latest', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(release){
+        var assets = release.assets || [];
+        var setup = assets.filter(function(a){ return /^BerryTrip-Setup-.*\.exe$/i.test(a.name || ''); })[0];
+        var zip = assets.filter(function(a){ return (a.name || '') === 'BerryTrip-win64.zip'; })[0];
+        var version = (release.tag_name || '').replace(/^v/i, '') || '0.7.0';
+
+        set('dl-version', version);
+        set('hero-version', 'v' + version);
+        if (setup) {
+          set('dl-size', mb(setup.size));
+          set('hero-size', mb(setup.size));
+          each('#dl-setup, #hero-download', function(a){ a.href = setup.browser_download_url; });
+          var digest = (setup.digest || '').replace(/^sha256:/i, '');
+          set('dl-hash', digest || 'см. страницу релиза');
+        }
+        if (zip)
+          document.getElementById('dl-zip').href = zip.browser_download_url;
+      })
+      .catch(function(){
+        each('#dl-setup, #hero-download', function(a){ a.href = api; });
+        set('dl-hash', 'открой страницу релиза');
+      });
+
     var nodes = document.querySelectorAll('[data-downloads]');
     if (!nodes.length) return;
-    var key = 'berryup.downloads';
-    var timeKey = 'berryup.downloads.at';
+    var key = 'berrytrip.downloads';
+    var timeKey = 'berrytrip.downloads.at';
     function paint(total){
       var text = Number(total).toLocaleString('ru-RU') + ' скачиваний';
       for (var i = 0; i < nodes.length; i++) nodes[i].textContent = text;
@@ -496,13 +597,14 @@
       var at = Number(localStorage.getItem(timeKey) || 0);
       if (saved !== null && at && Date.now() - at < 3600000) paint(saved);
     } catch (ignored) {}
-    fetch('https://api.github.com/repos/evilvalue/berry-launcher/releases?per_page=100', {cache:'no-store'})
+    fetch(apiReleases, {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
       .then(function(releases){
         var total = 0;
         (releases || []).forEach(function(release){
           (release.assets || []).forEach(function(asset){
-            if (/^BerryUp\.(jar|zip)$/i.test(asset.name || '')) total += asset.download_count || 0;
+            if (/^BerryTrip-Setup-.*\.exe$/i.test(asset.name || '') || (asset.name || '') === 'BerryTrip-win64.zip')
+              total += asset.download_count || 0;
           });
         });
         if (!total) throw new Error('empty');
