@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BerryTrip — сервер Minecraft 1.21.1</title>
-<meta name="description" content="Сервер BerryTrip по Minecraft 1.21.1. Скачай BerryUp.jar, открой и нажми «Играть» — сборка и моды поставятся сами.">
+<meta name="description" content="Сервер BerryTrip по Minecraft 1.21.1. Скачай BerryUp, открой и нажми «Играть» — сборка и моды поставятся сами.">
 <meta name="theme-color" content="#0b0d12">
 <link rel="icon" href="berry.png" type="image/png">
 <style>
@@ -286,7 +286,7 @@
       <a href="#faq">Вопросы</a>
       <a href="https://t.me/killberries" target="_blank" rel="noopener">Telegram</a>
     </nav>
-    <a class="btn" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.jar">Скачать</a>
+    <a class="btn" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">Скачать</a>
   </div>
 </header>
 
@@ -299,11 +299,11 @@
         <p class="live" id="live"><span class="dot"></span><span id="live-text">Проверяю сервер…</span></p>
         <p class="lead">Сборка, моды и подключение уже собраны в один файл. Скачиваешь BerryUp, открываешь и жмёшь «Играть».</p>
         <div class="hero-actions">
-          <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.jar">
+          <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">
             <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
-            Скачать BerryUp.jar
+            Скачать BerryUp
           </a>
-          <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp.jar с GitHub Releases">…</span>
+          <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp с GitHub Releases">…</span>
           <a class="btn btn-ghost btn-lg" href="#start">Как начать</a>
         </div>
         <p class="note">Windows · 1,6 МБ · нужен Prism Launcher</p>
@@ -326,10 +326,10 @@
       </li>
       <li class="step">
         <div class="n">2</div>
-        <h3>Скачай BerryUp.jar</h3>
-        <p>Один файл. Запусти его — BerryUp сам поставится в <code>%LOCALAPPDATA%\BerryUp</code>
+        <h3>Скачай BerryUp.zip</h3>
+        <p>Распакуй архив и запусти <code>START-BerryUp.bat</code> — он сам найдёт Java из Prism. BerryUp поставится в <code>%LOCALAPPDATA%\BerryUp</code>
           и сделает ярлык на рабочем столе и в «Пуске».</p>
-        <span class="file">BerryUp.jar</span>
+        <span class="file">START-BerryUp.bat</span>
       </li>
       <li class="step">
         <div class="n">3</div>
@@ -351,16 +351,16 @@
     <p class="sub">Одна версия, всегда актуальная. Обновляется сам, конфиги не трогает.</p>
     <div class="dl">
       <div class="txt">
-        <h3>BerryUp.jar</h3>
+        <h3>BerryUp.zip</h3>
         <div class="meta">Версия 3.14.0 · 1,6 МБ · Windows</div>
-        <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a></span>
+        <span class="hash">SHA-256 и размер — в <a href="launcher/latest-java.json" target="_blank" rel="noopener">latest-java.json</a> · только <a href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.jar">BerryUp.jar</a></span>
       </div>
       <div class="dl-action">
-        <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.jar">
+        <a class="btn btn-lg" href="https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip">
           <svg class="pxicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="7" y="1" width="2" height="8" fill="currentColor"/><rect x="4" y="7" width="2" height="2" fill="currentColor"/><rect x="10" y="7" width="2" height="2" fill="currentColor"/><rect x="6" y="9" width="4" height="2" fill="currentColor"/><rect x="7" y="11" width="2" height="2" fill="currentColor"/><rect x="2" y="14" width="12" height="2" fill="currentColor"/></svg>
           Скачать
         </a>
-        <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp.jar с GitHub Releases">…</span>
+        <span class="count" data-downloads aria-live="polite" title="Скачивания BerryUp с GitHub Releases">…</span>
       </div>
     </div>
     <div class="packline">
@@ -387,8 +387,8 @@
     <h2>Вопросы</h2>
     <p class="sub">Коротко о том, что обычно ломается.</p>
     <details>
-      <summary>Jar не открывается двойным щелчком</summary>
-      <p>Windows не связала <code>.jar</code> с Java. Правый клик по файлу → «Открыть с помощью» → выбери <code>javaw.exe</code> из папки Prism (<code>%APPDATA%\PrismLauncher\java\...</code>) и поставь «Всегда». Или запусти в консоли: <code>java -jar BerryUp.jar</code>.</p>
+      <summary>BerryUp не запускается двойным щелчком</summary>
+      <p>Windows не связала <code>.jar</code> с Java, а сама Java в системе не прописана — поэтому двойной щелчок по jar ничего не делает. Решение: скачай <code>BerryUp.zip</code>, распакуй и запусти <code>START-BerryUp.bat</code>: он сам находит Java из Prism, официального лаунчера Minecraft или установленных JDK и открывает лаунчер. Связывать <code>.jar</code> с Java и ставить её отдельно не нужно.</p>
     </details>
     <details>
       <summary>Антивирус ругается на файл</summary>
@@ -507,7 +507,7 @@
         var total = 0;
         (releases || []).forEach(function(release){
           (release.assets || []).forEach(function(asset){
-            if (/^BerryUp\.jar$/i.test(asset.name || '')) total += asset.download_count || 0;
+            if (/^BerryUp\.(jar|zip)$/i.test(asset.name || '')) total += asset.download_count || 0;
           });
         });
         if (!total) throw new Error('empty');

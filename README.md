@@ -30,10 +30,10 @@ git add -A && git commit -m "update mods" && git push
 
 ## BerryUp 3 — лаунчер для игроков
 
-**Скачать:** <https://evilvalue.github.io/berry/launcher/BerryUp.jar>
+**Скачать:** <https://github.com/evilvalue/berry-launcher/releases/latest/download/BerryUp.zip>
 (релизы: <https://github.com/evilvalue/berry-launcher/releases>).
 
-BerryUp переписан на Java: установщика, exe и архивов больше нет — это один jar.
+BerryUp переписан на Java: установщика и exe больше нет — в архиве лежат jar и `START-BerryUp.bat`, который находит Java и запускает лаунчер.
 Лаунчер работает поверх **Prism Launcher** или **PineconeMC** — их нужно поставить
 один раз, Java отдельно не требуется (BerryUp запускается на Java из Prism).
 Запусти jar из любой папки: при первом запуске BerryUp сам поставится в
