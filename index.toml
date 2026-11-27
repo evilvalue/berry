@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "berry.png"
-hash = "46dd175c74900c3351339b1871ccf023c8f6e33cdb60c8b60e4438f57342bd59"
-
-[[files]]
 file = "config/BBEConfig.json"
 hash = "aba70c5ddb814ddb811ed7f35ab6f6276df41228d694b8b3be788231daf9b559"
 
@@ -891,14 +887,6 @@ hash = "68a4cd85265d4d38a621d2be0351b56e0c8aaa41c3db6de72d8f6398a4814786"
 [[files]]
 file = "config/yacl.json5"
 hash = "121b93764159be6fb7dab523b29a844e2bb78400ce8c48f52135a097e9b0006e"
-
-[[files]]
-file = "img/hero.jpg"
-hash = "73bcadced43cda21618d5bf19c1ef32ae1283857f8b1a5ad86c029238b02d338"
-
-[[files]]
-file = "index.html"
-hash = "d33678bdc5b92695133538396988a728cbed140eae67228e262ca286da197c71"
 
 [[files]]
 file = "mods/BadOptimizations-2.4.1-1.21.1.pw.toml"

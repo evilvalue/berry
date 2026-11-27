@@ -1,10 +1,15 @@
-.git/**
-.github/**
-.nojekyll
-.gitattributes
-.gitignore
-.packwizignore
+# Site files that live in this folder but are not part of the Minecraft
+# instance. Without this file a site edit changes a file listed in index.toml
+# and every player's pack update fails with "не совпала контрольная сумма"
+# until someone runs `packwiz refresh`.
+/index.html
+/berry.png
+/img/
+/fonts/
+/launcher/
+/.nojekyll
+/.gitattributes
+/.gitignore
+/.packwizignore
 /PUBLISH.bat
-/launcher/**
-/new-mods/**
 /README.md
