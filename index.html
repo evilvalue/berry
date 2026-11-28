@@ -319,7 +319,7 @@
           <a class="btn btn-ghost btn-lg" href="#start">Как начать</a>
           <span class="count" data-downloads aria-live="polite" title="Скачивания лаунчера с GitHub Releases">…</span>
         </div>
-        <p class="note">Windows 10/11 x64 · <b id="hero-size">≈ 14 МБ</b> · <b id="hero-version">v0.7.17</b> · обновляется сам</p>
+        <p class="note">Windows 10/11 x64 · <b id="hero-size">≈ 14 МБ</b> · <b id="hero-version">v0.7.18</b> · обновляется сам</p>
       </div>
       <div class="shot">
         <img src="img/launcher-home.png" alt="Главный экран BerryTrip Launcher с 3D-скином">
@@ -409,7 +409,7 @@
     <p class="sub">Одна актуальная версия. Ссылки и SHA-256 подтягиваются из последнего GitHub-релиза.</p>
     <div class="dl">
       <div class="txt">
-        <h3>BerryTrip Launcher <span id="dl-version">0.7.17</span></h3>
+        <h3>BerryTrip Launcher <span id="dl-version">0.7.18</span></h3>
         <div class="meta">Windows 10/11 x64 · установщик · <span id="dl-size">≈ 14 МБ</span> · без прав администратора</div>
         <span class="hash">SHA-256: <code id="dl-hash">уточняется…</code></span>
       </div>
@@ -565,7 +565,7 @@
         var assets = release.assets || [];
         var setup = assets.filter(function(a){ return /^BerryTrip-Setup-.*\.exe$/i.test(a.name || ''); })[0];
         var zip = assets.filter(function(a){ return (a.name || '') === 'BerryTrip-win64.zip'; })[0];
-        var version = (release.tag_name || '').replace(/^v/i, '') || '0.7.17';
+        var version = (release.tag_name || '').replace(/^v/i, '') || '0.7.18';
 
         set('dl-version', version);
         set('hero-version', 'v' + version);
