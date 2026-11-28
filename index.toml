@@ -445,10 +445,6 @@ file = "config/malum-common.toml"
 hash = "f78da01f7483cc27817cfa5d4124ea59d9ecc91c65a53f21d6750c05f333d2b8"
 
 [[files]]
-file = "config/manaweave_and_runes-common.toml"
-hash = "5f6aaec413bbc7d9741207894a54e91ecb466481653233c487c75c8f305df8bb"
-
-[[files]]
 file = "config/masterfulbotany-client.toml"
 hash = "142de1e9daf79f32d684f7942ff8388b29cec0f568f1162606ef421efac05ab5"
 
@@ -1529,11 +1525,6 @@ metafile = true
 [[files]]
 file = "mods/malum-1.21.1-1.8.2.pw.toml"
 hash = "0213b6ecb4784b9f57bf3d66444c61ce357b365c8bef2d10363d0c7f20b86e58"
-metafile = true
-
-[[files]]
-file = "mods/manaweave_and_runes-1.21.1-0.2.0-alpha1.pw.toml"
-hash = "3301a54eed5c368174165bd2ca79093e7c58532a3bb51268acabff575fb58798"
 metafile = true
 
 [[files]]
