@@ -1807,7 +1807,11 @@ metafile = true
 
 [[files]]
 file = "options.txt"
-hash = "3e567bba350dc17d25814d19be443a5acd378acfdb8f1828e867ddba38a36adc"
+hash = "1b925e7617bf072ab0ff21d05591a9364d326e6fdfae9e631034396ca84ffb35"
+
+[[files]]
+file = "resourcepacks/BerryTrip-RU.zip"
+hash = "cf16c92ccd3eeddce26cb7f0b771dd27206747e11e77f5b77e6b7360cfdf752c"
 
 [[files]]
 file = "resourcepacks/Clarity-Tooltips.zip"
