@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "berry-retired.txt"
+hash = "accda46b3c3d30db383937e1c5a6be7708a6ff001f461edafd11e4becb8e85cf"
+
+[[files]]
 file = "config/BBEConfig.json"
 hash = "aba70c5ddb814ddb811ed7f35ab6f6276df41228d694b8b3be788231daf9b559"
 
