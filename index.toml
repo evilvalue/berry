@@ -1807,7 +1807,7 @@ metafile = true
 
 [[files]]
 file = "options.txt"
-hash = "a7a2e781bbc674ffd79e9b7198558969cce080075752971691a2e5d387509a90"
+hash = "3e567bba350dc17d25814d19be443a5acd378acfdb8f1828e867ddba38a36adc"
 
 [[files]]
 file = "resourcepacks/Clarity-Tooltips.zip"

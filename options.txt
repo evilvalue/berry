@@ -15,3 +15,4 @@ skipMultiplayerWarning:true
 onboardAccessibility:false
 resourcePacks:["vanilla", "fabric", "file/Stay True 1.21.5.zip", "file/FreshAnimations_v1.11.2_1.20.zip", "file/Fresh Patch - Rotten Creatures.zip", "file/Fresh Patch - Variants and Ventures.zip", "file/Rotten_Creature_x_Fresh_Animation_Fix_1.0.2.zip", "file/FA+Player-v1.1.zip", "file/Fresh Moves v3.1.zip", "file/creepers-refreshed-fa-v1.0.zip", "file/mobs-refreshed-fa-v2.2.zip", "file/boss-refreshed-v2-1.19-1.21.zip", "file/Create LootR Chest.zip", "file/waystones_1.21.1.zip", "file/Thaumaturge-Gems-Renewed-1.0.0.zip", "file/GUI Revision Dark 1.21.x.zip", "file/Clarity-Tooltips.zip", "file/RTF_v.2.8.4_1.20.x.zip", "file/Torches Reimagined v1.10.zip", "file/Rus-For-Mods-1.21-1.1.zip", "file/SodiumTranslations.zip", "file/Mine Emotes translations v7.2.zip"]
 incompatibleResourcePacks:[]
+key_key.pop_up_emotes.piemenu:key.keyboard.y
